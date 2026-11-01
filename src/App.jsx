@@ -1,5 +1,6 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
+import { ThemeProvider } from './context/ThemeContext';
 import ProtectedRoute from './components/ProtectedRoute';
 
 // Public Pages
@@ -33,141 +34,154 @@ import AdminEventsPage from './pages/dashboard/AdminEventsPage';
 import AnnouncementsAdminPage from './pages/dashboard/AnnouncementsAdminPage';
 import AdminSermonsPage from './pages/dashboard/AdminSermonsPage';
 import DonationsAdminPage from './pages/dashboard/DonationsAdminPage';
+import RoleManagementPage from './pages/dashboard/RoleManagementPage';
 
 function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>
-        <Routes>
-          {/* ── Public Routes ─────────────────────────────── */}
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/sermons" element={<SermonsPage />} />
-          <Route path="/sermons/:id" element={<SermonDetailPage />} />
-          <Route path="/events" element={<EventsPage />} />
-          <Route path="/events/:id" element={<EventDetailPage />} />
-          <Route path="/announcements" element={<AnnouncementsPage />} />
-          <Route path="/give" element={<GivePage />} />
-          <Route path="/prayer" element={<PrayerPage />} />
-          <Route path="/testimony" element={<TestimonyPage />} />
+      <ThemeProvider>
+        <AuthProvider>
+          <Routes>
+            {/* ── Public Routes ─────────────────────────────── */}
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/sermons" element={<SermonsPage />} />
+            <Route path="/sermons/:id" element={<SermonDetailPage />} />
+            <Route path="/events" element={<EventsPage />} />
+            <Route path="/events/:id" element={<EventDetailPage />} />
+            <Route path="/announcements" element={<AnnouncementsPage />} />
+            <Route path="/give" element={<GivePage />} />
+            <Route path="/prayer" element={<PrayerPage />} />
+            <Route path="/testimony" element={<TestimonyPage />} />
 
-          {/* Conference sub-pages (reuse Events) */}
-          <Route path="/conferences/iec" element={<EventsPage />} />
-          <Route path="/conferences/eaglets" element={<EventsPage />} />
-          <Route path="/conferences/lioness" element={<EventsPage />} />
-          <Route path="/conferences/ministers" element={<EventsPage />} />
-          <Route path="/conferences/fog" element={<EventsPage />} />
+            {/* Conference sub-pages (reuse Events) */}
+            <Route path="/conferences/iec" element={<EventsPage />} />
+            <Route path="/conferences/eaglets" element={<EventsPage />} />
+            <Route path="/conferences/lioness" element={<EventsPage />} />
+            <Route path="/conferences/ministers" element={<EventsPage />} />
+            <Route path="/conferences/fog" element={<EventsPage />} />
 
-          {/* Resource sub-pages */}
-          <Route path="/resources/books" element={<AboutPage />} />
-          <Route path="/resources/centers" element={<AboutPage />} />
+            {/* Resource sub-pages */}
+            <Route path="/resources/books" element={<AboutPage />} />
+            <Route path="/resources/centers" element={<AboutPage />} />
 
-          {/* ── Auth Routes ────────────────────────────────── */}
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+            {/* ── Auth Routes ────────────────────────────────── */}
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/forgot-password" element={<ForgotPasswordPage />} />
 
-          {/* ── Protected Dashboard Routes ─────────────────── */}
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <DashboardLayout />
-              </ProtectedRoute>
-            }
-          >
-            {/* Index → Dashboard Home */}
-            <Route index element={<DashboardHome />} />
-
-            {/* Profile — all roles */}
-            <Route path="profile" element={<ProfilePage />} />
-
-            {/* Worker+ routes */}
+            {/* ── Protected Dashboard Routes ─────────────────── */}
             <Route
-              path="members"
+              path="/dashboard"
               element={
-                <ProtectedRoute minRole="WORKER">
-                  <MembersPage />
+                <ProtectedRoute>
+                  <DashboardLayout />
                 </ProtectedRoute>
               }
-            />
-            <Route
-              path="attendance"
-              element={
-                <ProtectedRoute minRole="WORKER">
-                  <AttendancePage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="first-timers"
-              element={
-                <ProtectedRoute minRole="WORKER">
-                  <FirstTimersPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="rosters"
-              element={
-                <ProtectedRoute minRole="WORKER">
-                  <RostersPage />
-                </ProtectedRoute>
-              }
-            />
+            >
+              {/* Index → Dashboard Home */}
+              <Route index element={<DashboardHome />} />
 
-            {/* Dept Head+ routes */}
-            <Route
-              path="departments"
-              element={
-                <ProtectedRoute minRole="DEPARTMENT_HEAD">
-                  <DepartmentsPage />
-                </ProtectedRoute>
-              }
-            />
+              {/* Profile — all roles */}
+              <Route path="profile" element={<ProfilePage />} />
 
-            {/* Admin+ routes */}
-            <Route
-              path="events"
-              element={
-                <ProtectedRoute minRole="ADMIN">
-                  <AdminEventsPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="announcements"
-              element={
-                <ProtectedRoute minRole="ADMIN">
-                  <AnnouncementsAdminPage />
-                </ProtectedRoute>
-              }
-            />
+              {/* Worker+ routes */}
+              <Route
+                path="members"
+                element={
+                  <ProtectedRoute minRole="WORKER">
+                    <MembersPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="attendance"
+                element={
+                  <ProtectedRoute minRole="WORKER">
+                    <AttendancePage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="first-timers"
+                element={
+                  <ProtectedRoute minRole="WORKER">
+                    <FirstTimersPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="rosters"
+                element={
+                  <ProtectedRoute minRole="WORKER">
+                    <RostersPage />
+                  </ProtectedRoute>
+                }
+              />
 
-            {/* Pastor+ routes */}
-            <Route
-              path="sermons"
-              element={
-                <ProtectedRoute minRole="PASTOR">
-                  <AdminSermonsPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="donations"
-              element={
-                <ProtectedRoute minRole="PASTOR">
-                  <DonationsAdminPage />
-                </ProtectedRoute>
-              }
-            />
-          </Route>
+              {/* Dept Head+ routes */}
+              <Route
+                path="departments"
+                element={
+                  <ProtectedRoute minRole="DEPARTMENT_HEAD">
+                    <DepartmentsPage />
+                  </ProtectedRoute>
+                }
+              />
 
-          {/* ── Fallbacks ──────────────────────────────────── */}
-          <Route path="/404" element={<NotFoundPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </AuthProvider>
+              {/* Admin+ routes */}
+              <Route
+                path="events"
+                element={
+                  <ProtectedRoute minRole="ADMIN">
+                    <AdminEventsPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="announcements"
+                element={
+                  <ProtectedRoute minRole="ADMIN">
+                    <AnnouncementsAdminPage />
+                  </ProtectedRoute>
+                }
+              />
+
+              {/* Pastor+ routes */}
+              <Route
+                path="sermons"
+                element={
+                  <ProtectedRoute minRole="PASTOR">
+                    <AdminSermonsPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="donations"
+                element={
+                  <ProtectedRoute minRole="PASTOR">
+                    <DonationsAdminPage />
+                  </ProtectedRoute>
+                }
+              />
+
+              {/* Super Admin routes */}
+              <Route
+                path="roles"
+                element={
+                  <ProtectedRoute minRole="SUPER_ADMIN">
+                    <RoleManagementPage />
+                  </ProtectedRoute>
+                }
+              />
+            </Route>
+
+            {/* ── Fallbacks ──────────────────────────────────── */}
+            <Route path="/404" element={<NotFoundPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </AuthProvider>
+      </ThemeProvider>
     </BrowserRouter>
   );
 }

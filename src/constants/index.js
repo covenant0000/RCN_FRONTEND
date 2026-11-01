@@ -96,7 +96,6 @@ export const MEMBER_STATUS = {
 export const GENDER_OPTIONS = [
   { value: 'MALE', label: 'Male' },
   { value: 'FEMALE', label: 'Female' },
-  { value: 'OTHER', label: 'Prefer not to say' },
 ];
 
 // Donation amounts (in NGN)

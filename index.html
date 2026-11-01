@@ -5,6 +5,20 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Anti-FOUC Theme Initialization -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('rcn_theme');
+          if (saved === 'dark') {
+            document.documentElement.classList.add('dark');
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.documentElement.style.colorScheme = 'dark';
+          }
+        } catch (e) {}
+      })();
+    </script>
+
     <!-- SEO Meta Tags -->
     <title>Remnant Christian Network | Apostolic Christianity Restored</title>
     <meta name="description" content="Remnant Christian Network (RCN) is an interdenominational ministry striving toward the rebirth of Apostolic Christianity. Join our global community of believers." />

@@ -15,6 +15,17 @@ export const authAPI = {
   changePassword: (data) => apiClient.post('/auth/change-password', data),
 };
 
+// ─── Users (Super Admin) ───────────────────────────────────────────────────
+
+export const usersAPI = {
+  getUsers: (params) => apiClient.get('/users', { params }),
+  getUser: (id) => apiClient.get(`/users/${id}`),
+  updateUserRole: (id, role) => apiClient.patch(`/users/${id}/role`, { role }),
+  activateUser: (id) => apiClient.patch(`/users/${id}/activate`),
+  deactivateUser: (id) => apiClient.patch(`/users/${id}/deactivate`),
+  deleteUser: (id) => apiClient.delete(`/users/${id}`),
+};
+
 // ─── Profiles ──────────────────────────────────────────────────────────────
 
 export const profilesAPI = {
@@ -22,6 +33,10 @@ export const profilesAPI = {
   updateMyProfile: (data) => apiClient.patch('/profiles/me', data),
   getProfile: (id) => apiClient.get(`/profiles/${id}`),
   updateProfile: (id, data) => apiClient.patch(`/profiles/${id}`, data),
+  uploadAvatar: (formData) =>
+    apiClient.post('/profiles/me/avatar', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    }),
 };
 
 // ─── Members ──────────────────────────────────────────────────────────────
@@ -31,6 +46,7 @@ export const membersAPI = {
   createMember: (data) => apiClient.post('/members', data),
   getMember: (id) => apiClient.get(`/members/${id}`),
   updateMember: (id, data) => apiClient.patch(`/members/${id}`, data),
+  deleteMember: (id) => apiClient.delete(`/members/${id}`),
 };
 
 // ─── Departments ──────────────────────────────────────────────────────────
@@ -40,6 +56,7 @@ export const departmentsAPI = {
   createDepartment: (data) => apiClient.post('/departments', data),
   getDepartment: (id) => apiClient.get(`/departments/${id}`),
   updateDepartment: (id, data) => apiClient.patch(`/departments/${id}`, data),
+  deleteDepartment: (id) => apiClient.delete(`/departments/${id}`),
   assignMember: (departmentId, data) =>
     apiClient.post(`/departments/${departmentId}/members`, data),
   removeMember: (departmentId, memberId) =>
@@ -63,6 +80,7 @@ export const announcementsAPI = {
   createAnnouncement: (data) => apiClient.post('/announcements', data),
   getAnnouncement: (id) => apiClient.get(`/announcements/${id}`),
   updateAnnouncement: (id, data) => apiClient.patch(`/announcements/${id}`, data),
+  deleteAnnouncement: (id) => apiClient.delete(`/announcements/${id}`),
 };
 
 // ─── Attendance ───────────────────────────────────────────────────────────
@@ -91,6 +109,7 @@ export const rostersAPI = {
   createRoster: (data) => apiClient.post('/rosters', data),
   getRoster: (id) => apiClient.get(`/rosters/${id}`),
   updateRoster: (id, data) => apiClient.patch(`/rosters/${id}`, data),
+  deleteRoster: (id) => apiClient.delete(`/rosters/${id}`),
 };
 
 // ─── Sermons ──────────────────────────────────────────────────────────────
@@ -100,6 +119,9 @@ export const sermonsAPI = {
   createSermon: (data) => apiClient.post('/sermons', data),
   getSermon: (id) => apiClient.get(`/sermons/${id}`),
   updateSermon: (id, data) => apiClient.patch(`/sermons/${id}`, data),
+  deleteSermon: (id) => apiClient.delete(`/sermons/${id}`),
+  publishSermon: (id) => apiClient.patch(`/sermons/${id}/publish`),
+  unpublishSermon: (id) => apiClient.patch(`/sermons/${id}/unpublish`),
   requestTranscription: (id) => apiClient.post(`/sermons/${id}/transcription-jobs`),
   getTranscript: (id) => apiClient.get(`/sermons/${id}/transcript`),
 };

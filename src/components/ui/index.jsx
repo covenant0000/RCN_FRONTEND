@@ -12,7 +12,7 @@ export const Spinner = ({ size = 'md', className = '' }) => {
 export const LoadingScreen = ({ message = 'Loading...' }) => (
   <div className="min-h-[400px] flex flex-col items-center justify-center gap-4">
     <Spinner size="lg" />
-    <p className="text-gray-500 text-sm">{message}</p>
+    <p className="text-gray-500 dark:text-gray-400 text-sm">{message}</p>
   </div>
 );
 
@@ -20,10 +20,10 @@ export const LoadingScreen = ({ message = 'Loading...' }) => (
 
 export const ErrorState = ({ message = 'Something went wrong.', onRetry }) => (
   <div className="min-h-[300px] flex flex-col items-center justify-center gap-4 text-center px-4">
-    <div className="w-16 h-16 rounded-full bg-red-50 flex items-center justify-center">
+    <div className="w-16 h-16 rounded-full bg-red-50 dark:bg-red-950/40 flex items-center justify-center">
       <span className="text-2xl">⚠️</span>
     </div>
-    <p className="text-gray-600">{message}</p>
+    <p className="text-gray-600 dark:text-gray-300">{message}</p>
     {onRetry && (
       <button onClick={onRetry} className="btn-primary text-sm px-5 py-2">
         Try Again
@@ -40,8 +40,8 @@ export const EmptyState = ({ icon: Icon, title, message, action }) => (
       </div>
     )}
     <div>
-      <h3 className="font-semibold text-gray-900 mb-1">{title}</h3>
-      {message && <p className="text-gray-500 text-sm">{message}</p>}
+      <h3 className="font-semibold text-gray-900 dark:text-white mb-1">{title}</h3>
+      {message && <p className="text-gray-500 dark:text-gray-400 text-sm">{message}</p>}
     </div>
     {action}
   </div>
@@ -50,13 +50,13 @@ export const EmptyState = ({ icon: Icon, title, message, action }) => (
 // ─── Badge ────────────────────────────────────────────────────────────────
 
 const badgeVariants = {
-  default: 'bg-gray-100 text-gray-600',
+  default: 'bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-300',
   accent: 'bg-accent/10 text-accent',
-  primary: 'bg-primary/10 text-primary',
-  success: 'bg-green-100 text-green-700',
-  warning: 'bg-amber-100 text-amber-700',
-  danger: 'bg-red-100 text-red-600',
-  gold: 'bg-amber-50 text-amber-600',
+  primary: 'bg-primary/10 dark:bg-primary-light/30 text-primary dark:text-white',
+  success: 'bg-green-100 dark:bg-green-950/40 text-green-700 dark:text-green-400',
+  warning: 'bg-amber-100 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400',
+  danger: 'bg-red-100 dark:bg-red-950/40 text-red-600 dark:text-red-400',
+  gold: 'bg-amber-50 dark:bg-amber-950/30 text-amber-600 dark:text-amber-400',
 };
 
 export const Badge = ({ variant = 'default', children, className = '' }) => (
@@ -72,7 +72,7 @@ export const Badge = ({ variant = 'default', children, className = '' }) => (
 export const Card = ({ children, className = '', hover = false, onClick }) => (
   <div
     onClick={onClick}
-    className={`bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden ${
+    className={`bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden transition-colors ${
       hover ? 'card-hover cursor-pointer' : ''
     } ${className}`}
   >
@@ -102,7 +102,7 @@ export const SectionHeader = ({
     )}
     <h2
       className={`font-display text-3xl md:text-4xl font-bold mb-4 ${
-        light ? 'text-white' : 'text-primary'
+        light ? 'text-white' : 'text-primary dark:text-white'
       }`}
     >
       {title}
@@ -111,7 +111,7 @@ export const SectionHeader = ({
       <p
         className={`max-w-2xl text-base leading-relaxed ${
           center ? 'mx-auto' : ''
-        } ${light ? 'text-white/70' : 'text-gray-500'}`}
+        } ${light ? 'text-white/70' : 'text-gray-500 dark:text-gray-400'}`}
       >
         {description}
       </p>
@@ -167,7 +167,7 @@ export const Pagination = ({ pagination, onPageChange }) => {
       <button
         onClick={() => onPageChange(page - 1)}
         disabled={page <= 1}
-        className="px-4 py-2 rounded-xl text-sm font-medium border border-gray-200 text-gray-600 hover:border-accent hover:text-accent disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+        className="px-4 py-2 rounded-xl text-sm font-medium border border-gray-200 dark:border-white/10 text-gray-600 dark:text-gray-300 hover:border-accent hover:text-accent disabled:opacity-40 disabled:cursor-not-allowed transition-all"
       >
         Previous
       </button>
@@ -190,7 +190,7 @@ export const Pagination = ({ pagination, onPageChange }) => {
                 className={`w-9 h-9 rounded-xl text-sm font-medium transition-all ${
                   item === page
                     ? 'bg-accent text-white'
-                    : 'border border-gray-200 text-gray-600 hover:border-accent hover:text-accent'
+                    : 'border border-gray-200 dark:border-white/10 text-gray-600 dark:text-gray-300 hover:border-accent hover:text-accent'
                 }`}
               >
                 {item}
@@ -202,7 +202,7 @@ export const Pagination = ({ pagination, onPageChange }) => {
       <button
         onClick={() => onPageChange(page + 1)}
         disabled={page >= totalPages}
-        className="px-4 py-2 rounded-xl text-sm font-medium border border-gray-200 text-gray-600 hover:border-accent hover:text-accent disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+        className="px-4 py-2 rounded-xl text-sm font-medium border border-gray-200 dark:border-white/10 text-gray-600 dark:text-gray-300 hover:border-accent hover:text-accent disabled:opacity-40 disabled:cursor-not-allowed transition-all"
       >
         Next
       </button>
@@ -213,10 +213,10 @@ export const Pagination = ({ pagination, onPageChange }) => {
 // ─── Alert / Toast ────────────────────────────────────────────────────────
 
 const alertStyles = {
-  success: 'bg-green-50 border-green-200 text-green-800',
-  error: 'bg-red-50 border-red-200 text-red-800',
-  warning: 'bg-amber-50 border-amber-200 text-amber-800',
-  info: 'bg-blue-50 border-blue-200 text-blue-800',
+  success: 'bg-green-50 dark:bg-green-950/40 border-green-200 dark:border-green-800 text-green-800 dark:text-green-300',
+  error: 'bg-red-50 dark:bg-red-950/40 border-red-200 dark:border-red-800 text-red-800 dark:text-red-300',
+  warning: 'bg-amber-50 dark:bg-amber-950/40 border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-300',
+  info: 'bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-800 text-blue-800 dark:text-blue-300',
 };
 
 export const Alert = ({ type = 'info', children, className = '' }) => (
@@ -246,7 +246,7 @@ export const FormField = ({
 }) => (
   <div className={className}>
     {label && (
-      <label htmlFor={name} className="block text-sm font-medium text-gray-700 mb-1.5">
+      <label htmlFor={name} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
         {label} {required && <span className="text-red-500">*</span>}
       </label>
     )}
@@ -261,7 +261,7 @@ export const FormField = ({
         placeholder={placeholder}
         required={required}
         disabled={disabled}
-        className={`input-base ${error ? 'border-red-300 focus:ring-red-400' : ''} ${disabled ? 'opacity-60 cursor-not-allowed bg-gray-50' : ''}`}
+        className={`input-base ${error ? 'border-red-300 focus:ring-red-400' : ''} ${disabled ? 'opacity-60 cursor-not-allowed bg-gray-50 dark:bg-white/5' : ''}`}
         aria-describedby={error ? `${name}-error` : undefined}
         aria-invalid={error ? 'true' : 'false'}
       />
@@ -279,7 +279,7 @@ export const SelectField = ({
 }) => (
   <div className={className}>
     {label && (
-      <label htmlFor={name} className="block text-sm font-medium text-gray-700 mb-1.5">
+      <label htmlFor={name} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
         {label} {required && <span className="text-red-500">*</span>}
       </label>
     )}
@@ -290,7 +290,7 @@ export const SelectField = ({
       onChange={onChange}
       required={required}
       disabled={disabled}
-      className={`input-base ${error ? 'border-red-300' : ''} ${disabled ? 'opacity-60 bg-gray-50' : ''}`}
+      className={`input-base ${error ? 'border-red-300' : ''} ${disabled ? 'opacity-60 bg-gray-50 dark:bg-white/5' : ''}`}
     >
       {children}
     </select>
@@ -303,7 +303,7 @@ export const TextareaField = ({
 }) => (
   <div className={className}>
     {label && (
-      <label htmlFor={name} className="block text-sm font-medium text-gray-700 mb-1.5">
+      <label htmlFor={name} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
         {label} {required && <span className="text-red-500">*</span>}
       </label>
     )}
@@ -329,17 +329,17 @@ export const Modal = ({ isOpen, onClose, title, children, size = 'md' }) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
       onClick={onClose}
     >
       <div
-        className={`bg-white rounded-2xl shadow-2xl w-full ${sizes[size]} max-h-[90vh] overflow-y-auto animate-fade-in`}
+        className={`bg-white dark:bg-[#12101e] rounded-2xl shadow-2xl w-full ${sizes[size]} max-h-[90vh] overflow-y-auto animate-fade-in border border-gray-100 dark:border-white/10`}
         onClick={(e) => e.stopPropagation()}
       >
         {title && (
-          <div className="flex items-center justify-between p-6 border-b border-gray-100">
-            <h3 className="font-semibold text-lg text-gray-900">{title}</h3>
-            <button onClick={onClose} className="p-1.5 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors">
+          <div className="flex items-center justify-between p-6 border-b border-gray-100 dark:border-white/10">
+            <h3 className="font-semibold text-lg text-gray-900 dark:text-white">{title}</h3>
+            <button onClick={onClose} className="p-1.5 rounded-lg text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/10 transition-colors">
               <X className="w-5 h-5" />
             </button>
           </div>

@@ -23,7 +23,7 @@ const Footer = () => {
             <Link to="/register" className="btn-ghost border border-white/30 hover:border-white">
               Join Our Community
             </Link>
-            <Link to="/give" className="bg-white text-accent px-6 py-3 rounded-full font-semibold text-sm hover:bg-white/90 transition-all inline-flex items-center gap-2">
+            <Link to="/give" className="keep-white bg-white text-accent px-6 py-3 rounded-full font-semibold text-sm hover:bg-white/90 transition-all inline-flex items-center gap-2 shadow-sm">
               <Heart className="w-4 h-4" /> Give Today
             </Link>
           </div>

@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { authAPI } from '../services/api';
 import { TOKEN_KEYS, ROLE_HIERARCHY } from '../constants';
+import { mockUsers } from '../services/mock/mockData';
 
 const AuthContext = createContext(null);
 
@@ -25,13 +26,30 @@ export const AuthProvider = ({ children }) => {
 
   const login = useCallback(async (email, password) => {
     setError(null);
-    const response = await authAPI.login({ email, password });
-    const { accessToken, refreshToken, user: userData } = response.data.data;
-    localStorage.setItem(TOKEN_KEYS.ACCESS, accessToken);
-    localStorage.setItem(TOKEN_KEYS.REFRESH, refreshToken);
-    localStorage.setItem(TOKEN_KEYS.USER, JSON.stringify(userData));
-    setUser(userData);
-    return userData;
+    try {
+      const response = await authAPI.login({ email, password });
+      const { accessToken, refreshToken, user: userData } = response.data.data;
+      localStorage.setItem(TOKEN_KEYS.ACCESS, accessToken);
+      localStorage.setItem(TOKEN_KEYS.REFRESH, refreshToken);
+      localStorage.setItem(TOKEN_KEYS.USER, JSON.stringify(userData));
+      setUser(userData);
+      return userData;
+    } catch (apiErr) {
+      // Graceful offline fallback for development testing when backend is not listening
+      const isNetworkIssue = !apiErr.response || apiErr.code === 'ERR_NETWORK' || apiErr.message?.includes('Network Error');
+      if (isNetworkIssue) {
+        const found = mockUsers.find((u) => u.email.toLowerCase() === email.toLowerCase());
+        if (found) {
+          const fakeToken = `demo-token-${found.id}`;
+          localStorage.setItem(TOKEN_KEYS.ACCESS, fakeToken);
+          localStorage.setItem(TOKEN_KEYS.REFRESH, `demo-refresh-${found.id}`);
+          localStorage.setItem(TOKEN_KEYS.USER, JSON.stringify(found));
+          setUser(found);
+          return found;
+        }
+      }
+      throw apiErr;
+    }
   }, []);
 
   const logout = useCallback(async () => {

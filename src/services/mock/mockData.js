@@ -12,8 +12,8 @@ export const mockUsers = [
     isEmailVerified: true,
     profile: {
       id: 'prof-001',
-      firstName: 'Admin',
-      lastName: 'User',
+      firstName: 'Apostolic',
+      lastName: 'SuperAdmin',
       phone: '+234-800-000-0001',
       gender: 'MALE',
       avatarUrl: null,
@@ -36,15 +36,60 @@ export const mockUsers = [
   },
   {
     id: 'usr-003',
+    email: 'operations@church.org',
+    role: 'ADMIN',
+    isActive: true,
+    isEmailVerified: true,
+    profile: {
+      id: 'prof-003',
+      firstName: 'Operations',
+      lastName: 'Admin',
+      phone: '+234-800-000-0003',
+      gender: 'FEMALE',
+      avatarUrl: null,
+    },
+  },
+  {
+    id: 'usr-004',
+    email: 'depthead@church.org',
+    role: 'DEPARTMENT_HEAD',
+    isActive: true,
+    isEmailVerified: true,
+    profile: {
+      id: 'prof-004',
+      firstName: 'David',
+      lastName: 'Okonkwo',
+      phone: '+234-800-000-0004',
+      gender: 'MALE',
+      avatarUrl: null,
+    },
+  },
+  {
+    id: 'usr-005',
+    email: 'worker@church.org',
+    role: 'WORKER',
+    isActive: true,
+    isEmailVerified: true,
+    profile: {
+      id: 'prof-005',
+      firstName: 'Grace',
+      lastName: 'Bello',
+      phone: '+234-800-000-0005',
+      gender: 'FEMALE',
+      avatarUrl: null,
+    },
+  },
+  {
+    id: 'usr-006',
     email: 'alice@church.org',
     role: 'MEMBER',
     isActive: true,
     isEmailVerified: true,
     profile: {
-      id: 'prof-003',
+      id: 'prof-006',
       firstName: 'Alice',
       lastName: 'Johnson',
-      phone: '+234-800-000-0003',
+      phone: '+234-800-000-0006',
       gender: 'FEMALE',
       avatarUrl: null,
     },
@@ -100,7 +145,7 @@ export const mockEvents = [
   },
   {
     id: 'evt-005',
-    title: "Lioness Conference 2025",
+    title: 'Lioness Conference 2025',
     description: 'A powerful gathering for women in ministry and the marketplace.',
     startDate: '2025-05-08T09:00:00Z',
     endDate: '2025-05-10T18:00:00Z',
@@ -267,11 +312,11 @@ export const mockDepartments = [
 
 // ─── Mock Members ─────────────────────────────────────────────────────────
 
-export const mockMembers = Array.from({ length: 24 }, (_, i) => ({
+export const mockMembers = Array.from({ length: 32 }, (_, i) => ({
   id: `mem-${String(i + 1).padStart(3, '0')}`,
   memberNumber: `RCN${String(i + 1).padStart(4, '0')}`,
-  status: i % 7 === 0 ? 'VISITOR' : i % 11 === 0 ? 'INACTIVE' : 'ACTIVE',
-  joinedDate: new Date(Date.now() - Math.random() * 3 * 365 * 24 * 3600 * 1000).toISOString(),
+  status: i % 8 === 0 ? 'VISITOR' : i % 12 === 0 ? 'INACTIVE' : 'ACTIVE',
+  joinedDate: new Date(Date.now() - (i * 18 + 10) * 24 * 3600 * 1000).toISOString(),
   profile: {
     firstName: ['James', 'Mary', 'John', 'Sarah', 'David', 'Grace', 'Daniel', 'Faith', 'Samuel', 'Joy'][i % 10],
     lastName: ['Okafor', 'Adeyemi', 'Ibrahim', 'Nwankwo', 'Aliyu', 'Okonkwo', 'Bello', 'Chukwu', 'Eze', 'Musa'][i % 10],
@@ -284,14 +329,14 @@ export const mockMembers = Array.from({ length: 24 }, (_, i) => ({
 
 // ─── Mock Donations ───────────────────────────────────────────────────────
 
-export const mockDonations = Array.from({ length: 10 }, (_, i) => ({
+export const mockDonations = Array.from({ length: 16 }, (_, i) => ({
   id: `don-${String(i + 1).padStart(3, '0')}`,
-  amount: [1000, 2500, 5000, 10000, 25000, 50000][i % 6],
+  amount: [2500, 5000, 10000, 25000, 50000, 100000, 150000][i % 7],
   currency: 'NGN',
-  purpose: ['Tithe', 'Offering', 'Building Fund', 'Missions', 'Conference'][i % 5],
+  purpose: ['Tithe', 'Offering', 'Building Fund', 'Missions', 'Conference', 'Welfare'][i % 6],
   status: 'COMPLETED',
-  createdAt: new Date(Date.now() - i * 7 * 24 * 3600 * 1000).toISOString(),
-  donor: { name: 'Anonymous' },
+  createdAt: new Date(Date.now() - i * 4 * 24 * 3600 * 1000).toISOString(),
+  donor: { name: ['Anonymous Partner', 'David O.', 'Grace B.', 'Kingdom Builder', 'Emmanuel N.'][i % 5] },
 }));
 
 // ─── Mock Rosters ─────────────────────────────────────────────────────────
@@ -311,21 +356,140 @@ export const mockRosters = [
     workers: mockMembers.slice(5, 10),
     notes: 'Prayer service roster',
   },
+  {
+    id: 'ros-003',
+    serviceDate: '2025-01-26T08:00:00Z',
+    department: mockDepartments[3],
+    workers: mockMembers.slice(10, 15),
+    notes: 'Ushering and hospitality service roster',
+  },
 ];
 
 // ─── Mock First Timers ────────────────────────────────────────────────────
 
-export const mockFirstTimers = Array.from({ length: 8 }, (_, i) => ({
+export const mockFirstTimers = Array.from({ length: 12 }, (_, i) => ({
   id: `ft-${String(i + 1).padStart(3, '0')}`,
-  firstName: ['Emma', 'Liam', 'Olivia', 'Noah', 'Ava', 'William', 'Sophia', 'James'][i],
-  lastName: ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis'][i],
+  firstName: ['Emma', 'Liam', 'Olivia', 'Noah', 'Ava', 'William', 'Sophia', 'James', 'Lucas', 'Mia', 'Benjamin', 'Amara'][i],
+  lastName: ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Taylor', 'Wilson', 'Anderson', 'Obi'][i],
   phone: `+234-800-111-${String(i + 100).padStart(4, '0')}`,
   email: `visitor${i + 1}@example.com`,
-  address: 'Abuja, Nigeria',
-  visitDate: new Date(Date.now() - i * 3 * 24 * 3600 * 1000).toISOString(),
+  address: 'Awka, Anambra State',
+  visitDate: new Date(Date.now() - i * 2.5 * 24 * 3600 * 1000).toISOString(),
   followUpStatus: ['PENDING', 'CONTACTED', 'COMPLETED'][i % 3],
-  notes: 'First time visitor',
+  notes: i % 2 === 0 ? 'Visited during Sunday 1st Service' : 'Joined through Mid-week Prayer Altar',
 }));
+
+// ─── Mock Prayer Requests ─────────────────────────────────────────────────
+
+export const mockPrayerRequests = [
+  {
+    id: 'pr-001',
+    name: 'Sister Blessing A.',
+    title: 'Divine Healing & Restoration',
+    category: 'Healing',
+    status: 'ANSWERED',
+    submittedAt: '2025-01-12T14:30:00Z',
+    isConfidential: false,
+  },
+  {
+    id: 'pr-002',
+    name: 'Brother Chukwuma E.',
+    title: 'Apostolic Open Doors for Mission',
+    category: 'Ministry',
+    status: 'INTERCESSION',
+    submittedAt: '2025-01-11T19:00:00Z',
+    isConfidential: true,
+  },
+  {
+    id: 'pr-003',
+    name: 'Family of Elder Okoye',
+    title: 'Spiritual Breakthrough & Deliverance',
+    category: 'Family',
+    status: 'NEW',
+    submittedAt: '2025-01-10T10:15:00Z',
+    isConfidential: false,
+  },
+  {
+    id: 'pr-004',
+    name: 'Kelechi M.',
+    title: 'Career Advancement & Relocation',
+    category: 'Career',
+    status: 'FOLLOW_UP',
+    submittedAt: '2025-01-09T16:40:00Z',
+    isConfidential: false,
+  },
+  {
+    id: 'pr-005',
+    name: 'Ngozi D.',
+    title: 'Fruit of the Womb Testimonies',
+    category: 'Thanksgiving',
+    status: 'ANSWERED',
+    submittedAt: '2025-01-07T08:20:00Z',
+    isConfidential: false,
+  },
+];
+
+// ─── Mock Administrative Audit Logs ───────────────────────────────────────
+
+export const mockAuditLogs = [
+  {
+    id: 'log-001',
+    user: 'Operations Admin',
+    action: 'New Member Verified',
+    target: 'RCN0032 (Amara Obi)',
+    ip: '102.89.44.12',
+    timestamp: '2025-01-13T10:14:00Z',
+    status: 'SUCCESS',
+  },
+  {
+    id: 'log-002',
+    user: 'Pastor Arome',
+    action: 'Sermon Published',
+    target: 'The Mystery of the Kingdom',
+    ip: '197.210.55.8',
+    timestamp: '2025-01-12T18:45:00Z',
+    status: 'SUCCESS',
+  },
+  {
+    id: 'log-003',
+    user: 'Apostolic SuperAdmin',
+    action: 'User Role Promotion',
+    target: 'David Okonkwo -> DEPARTMENT_HEAD',
+    ip: '105.112.23.90',
+    timestamp: '2025-01-11T12:00:00Z',
+    status: 'SUCCESS',
+  },
+  {
+    id: 'log-004',
+    user: 'Operations Admin',
+    action: 'Bulk Attendance Committed',
+    target: 'Sunday 1st & 2nd Service (421 attendees)',
+    ip: '102.89.44.12',
+    timestamp: '2025-01-10T13:30:00Z',
+    status: 'SUCCESS',
+  },
+  {
+    id: 'log-005',
+    user: 'System Worker',
+    action: 'Database Automated Backup',
+    target: 'rcn_prod_db_2025_01.sql',
+    ip: '127.0.0.1',
+    timestamp: '2025-01-09T03:00:00Z',
+    status: 'SUCCESS',
+  },
+];
+
+// ─── Mock System Health Indicators ────────────────────────────────────────
+
+export const mockSystemHealth = {
+  apiStatus: 'Operational',
+  uptime: '99.98%',
+  databaseStatus: 'Connected',
+  dbLatency: '18ms',
+  storageUsed: '42.8 GB / 100 GB',
+  activeConnections: 148,
+  version: 'v2.4.0-apostolic',
+};
 
 // ─── Mock Attendance ──────────────────────────────────────────────────────
 
@@ -333,12 +497,21 @@ export const mockAttendanceSummary = {
   totalSessions: 52,
   avgAttendance: 380,
   weeklyBreakdown: [
-    { week: 'Week 1', count: 342 },
-    { week: 'Week 2', count: 389 },
-    { week: 'Week 3', count: 415 },
-    { week: 'Week 4', count: 398 },
-    { week: 'Week 5', count: 421 },
-    { week: 'Week 6', count: 367 },
+    { week: 'Week 1', count: 342, date: '01 Dec' },
+    { week: 'Week 2', count: 389, date: '08 Dec' },
+    { week: 'Week 3', count: 415, date: '15 Dec' },
+    { week: 'Week 4', count: 398, date: '22 Dec' },
+    { week: 'Week 5', count: 421, date: '29 Dec' },
+    { week: 'Week 6', count: 448, date: '05 Jan' },
+    { week: 'Week 7', count: 462, date: '12 Jan' },
+  ],
+  monthlyBreakdown: [
+    { month: 'Aug', count: 1420 },
+    { month: 'Sep', count: 1510 },
+    { month: 'Oct', count: 1640 },
+    { month: 'Nov', count: 1720 },
+    { month: 'Dec', count: 1910 },
+    { month: 'Jan', count: 2050 },
   ],
   byDepartment: mockDepartments.map((d, i) => ({
     department: d.name,
