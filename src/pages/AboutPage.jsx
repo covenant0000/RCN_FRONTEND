@@ -72,6 +72,28 @@ const AboutPage = () => (
       </div>
     </section>
 
+    {/* Visit Our Centre CTA */}
+    <section className="py-12 bg-[#FAF8F2] dark:bg-[#0D1527] border-y border-[rgba(20,33,61,0.06)] dark:border-white/10">
+      <div className="container-custom">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl shadow-sm border border-[rgba(20,33,61,0.08)] dark:border-white/10 p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div>
+            <h3 className="font-display text-2xl md:text-3xl font-bold text-[#14213D] dark:text-white mb-2">
+              Visit our centre
+            </h3>
+            <p className="text-[#6B7280] dark:text-[#D1D5DB] text-base">
+              See where and when we gather at RCN Anambra
+            </p>
+          </div>
+          <Link
+            to="/our-centre"
+            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-semibold text-sm bg-[#D4A84F] text-[#14213D] hover:bg-[#E0BA68] transition-colors shadow-sm flex-shrink-0"
+          >
+            RCN Anambra Centre &rarr;
+          </Link>
+        </div>
+      </div>
+    </section>
+
     {/* Three Pillars */}
     <section className="section-padding bg-primary-gradient text-white">
       <div className="container-custom">

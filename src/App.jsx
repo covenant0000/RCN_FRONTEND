@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -14,6 +15,8 @@ import AnnouncementsPage from './pages/AnnouncementsPage';
 import GivePage from './pages/GivePage';
 import PrayerPage from './pages/PrayerPage';
 import TestimonyPage from './pages/TestimonyPage';
+import CentersPage from './pages/CentersPage';
+import OtherCentersPage from './pages/OtherCentersPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 // Auth Pages
@@ -36,9 +39,19 @@ import AdminSermonsPage from './pages/dashboard/AdminSermonsPage';
 import DonationsAdminPage from './pages/dashboard/DonationsAdminPage';
 import RoleManagementPage from './pages/dashboard/RoleManagementPage';
 
+function ScrollToTop() {
+  const { pathname, hash } = useLocation();
+  useEffect(() => {
+    if (hash) return;
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [pathname, hash]);
+  return null;
+}
+
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <ThemeProvider>
         <AuthProvider>
           <Routes>
@@ -53,6 +66,7 @@ function App() {
             <Route path="/give" element={<GivePage />} />
             <Route path="/prayer" element={<PrayerPage />} />
             <Route path="/testimony" element={<TestimonyPage />} />
+            <Route path="/our-centre" element={<CentersPage />} />
 
             {/* Conference sub-pages (reuse Events) */}
             <Route path="/conferences/iec" element={<EventsPage />} />
@@ -63,7 +77,7 @@ function App() {
 
             {/* Resource sub-pages */}
             <Route path="/resources/books" element={<AboutPage />} />
-            <Route path="/resources/centers" element={<AboutPage />} />
+            <Route path="/resources/centers" element={<OtherCentersPage />} />
 
             {/* ── Auth Routes ────────────────────────────────── */}
             <Route path="/login" element={<LoginPage />} />
