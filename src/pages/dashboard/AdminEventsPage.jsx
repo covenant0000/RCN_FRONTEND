@@ -110,7 +110,7 @@ const AdminEventsPage = () => {
       {filteredEvents.length === 0 ? (
         <EmptyState icon={Calendar} title="No events matching this filter" message="Schedule an event or reset your category filter." />
       ) : (
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-xs md:text-sm text-left">
               <thead className="border-b border-gray-100 dark:border-white/10 bg-gray-50/70 dark:bg-white/5 text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider text-[11px]">
@@ -150,7 +150,7 @@ const AdminEventsPage = () => {
                         {hasRole('ADMIN') && (
                           <>
                             <button type="button" onClick={() => openEdit(event)}
-                              className="p-1.5 rounded-lg text-gray-400 hover:text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors" title="Edit event">
+                              className="p-1.5 rounded-lg text-gray-400 hover:text-[#D4A84F] hover:bg-[#D4A84F]/10 transition-colors" title="Edit event">
                               <Edit className="w-4 h-4" />
                             </button>
                             <button type="button" onClick={() => setDeleteConfirm(event.id)}

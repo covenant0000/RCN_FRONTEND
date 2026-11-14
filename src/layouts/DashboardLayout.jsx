@@ -96,7 +96,7 @@ const DashboardLayout = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50/80 dark:bg-[#09080e] flex transition-colors duration-300">
+    <div className="min-h-screen bg-gray-50/80 dark:bg-[#0D1527] flex transition-colors duration-300">
       {/* Mobile Sidebar Backdrop */}
       {sidebarOpen && (
         <div
@@ -107,7 +107,7 @@ const DashboardLayout = () => {
 
       {/* Modern SaaS Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-full w-72 bg-primary dark:bg-[#0c0a18] z-50 flex flex-col border-r border-white/5 dark:border-white/10 transition-transform duration-300 ${
+        className={`fixed top-0 left-0 h-full w-72 bg-primary dark:bg-[#0D1527] z-50 flex flex-col border-r border-white/5 dark:border-white/10 transition-transform duration-300 ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } lg:translate-x-0 shadow-2xl lg:shadow-none`}
       >
@@ -212,7 +212,7 @@ const DashboardLayout = () => {
       {/* Main Workspace Area */}
       <div className="flex-1 lg:ml-72 flex flex-col min-h-screen">
         {/* Modern SaaS Header */}
-        <header className="bg-white/95 dark:bg-[#0c0a18]/95 backdrop-blur-md border-b border-gray-100 dark:border-white/10 px-4 md:px-8 h-18 flex items-center justify-between gap-4 sticky top-0 z-30 transition-colors">
+        <header className="bg-white/95 dark:bg-[#0D1527]/95 backdrop-blur-md border-b border-gray-100 dark:border-white/10 px-4 md:px-8 h-18 flex items-center justify-between gap-4 sticky top-0 z-30 transition-colors">
           <div className="flex items-center gap-3">
             <button
               onClick={() => setSidebarOpen(true)}
@@ -250,13 +250,13 @@ const DashboardLayout = () => {
                 title="Notifications"
               >
                 <Bell className="w-5 h-5" />
-                <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-accent ring-2 ring-white dark:ring-[#0c0a18]" />
+                <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-accent ring-2 ring-white dark:ring-[#0D1527]" />
               </button>
 
               {/* Notifications Dropdown Drawer */}
               {notifOpen && (
                 <div
-                  className="absolute right-0 mt-2 w-80 bg-white dark:bg-[#12101e] rounded-2xl shadow-2xl border border-gray-100 dark:border-white/10 p-4 z-50 animate-fade-in"
+                  className="absolute right-0 mt-2 w-80 bg-white dark:bg-[#141F36] rounded-2xl shadow-2xl border border-gray-100 dark:border-white/10 p-4 z-50 animate-fade-in"
                   onClick={() => setNotifOpen(false)}
                 >
                   <div className="flex items-center justify-between pb-3 border-b border-gray-100 dark:border-white/10 mb-3">

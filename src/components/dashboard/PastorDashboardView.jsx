@@ -99,7 +99,7 @@ export const PastorDashboardView = ({
             change={membershipGrowthRate}
             isPositive={true}
             subtext={`${activeMembers} active covenant members`}
-            color="bg-blue-500/10 text-blue-600 dark:text-blue-400"
+            color="bg-[#14213D]/10 text-[#14213D] dark:text-[#FAF8F2]"
             linkTo="/dashboard/members"
           />
 
@@ -121,7 +121,7 @@ export const PastorDashboardView = ({
             change="+19.2%"
             isPositive={true}
             subtext={`${firstTimers.filter(f => f.followUpStatus === 'COMPLETED').length} successfully integrated`}
-            color="bg-purple-500/10 text-purple-600 dark:text-purple-400"
+            color="bg-[#D4A84F]/15 text-[#D4A84F] dark:text-[#E0BA68]"
             linkTo="/dashboard/first-timers"
           />
 
@@ -167,16 +167,16 @@ export const PastorDashboardView = ({
       {/* ── 3. Pastoral Shepherding & Spiritual Pulse ─────────────────────── */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* Prayer Requests & Intercession Pulse */}
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 p-6 shadow-sm flex flex-col justify-between">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 p-6 shadow-sm flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
-                <div className="w-9 h-9 rounded-xl bg-purple-50 dark:bg-purple-950/40 text-purple-600 dark:text-purple-400 flex items-center justify-center">
+                <div className="w-9 h-9 rounded-xl bg-[#D4A84F]/15 text-[#D4A84F] dark:text-[#E0BA68] flex items-center justify-center">
                   <Flame className="w-5 h-5" />
                 </div>
                 <h3 className="font-semibold text-gray-900 dark:text-white text-base">Altar of Prayer</h3>
               </div>
-              <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300">
+              <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#D4A84F]/20 text-[#D4A84F] dark:text-[#E0BA68]">
                 {prayerRequests.length} active
               </span>
             </div>
@@ -216,7 +216,7 @@ export const PastorDashboardView = ({
         </div>
 
         {/* Apostolic Media & Sermon Publishing */}
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 p-6 shadow-sm flex flex-col justify-between">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 p-6 shadow-sm flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
@@ -259,7 +259,7 @@ export const PastorDashboardView = ({
         </div>
 
         {/* First Timers Pastoral Follow-Up */}
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 p-6 shadow-sm flex flex-col justify-between">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 p-6 shadow-sm flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
@@ -308,7 +308,7 @@ export const PastorDashboardView = ({
       {/* ── 4. Upcoming Apostolic Programmes & Pastoral Shortcuts ─────────── */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Upcoming Church Events */}
-        <div className="lg:col-span-2 bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden">
+        <div className="lg:col-span-2 bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden">
           <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-white/10">
             <h3 className="font-semibold text-gray-900 dark:text-white text-base flex items-center gap-2">
               <CalendarDays className="w-4 h-4 text-accent" /> Upcoming Programmes & Conferences
@@ -350,7 +350,7 @@ export const PastorDashboardView = ({
         </div>
 
         {/* Pastoral Management Quick Shortcuts */}
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 p-6 shadow-sm flex flex-col justify-between">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 p-6 shadow-sm flex flex-col justify-between">
           <div>
             <h3 className="font-semibold text-gray-900 dark:text-white text-base mb-2">Pastoral Quick Actions</h3>
             <p className="text-xs text-gray-500 dark:text-gray-400 mb-5">

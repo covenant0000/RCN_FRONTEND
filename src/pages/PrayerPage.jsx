@@ -55,7 +55,7 @@ const PrayerPage = () => {
         bgImage="/prayer-bg.jpg"
       />
 
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-gray-50 dark:bg-[#0D1527]">
         <div className="container-custom grid lg:grid-cols-3 gap-10 max-w-5xl mx-auto">
           {/* Sidebar Info */}
           <div className="lg:col-span-1 space-y-6">
@@ -72,7 +72,7 @@ const PrayerPage = () => {
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl p-5 border border-gray-100 space-y-4">
+            <div className="bg-white dark:bg-[#141F36] rounded-2xl p-5 border border-gray-100 space-y-4">
               <h3 className="font-semibold text-primary text-sm">Prayer Meeting Times</h3>
               {[
                 { day: 'Monday–Friday', time: '6:00 AM – 7:00 AM', label: 'Morning Devotion' },
@@ -98,7 +98,7 @@ const PrayerPage = () => {
           </div>
 
           {/* Prayer Form */}
-          <div className="lg:col-span-2 bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+          <div className="lg:col-span-2 bg-white dark:bg-[#141F36] rounded-2xl shadow-sm border border-gray-100 p-8">
             <h3 className="font-display text-xl font-bold text-primary mb-6 flex items-center gap-2">
               <MessageSquare className="w-5 h-5 text-accent" /> Submit Your Prayer Request
             </h3>

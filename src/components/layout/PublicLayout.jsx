@@ -3,7 +3,7 @@ import Footer from './Footer';
 
 const PublicLayout = ({ children }) => {
   return (
-    <div className="min-h-screen flex flex-col bg-white dark:bg-[#09080e] text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <div className="public-layout min-h-screen flex flex-col bg-[#FAF8F2] dark:bg-[#0D1527] text-[#252525] dark:text-[#FAF8F2]">
       <Navbar />
       <main className="flex-1">{children}</main>
       <Footer />

@@ -50,13 +50,13 @@ export const EmptyState = ({ icon: Icon, title, message, action }) => (
 // ─── Badge ────────────────────────────────────────────────────────────────
 
 const badgeVariants = {
-  default: 'bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-300',
-  accent: 'bg-accent/10 text-accent',
-  primary: 'bg-primary/10 dark:bg-primary-light/30 text-primary dark:text-white',
+  default: 'bg-gray-100 dark:bg-white/10 text-[#6B7280] dark:text-gray-300',
+  accent: 'bg-[#D4A84F]/15 text-[#D4A84F] font-semibold',
+  primary: 'bg-[#14213D] text-white',
   success: 'bg-green-100 dark:bg-green-950/40 text-green-700 dark:text-green-400',
   warning: 'bg-amber-100 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400',
   danger: 'bg-red-100 dark:bg-red-950/40 text-red-600 dark:text-red-400',
-  gold: 'bg-amber-50 dark:bg-amber-950/30 text-amber-600 dark:text-amber-400',
+  gold: 'bg-[#D4A84F] text-[#14213D] font-bold',
 };
 
 export const Badge = ({ variant = 'default', children, className = '' }) => (
@@ -72,7 +72,7 @@ export const Badge = ({ variant = 'default', children, className = '' }) => (
 export const Card = ({ children, className = '', hover = false, onClick }) => (
   <div
     onClick={onClick}
-    className={`bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden transition-colors ${
+    className={`bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden transition-colors ${
       hover ? 'card-hover cursor-pointer' : ''
     } ${className}`}
   >
@@ -216,7 +216,7 @@ const alertStyles = {
   success: 'bg-green-50 dark:bg-green-950/40 border-green-200 dark:border-green-800 text-green-800 dark:text-green-300',
   error: 'bg-red-50 dark:bg-red-950/40 border-red-200 dark:border-red-800 text-red-800 dark:text-red-300',
   warning: 'bg-amber-50 dark:bg-amber-950/40 border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-300',
-  info: 'bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-800 text-blue-800 dark:text-blue-300',
+  info: 'bg-[#FAF8F2] dark:bg-[#14213D] border-[#14213D]/20 dark:border-white/10 text-[#14213D] dark:text-[#FAF8F2]',
 };
 
 export const Alert = ({ type = 'info', children, className = '' }) => (
@@ -333,7 +333,7 @@ export const Modal = ({ isOpen, onClose, title, children, size = 'md' }) => {
       onClick={onClose}
     >
       <div
-        className={`bg-white dark:bg-[#12101e] rounded-2xl shadow-2xl w-full ${sizes[size]} max-h-[90vh] overflow-y-auto animate-fade-in border border-gray-100 dark:border-white/10`}
+        className={`bg-white dark:bg-[#141F36] rounded-2xl shadow-2xl w-full ${sizes[size]} max-h-[90vh] overflow-y-auto animate-fade-in border border-gray-100 dark:border-white/10`}
         onClick={(e) => e.stopPropagation()}
       >
         {title && (

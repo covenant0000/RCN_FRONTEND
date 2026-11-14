@@ -10,10 +10,10 @@ import { ROLE_HIERARCHY } from '../../constants';
 
 /* ── role metadata ── */
 const ROLE_META = {
-  SUPER_ADMIN:     { label: 'Super Admin',     color: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300', badge: 'primary' },
-  ADMIN:           { label: 'Admin',           color: 'bg-blue-100   text-blue-700   dark:bg-blue-900/30   dark:text-blue-300',   badge: 'primary' },
+  SUPER_ADMIN:     { label: 'Super Admin',     color: 'bg-[#D4A84F]/20 text-[#D4A84F] dark:bg-[#D4A84F]/20 dark:text-[#E0BA68]', badge: 'primary' },
+  ADMIN:           { label: 'Admin',           color: 'bg-[#14213D]/10 text-[#14213D] dark:bg-[#14213D] dark:text-[#FAF8F2]',   badge: 'primary' },
   PASTOR:          { label: 'Pastor',          color: 'bg-amber-100  text-amber-700  dark:bg-amber-900/30  dark:text-amber-300',  badge: 'gold'    },
-  DEPARTMENT_HEAD: { label: 'Department Head', color: 'bg-teal-100   text-teal-700   dark:bg-teal-900/30   dark:text-teal-300',   badge: 'accent'  },
+  DEPARTMENT_HEAD: { label: 'Department Head', color: 'bg-[#14213D]/10 text-[#14213D] dark:bg-[#14213D] dark:text-[#FAF8F2]',   badge: 'accent'  },
   WORKER:          { label: 'Worker',          color: 'bg-green-100  text-green-700  dark:bg-green-900/30  dark:text-green-300',  badge: 'success' },
   MEMBER:          { label: 'Member',          color: 'bg-gray-100   text-gray-700   dark:bg-gray-700/40   dark:text-gray-300',   badge: 'default' },
 };
@@ -130,7 +130,7 @@ const RoleManagementPage = () => {
             Assign and manage user roles across the platform. Super Admin access only.
           </p>
         </div>
-        <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs font-semibold">
+        <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#D4A84F]/20 text-[#D4A84F] dark:bg-[#D4A84F]/20 dark:text-[#E0BA68] text-xs font-semibold">
           <Shield className="w-4 h-4" /> Super Admin Panel
         </div>
       </div>
@@ -147,7 +147,7 @@ const RoleManagementPage = () => {
               className={`p-3 rounded-2xl border text-center transition-all ${
                 roleFilter === role
                   ? 'border-accent bg-accent/10 shadow-sm'
-                  : 'bg-white dark:bg-[#12101e] border-gray-100 dark:border-white/10 hover:border-accent/40'
+                  : 'bg-white dark:bg-[#141F36] border-gray-100 dark:border-white/10 hover:border-accent/40'
               }`}
             >
               <p className="text-xl font-bold text-primary dark:text-white">{roleCount[role] || 0}</p>
@@ -188,7 +188,7 @@ const RoleManagementPage = () => {
       </div>
 
       {/* users table */}
-      <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden">
+      <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-xs md:text-sm text-left">
             <thead className="border-b border-gray-100 dark:border-white/10 bg-gray-50/70 dark:bg-white/5 text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider text-[11px]">
@@ -321,7 +321,7 @@ const RoleManagementPage = () => {
                       className={`flex items-center gap-2.5 px-4 py-3 rounded-xl border text-left transition-all ${
                         selected
                           ? 'border-accent bg-accent/10 shadow-sm'
-                          : 'border-gray-200 dark:border-white/10 hover:border-accent/40 bg-white dark:bg-[#1a1830]'
+                          : 'border-gray-200 dark:border-white/10 hover:border-accent/40 bg-white dark:bg-[#141F36]'
                       }`}
                     >
                       <span className={`w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 text-xs font-bold ${meta.color}`}>

@@ -12,38 +12,42 @@ export const ThemeToggle = ({ className = '' }) => {
       aria-checked={isDark}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-      className={`group relative inline-flex items-center h-8 w-15 shrink-0 cursor-pointer rounded-full p-1 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+      className={`group relative inline-flex items-center h-8 w-16 shrink-0 cursor-pointer rounded-full p-1 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4A84F] ${
         isDark
-          ? 'bg-neutral-900 border border-neutral-700/80 shadow-inner'
-          : 'bg-gray-200/90 border border-gray-300/80 shadow-inner'
+          ? 'bg-[#0D1527] border border-white/20 shadow-inner'
+          : 'bg-[#FAF8F2] border border-[#14213D]/20 shadow-inner'
       } ${className}`}
     >
-      {/* Background ambient icons */}
-      <span className="absolute inset-0 flex items-center justify-between px-2 text-xs pointer-events-none select-none">
+      {/* Both Sun and Moon icons clearly visible on the track */}
+      <span className="w-full flex items-center justify-between px-1 text-xs pointer-events-none select-none">
         <Sun
           className={`w-3.5 h-3.5 transition-all duration-300 ${
-            isDark ? 'opacity-35 text-gray-500 scale-90' : 'opacity-0 scale-75'
+            !isDark
+              ? 'text-[#D4A84F] opacity-100 scale-105'
+              : 'text-gray-400 opacity-70 scale-95'
           }`}
         />
         <Moon
           className={`w-3.5 h-3.5 transition-all duration-300 ${
-            isDark ? 'opacity-0 scale-75' : 'opacity-40 text-gray-500 scale-90'
+            isDark
+              ? 'text-[#D4A84F] opacity-100 scale-105'
+              : 'text-gray-400 opacity-70 scale-95'
           }`}
         />
       </span>
 
-      {/* Sliding Knob Thumb */}
+      {/* Sliding Knob with active icon in Warm Gold */}
       <span
-        className={`relative flex items-center justify-center w-6 h-6 rounded-full shadow-md transform transition-all duration-300 ease-out ${
+        className={`absolute top-1 left-1 flex items-center justify-center w-6 h-6 rounded-full shadow-md transform transition-all duration-300 ease-out ${
           isDark
-            ? 'translate-x-7 bg-black text-accent border border-neutral-700'
-            : 'translate-x-0 bg-white text-amber-500 border border-gray-200'
+            ? 'translate-x-8 bg-[#14213D] text-[#D4A84F] border border-[#D4A84F]/40'
+            : 'translate-x-0 bg-white text-[#D4A84F] border border-[#D4A84F]/40'
         }`}
       >
         {isDark ? (
-          <Moon className="w-3.5 h-3.5 fill-accent/20 rotate-0 transition-transform duration-300" />
+          <Moon className="w-3.5 h-3.5 text-[#D4A84F] fill-[#D4A84F]/20" />
         ) : (
-          <Sun className="w-3.5 h-3.5 fill-amber-500/20 rotate-0 transition-transform duration-300" />
+          <Sun className="w-3.5 h-3.5 text-[#D4A84F] fill-[#D4A84F]/20" />
         )}
       </span>
     </button>
@@ -51,4 +55,3 @@ export const ThemeToggle = ({ className = '' }) => {
 };
 
 export default ThemeToggle;
-

@@ -65,7 +65,7 @@ export const MemberWorkerDashboardView = ({
 
       {/* ── 2. Active Duty Roster for Workers ─────────────────────────────── */}
       {isWorker && (
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 p-6 shadow-sm">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 p-6 shadow-sm">
           <div className="flex items-center justify-between mb-4 pb-3 border-b border-gray-100 dark:border-white/10">
             <div className="flex items-center gap-2">
               <ClipboardList className="w-5 h-5 text-accent" />
@@ -99,7 +99,7 @@ export const MemberWorkerDashboardView = ({
       {/* ── 3. Upcoming Events & Sermons Feed ─────────────────────────────── */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Upcoming Conferences */}
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden">
           <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-white/10">
             <h3 className="font-semibold text-gray-900 dark:text-white text-base flex items-center gap-2">
               <CalendarDays className="w-4 h-4 text-accent" /> Upcoming Conferences
@@ -135,7 +135,7 @@ export const MemberWorkerDashboardView = ({
         </div>
 
         {/* Recent Sermons */}
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden">
           <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-white/10">
             <h3 className="font-semibold text-gray-900 dark:text-white text-base flex items-center gap-2">
               <BookOpen className="w-4 h-4 text-accent" /> Latest Apostolic Sermons

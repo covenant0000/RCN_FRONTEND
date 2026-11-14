@@ -5,6 +5,8 @@ import { useAuth } from '../../context/AuthContext';
 import { Alert, Spinner } from '../../components/ui';
 import { useForm } from '../../hooks';
 import { GENDER_OPTIONS } from '../../constants';
+import rcnLogo from '../../assets/images/rcn-logo.png';
+import loginBg from '../../assets/images/login-bg.jpeg';
 
 const RegisterPage = () => {
   const { register } = useAuth();
@@ -60,7 +62,7 @@ const RegisterPage = () => {
   /* ── success screen ── */
   if (success) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-[#09080e] p-6">
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-[#0D1527] p-6">
         <div className="max-w-md w-full text-center">
           <div className="w-20 h-20 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mx-auto mb-6">
             <CheckCircle2 className="w-10 h-10 text-green-500" />
@@ -69,7 +71,10 @@ const RegisterPage = () => {
           <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
             Thank you for joining Remnant Christian Network. Please check your email to verify your account before signing in.
           </p>
-          <Link to="/login" className="btn-primary px-8 py-3.5 text-base justify-center">
+          <Link
+            to="/login"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base font-semibold rounded-full transition-all bg-[#14213D] text-white hover:bg-[#1d2f55] dark:bg-[#D4A84F] dark:text-[#14213D] dark:hover:bg-[#E0BA68] shadow-sm"
+          >
             Proceed to Login
           </Link>
         </div>
@@ -78,41 +83,38 @@ const RegisterPage = () => {
   }
 
   return (
-    <div className="min-h-screen grid lg:grid-cols-2 bg-gray-50 dark:bg-[#09080e]">
+    <div className="min-h-screen grid lg:grid-cols-2 bg-gray-50 dark:bg-[#0D1527]">
       {/* ── Left panel ── */}
-      <div
-        className="hidden lg:flex flex-col justify-between p-12 relative"
-        style={{ backgroundImage: 'url(/community-bg.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}
-      >
-        <div className="absolute inset-0 bg-primary/75 dark:bg-black/70" />
+      <div className="hidden lg:flex flex-col justify-between p-12 relative overflow-hidden">
+        {/* Background photo */}
+        <img
+          src={loginBg}
+          alt="Register Background"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        {/* Navy overlay, slightly darker at bottom */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#14213D]/70 via-[#14213D]/70 to-[#14213D]/90" />
 
+        {/* logo */}
         <div className="relative z-10">
           <Link to="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-accent-gradient flex items-center justify-center shadow-lg">
-              <span className="text-white font-bold text-sm">RCN</span>
+            <div className="w-14 h-14 rounded-full bg-[#FAF8F2] p-2 shadow-lg flex items-center justify-center flex-shrink-0">
+              <img
+                src={rcnLogo}
+                alt="Remnant Christian Network Logo"
+                className="w-full h-full object-contain"
+              />
             </div>
             <span className="text-white font-semibold text-lg">Remnant Christian Network</span>
           </Link>
         </div>
 
-        <div className="relative z-10">
-          <h2 className="font-display text-3xl font-bold text-white mb-4">Become Part of the Remnant</h2>
-          <p className="text-white/70 leading-relaxed mb-8">
-            Join thousands of believers from around the world striving toward the rebirth of Apostolic Christianity.
-          </p>
-          <div className="space-y-3">
-            {[
-              'Access exclusive sermon content',
-              'Connect with global RCN community',
-              'Stay updated on events & conferences',
-              'Submit prayer requests & testimonies',
-            ].map((benefit) => (
-              <div key={benefit} className="flex items-center gap-3 text-white/80 text-sm">
-                <CheckCircle2 className="w-4 h-4 text-accent flex-shrink-0" />
-                {benefit}
-              </div>
-            ))}
-          </div>
+        {/* quote */}
+        <div className="relative z-10 max-w-md">
+          <blockquote className="text-white text-xl font-display italic leading-relaxed mb-3">
+            "Every man according as he purposeth in his heart, so let him give; not grudgingly, or of necessity: for God loveth a cheerful giver."
+          </blockquote>
+          <p className="text-[#D4A84F] text-sm font-medium">— 2 Corinthians 9:7 (KJV)</p>
         </div>
       </div>
 
@@ -146,13 +148,13 @@ const RegisterPage = () => {
               <div>
                 <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">First Name <span className="text-red-500">*</span></label>
                 <input id="firstName" name="firstName" value={values.firstName} onChange={handleChange} placeholder="John"
-                  className={`input-base dark:bg-[#1a1830] dark:border-white/10 dark:text-white dark:placeholder:text-gray-600 ${errors.firstName ? 'border-red-300 dark:border-red-500/50' : ''}`} />
+                  className={`input-base dark:bg-[#141F36] dark:border-white/10 dark:text-white placeholder:text-[#6B7280] dark:placeholder:text-[#6B7280] ${errors.firstName ? 'border-red-300 dark:border-red-500/50' : ''}`} />
                 {errors.firstName && <p className="mt-1.5 text-xs text-red-500">{errors.firstName}</p>}
               </div>
               <div>
                 <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Last Name <span className="text-red-500">*</span></label>
                 <input id="lastName" name="lastName" value={values.lastName} onChange={handleChange} placeholder="Doe"
-                  className={`input-base dark:bg-[#1a1830] dark:border-white/10 dark:text-white dark:placeholder:text-gray-600 ${errors.lastName ? 'border-red-300 dark:border-red-500/50' : ''}`} />
+                  className={`input-base dark:bg-[#141F36] dark:border-white/10 dark:text-white placeholder:text-[#6B7280] dark:placeholder:text-[#6B7280] ${errors.lastName ? 'border-red-300 dark:border-red-500/50' : ''}`} />
                 {errors.lastName && <p className="mt-1.5 text-xs text-red-500">{errors.lastName}</p>}
               </div>
             </div>
@@ -161,7 +163,7 @@ const RegisterPage = () => {
             <div>
               <label htmlFor="reg-email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Email Address <span className="text-red-500">*</span></label>
               <input id="reg-email" name="email" type="email" value={values.email} onChange={handleChange} placeholder="you@example.com"
-                className={`input-base dark:bg-[#1a1830] dark:border-white/10 dark:text-white dark:placeholder:text-gray-600 ${errors.email ? 'border-red-300 dark:border-red-500/50' : ''}`} />
+                className={`input-base dark:bg-[#141F36] dark:border-white/10 dark:text-white placeholder:text-[#6B7280] dark:placeholder:text-[#6B7280] ${errors.email ? 'border-red-300 dark:border-red-500/50' : ''}`} />
               {errors.email && <p className="mt-1.5 text-xs text-red-500">{errors.email}</p>}
             </div>
 
@@ -170,12 +172,12 @@ const RegisterPage = () => {
               <div>
                 <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Phone Number</label>
                 <input id="phone" name="phone" type="tel" value={values.phone} onChange={handleChange} placeholder="+234 800 000 0000"
-                  className="input-base dark:bg-[#1a1830] dark:border-white/10 dark:text-white dark:placeholder:text-gray-600" />
+                  className="input-base dark:bg-[#141F36] dark:border-white/10 dark:text-white placeholder:text-[#6B7280] dark:placeholder:text-[#6B7280]" />
               </div>
               <div>
                 <label htmlFor="gender" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Gender</label>
                 <select id="gender" name="gender" value={values.gender} onChange={handleChange}
-                  className="input-base dark:bg-[#1a1830] dark:border-white/10 dark:text-white">
+                  className="input-base dark:bg-[#141F36] dark:border-white/10 dark:text-white">
                   <option value="">Select gender</option>
                   {GENDER_OPTIONS.map((g) => (<option key={g.value} value={g.value}>{g.label}</option>))}
                 </select>
@@ -188,7 +190,7 @@ const RegisterPage = () => {
               <div className="relative">
                 <input id="reg-password" name="password" type={showPassword ? 'text' : 'password'}
                   value={values.password} onChange={handleChange} placeholder="Min 8 chars, 1 uppercase, 1 number"
-                  className={`input-base pr-11 dark:bg-[#1a1830] dark:border-white/10 dark:text-white dark:placeholder:text-gray-600 ${errors.password ? 'border-red-300 dark:border-red-500/50' : ''}`} />
+                  className={`input-base pr-11 dark:bg-[#141F36] dark:border-white/10 dark:text-white placeholder:text-[#6B7280] dark:placeholder:text-[#6B7280] ${errors.password ? 'border-red-300 dark:border-red-500/50' : ''}`} />
                 <button type="button" onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors">
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
@@ -202,18 +204,18 @@ const RegisterPage = () => {
               <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Confirm Password <span className="text-red-500">*</span></label>
               <input id="confirmPassword" name="confirmPassword" type="password"
                 value={values.confirmPassword} onChange={handleChange} placeholder="Re-enter your password"
-                className={`input-base dark:bg-[#1a1830] dark:border-white/10 dark:text-white dark:placeholder:text-gray-600 ${errors.confirmPassword ? 'border-red-300 dark:border-red-500/50' : ''}`} />
+                className={`input-base dark:bg-[#141F36] dark:border-white/10 dark:text-white placeholder:text-[#6B7280] dark:placeholder:text-[#6B7280] ${errors.confirmPassword ? 'border-red-300 dark:border-red-500/50' : ''}`} />
               {errors.confirmPassword && <p className="mt-1.5 text-xs text-red-500">{errors.confirmPassword}</p>}
             </div>
 
             {/* terms */}
-            <label className="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-400 cursor-pointer">
-              <input type="checkbox" required className="mt-0.5 rounded text-accent focus:ring-accent flex-shrink-0" />
+            <label className="flex items-start gap-3 text-sm text-[#6B7280] dark:text-[#D1D5DB] cursor-pointer">
+              <input type="checkbox" required className="mt-0.5 rounded text-[#14213D] dark:text-[#D4A84F] focus:ring-[#D4A84F] flex-shrink-0" />
               <span>
                 I agree to the{' '}
-                <Link to="/terms" className="text-accent hover:underline">Terms of Use</Link>{' '}
+                <Link to="/terms" className="text-[#14213D] dark:text-[#D4A84F] font-semibold hover:underline">Terms of Use</Link>{' '}
                 and{' '}
-                <Link to="/privacy" className="text-accent hover:underline">Privacy Policy</Link>
+                <Link to="/privacy" className="text-[#14213D] dark:text-[#D4A84F] font-semibold hover:underline">Privacy Policy</Link>
               </span>
             </label>
 
@@ -221,7 +223,7 @@ const RegisterPage = () => {
             <button
               type="submit"
               disabled={loading}
-              className="btn-primary w-full py-3.5 text-base justify-center"
+              className="w-full py-3.5 text-base font-semibold rounded-full flex items-center justify-center gap-2 transition-all bg-[#14213D] text-white hover:bg-[#1d2f55] dark:bg-[#D4A84F] dark:text-[#14213D] dark:hover:bg-[#E0BA68] disabled:opacity-60 disabled:cursor-not-allowed shadow-sm"
               id="register-submit"
             >
               {loading
@@ -230,9 +232,9 @@ const RegisterPage = () => {
             </button>
           </form>
 
-          <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-8">
+          <p className="text-center text-sm text-[#6B7280] dark:text-[#D1D5DB] mt-8">
             Already have an account?{' '}
-            <Link to="/login" className="text-accent font-medium hover:underline">Sign in</Link>
+            <Link to="/login" className="text-[#14213D] dark:text-[#D4A84F] font-semibold hover:underline">Sign in</Link>
           </p>
         </div>
       </div>

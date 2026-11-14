@@ -2,8 +2,9 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import {
   Menu, X, ChevronDown, LogIn, LogOut, User, LayoutDashboard,
-  Flame, Sun, Moon, Home, Church, BookOpen, CalendarDays, HeartHandshake
+  Sun, Moon, Home, Church, BookOpen, CalendarDays, HeartHandshake
 } from 'lucide-react';
+import rcnLogo from '../../assets/images/rcn-logo.png';
 import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
 import { NAV_ITEMS } from '../../constants';
@@ -68,41 +69,17 @@ const Navbar = () => {
   return (
     <nav
       ref={navRef}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? isDark
-            ? 'bg-[#09080e]/95 backdrop-blur-md shadow-2xl border-b border-white/10'
-            : 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100'
-          : 'bg-transparent'
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 bg-[#FAF8F2] dark:bg-[#14213D] text-[#14213D] dark:text-white border-b border-[#D4A84F] dark:border-white/10"
     >
-      <div className="container-custom">
+      <div className="w-full pl-4 pr-4 sm:pr-6 lg:pr-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group" onClick={() => setIsOpen(false)}>
-            <div className="w-10 h-10 rounded-full bg-accent-gradient flex items-center justify-center animate-pulse-glow shrink-0">
-              <Flame className="w-5 h-5 text-white" />
-            </div>
-            <div>
-              <div
-                className={`font-display font-bold text-lg leading-tight transition-colors duration-300 ${
-                  scrolled
-                    ? isDark ? 'text-white' : 'text-primary'
-                    : 'text-white'
-                }`}
-              >
-                RCN
-              </div>
-              <div
-                className={`text-xs leading-tight transition-colors duration-300 ${
-                  scrolled
-                    ? isDark ? 'text-gray-400' : 'text-gray-500'
-                    : 'text-white/70'
-                }`}
-              >
-                Remnant Christian Network
-              </div>
-            </div>
+          {/* Logo with no box — cleanly readable in light mode on Ivory, soft glow in dark mode */}
+          <Link to="/" className="flex items-center" onClick={() => setIsOpen(false)}>
+            <img
+              src={rcnLogo}
+              alt="RCN Logo"
+              className="h-16 md:h-20 w-auto pl-4 pt-1 logo-glow"
+            />
           </Link>
 
           {/* Desktop Nav */}
@@ -118,26 +95,20 @@ const Navbar = () => {
                     onClick={() => toggleDropdown(item.label)}
                     aria-haspopup="menu"
                     aria-expanded={activeDropdown === item.label}
-                    className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                      scrolled
-                        ? isDark
-                          ? 'text-gray-200 hover:text-accent hover:bg-white/5'
-                          : 'text-gray-700 hover:text-accent hover:bg-accent/5'
-                        : 'text-white/90 hover:text-white hover:bg-white/10'
-                    }`}
+                    className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-[#14213D] dark:text-white/85 hover:text-[#D4A84F] dark:hover:text-[#D4A84F] hover:bg-[#D4A84F]/10 dark:hover:bg-white/5"
                   >
                     {ItemIcon && <ItemIcon className="w-4 h-4 shrink-0" />}
                     <span>{item.label}</span>
                     <ChevronDown
                       className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                        activeDropdown === item.label ? 'rotate-180' : ''
+                        activeDropdown === item.label ? 'rotate-180 text-[#D4A84F]' : ''
                       }`}
                     />
                   </button>
 
                   {/* Dropdown */}
                   <div
-                    className={`absolute top-full left-0 mt-1 w-52 bg-white dark:bg-[#131122] rounded-xl shadow-2xl border border-gray-100 dark:border-white/10 overflow-hidden transition-all duration-200 ${
+                    className={`absolute top-full left-0 mt-1 w-52 bg-[#FAF8F2] dark:bg-[#14213D] rounded-xl shadow-2xl border border-[#D4A84F]/30 dark:border-white/10 overflow-hidden transition-all duration-200 ${
                       activeDropdown === item.label
                         ? 'opacity-100 translate-y-0 pointer-events-auto'
                         : 'opacity-0 -translate-y-2 pointer-events-none'
@@ -151,7 +122,7 @@ const Navbar = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={() => setActiveDropdown(null)}
-                          className="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-200 hover:text-accent hover:bg-accent/5 dark:hover:bg-white/5 transition-colors"
+                          className="block px-4 py-2.5 text-sm text-[#14213D] dark:text-white/85 hover:text-[#D4A84F] dark:hover:text-[#D4A84F] hover:bg-[#D4A84F]/10 dark:hover:bg-white/5 transition-colors"
                         >
                           {child.label}
                         </a>
@@ -159,7 +130,7 @@ const Navbar = () => {
                         <Link
                           key={child.label}
                           to={child.path}
-                          className="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-200 hover:text-accent hover:bg-accent/5 dark:hover:bg-white/5 transition-colors"
+                          className="block px-4 py-2.5 text-sm text-[#14213D] dark:text-white/85 hover:text-[#D4A84F] dark:hover:text-[#D4A84F] hover:bg-[#D4A84F]/10 dark:hover:bg-white/5 transition-colors"
                           onClick={() => setActiveDropdown(null)}
                         >
                           {child.label}
@@ -179,14 +150,8 @@ const Navbar = () => {
                       iconOnly ? 'px-2.5 py-2' : 'px-3 py-2'
                     } ${
                       isActive
-                        ? scrolled
-                          ? 'text-accent bg-accent/10'
-                          : 'text-white bg-white/15'
-                        : scrolled
-                        ? isDark
-                          ? 'text-gray-200 hover:text-accent hover:bg-white/5'
-                          : 'text-gray-700 hover:text-accent hover:bg-accent/5'
-                        : 'text-white/90 hover:text-white hover:bg-white/10'
+                        ? 'text-[#D4A84F] bg-[#D4A84F]/15 font-semibold border-b-2 border-[#D4A84F]'
+                        : 'text-[#14213D] dark:text-white/85 hover:text-[#D4A84F] dark:hover:text-[#D4A84F] hover:bg-[#D4A84F]/10 dark:hover:bg-white/5'
                     }`
                   }
                 >
@@ -200,7 +165,7 @@ const Navbar = () => {
 
           {/* Desktop Right Side: Theme Toggle + Auth Buttons */}
           <div className="hidden lg:flex items-center gap-3">
-            {/* Black & White Theme Toggle */}
+            {/* Theme Toggle */}
             <ThemeToggle />
 
             {isAuthenticated ? (
@@ -210,28 +175,22 @@ const Navbar = () => {
                   onClick={() => toggleDropdown('user')}
                   aria-haspopup="menu"
                   aria-expanded={activeDropdown === 'user'}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium transition-all ${
-                    scrolled
-                      ? isDark
-                        ? 'text-gray-200 hover:bg-white/10'
-                        : 'text-gray-700 hover:bg-gray-100'
-                      : 'text-white hover:bg-white/10'
-                  }`}
+                  className="flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium text-[#14213D] dark:text-white hover:bg-[#D4A84F]/10 dark:hover:bg-white/10 transition-all"
                 >
-                  <div className="w-8 h-8 rounded-full bg-accent-gradient flex items-center justify-center text-white text-xs font-bold">
+                  <div className="w-8 h-8 rounded-full bg-[#D4A84F] flex items-center justify-center text-[#14213D] text-xs font-bold shadow-sm">
                     {user?.profile?.firstName?.[0] || user?.email?.[0]?.toUpperCase()}
                   </div>
                   <span className="max-w-20 truncate">{user?.profile?.firstName || user?.email}</span>
-                  <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === 'user' ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === 'user' ? 'rotate-180 text-[#D4A84F]' : ''}`} />
                 </button>
-                <div className={`absolute top-full right-0 mt-1 w-48 bg-white dark:bg-[#131122] rounded-xl shadow-2xl border border-gray-100 dark:border-white/10 overflow-hidden transition-all duration-200 ${activeDropdown === 'user' ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'}`}>
-                  <Link to="/dashboard" className="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 dark:text-gray-200 hover:text-accent hover:bg-accent/5 dark:hover:bg-white/5 transition-colors" onClick={() => setActiveDropdown(null)}>
+                <div className={`absolute top-full right-0 mt-1 w-48 bg-[#FAF8F2] dark:bg-[#14213D] rounded-xl shadow-2xl border border-[#D4A84F]/30 dark:border-white/10 overflow-hidden transition-all duration-200 ${activeDropdown === 'user' ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'}`}>
+                  <Link to="/dashboard" className="flex items-center gap-2 px-4 py-2.5 text-sm text-[#14213D] dark:text-white/85 hover:text-[#D4A84F] hover:bg-[#D4A84F]/10 dark:hover:bg-white/5 transition-colors" onClick={() => setActiveDropdown(null)}>
                     <LayoutDashboard className="w-4 h-4" /> Dashboard
                   </Link>
-                  <Link to="/dashboard/profile" className="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 dark:text-gray-200 hover:text-accent hover:bg-accent/5 dark:hover:bg-white/5 transition-colors" onClick={() => setActiveDropdown(null)}>
+                  <Link to="/dashboard/profile" className="flex items-center gap-2 px-4 py-2.5 text-sm text-[#14213D] dark:text-white/85 hover:text-[#D4A84F] hover:bg-[#D4A84F]/10 dark:hover:bg-white/5 transition-colors" onClick={() => setActiveDropdown(null)}>
                     <User className="w-4 h-4" /> Profile
                   </Link>
-                  <hr className="my-1 border-gray-100 dark:border-white/10" />
+                  <hr className="my-1 border-gray-200 dark:border-white/10" />
                   <button onClick={handleLogout} className="w-full flex items-center gap-2 px-4 py-2.5 text-sm text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors">
                     <LogOut className="w-4 h-4" /> Log out
                   </button>
@@ -241,18 +200,12 @@ const Navbar = () => {
               <>
                 <Link
                   to="/login"
-                  className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                    scrolled
-                      ? isDark
-                        ? 'text-gray-200 hover:text-accent border border-neutral-700 hover:border-accent'
-                        : 'text-gray-700 hover:text-accent border border-gray-200 hover:border-accent'
-                      : 'text-white border border-white/30 hover:bg-white/10'
-                  }`}
+                  className="flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 text-[#14213D] dark:text-white hover:text-[#D4A84F] dark:hover:text-[#D4A84F] border border-[#14213D]/25 dark:border-white/25 hover:border-[#D4A84F]"
                 >
                   <LogIn className="w-4 h-4" />
                   Sign In
                 </Link>
-                <Link to="/register" className="btn-primary text-sm px-5 py-2">
+                <Link to="/register" className="btn-secondary text-sm px-5 py-2">
                   Join Us
                 </Link>
               </>
@@ -261,18 +214,11 @@ const Navbar = () => {
 
           {/* Mobile Right Controls: Quick Toggle + Hamburger */}
           <div className="flex lg:hidden items-center gap-2">
-            {/* Quick theme toggle for mobile header */}
             <ThemeToggle className="scale-90" />
 
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`p-2 rounded-lg transition-colors ${
-                scrolled
-                  ? isDark
-                    ? 'text-gray-200 hover:bg-white/10'
-                    : 'text-gray-700 hover:bg-gray-100'
-                  : 'text-white hover:bg-white/10'
-              }`}
+              className="p-2 rounded-lg text-[#14213D] dark:text-white hover:bg-[#D4A84F]/10 dark:hover:bg-white/10 transition-colors"
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -281,11 +227,11 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Drawer — always shows full text for usability */}
+      {/* Mobile Menu Drawer */}
       <div
         className={`lg:hidden transition-all duration-300 overflow-hidden ${
           isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
-        } bg-white dark:bg-[#0e0d19] border-t border-gray-100 dark:border-white/10 shadow-xl`}
+        } bg-[#FAF8F2] dark:bg-[#14213D] border-t border-[#D4A84F]/40 dark:border-white/10 shadow-2xl text-[#14213D] dark:text-white`}
       >
         <div className="container-custom py-4 space-y-1">
           {NAV_ITEMS.map((item) => {
@@ -295,20 +241,20 @@ const Navbar = () => {
               <div key={item.label}>
                 <button
                   onClick={() => toggleDropdown(item.label)}
-                  className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-accent hover:bg-accent/5 dark:hover:bg-white/5 rounded-xl transition-colors"
+                  className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-[#14213D] dark:text-white/85 hover:text-[#D4A84F] hover:bg-[#D4A84F]/10 dark:hover:bg-white/5 rounded-xl transition-colors"
                 >
                   <span className="flex items-center gap-2.5">
-                    {ItemIcon && <ItemIcon className="w-4 h-4 text-accent shrink-0" />}
+                    {ItemIcon && <ItemIcon className="w-4 h-4 text-[#D4A84F] shrink-0" />}
                     <span>{item.label}</span>
                   </span>
                   <ChevronDown
                     className={`w-4 h-4 transition-transform ${
-                      activeDropdown === item.label ? 'rotate-180' : ''
+                      activeDropdown === item.label ? 'rotate-180 text-[#D4A84F]' : ''
                     }`}
                   />
                 </button>
                 {activeDropdown === item.label && (
-                  <div className="ml-4 mt-1 space-y-1 border-l-2 border-accent/20 pl-3">
+                  <div className="ml-4 mt-1 space-y-1 border-l-2 border-[#D4A84F]/30 pl-3">
                     {item.children.map((child) =>
                       child.external ? (
                         <a
@@ -316,7 +262,7 @@ const Navbar = () => {
                           href={child.path}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="block px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-accent rounded-lg transition-colors"
+                          className="block px-3 py-2 text-sm text-gray-600 dark:text-white/75 hover:text-[#D4A84F] rounded-lg transition-colors"
                           onClick={() => setIsOpen(false)}
                         >
                           {child.label}
@@ -325,7 +271,7 @@ const Navbar = () => {
                         <Link
                           key={child.label}
                           to={child.path}
-                          className="block px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-accent rounded-lg transition-colors"
+                          className="block px-3 py-2 text-sm text-gray-600 dark:text-white/75 hover:text-[#D4A84F] rounded-lg transition-colors"
                           onClick={() => setIsOpen(false)}
                         >
                           {child.label}
@@ -342,26 +288,26 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   `flex items-center gap-2.5 px-4 py-3 text-sm font-medium rounded-xl transition-colors ${
                     isActive
-                      ? 'text-accent bg-accent/10'
-                      : 'text-gray-700 dark:text-gray-200 hover:text-accent hover:bg-accent/5 dark:hover:bg-white/5'
+                      ? 'text-[#D4A84F] bg-[#D4A84F]/15 font-semibold'
+                      : 'text-[#14213D] dark:text-white/85 hover:text-[#D4A84F] hover:bg-[#D4A84F]/10 dark:hover:bg-white/5'
                   }`
                 }
                 onClick={() => setIsOpen(false)}
               >
-                {ItemIcon && <ItemIcon className="w-4 h-4 text-accent shrink-0" />}
+                {ItemIcon && <ItemIcon className="w-4 h-4 text-[#D4A84F] shrink-0" />}
                 <span>{item.label}</span>
               </NavLink>
             );
           })}
 
-          {/* Theme row in Mobile Menu for clear discoverability */}
+          {/* Theme row in Mobile Menu */}
           <div className="py-2 px-1">
-            <div className="flex items-center justify-between px-4 py-2.5 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10">
-              <div className="flex items-center gap-2.5 text-sm font-medium text-gray-700 dark:text-gray-200">
+            <div className="flex items-center justify-between px-4 py-2.5 rounded-xl bg-[#14213D]/5 dark:bg-white/5 border border-[#14213D]/10 dark:border-white/10">
+              <div className="flex items-center gap-2.5 text-sm font-medium text-[#14213D] dark:text-white/80">
                 {isDark ? (
-                  <Moon className="w-4 h-4 text-accent" />
+                  <Moon className="w-4 h-4 text-[#D4A84F]" />
                 ) : (
-                  <Sun className="w-4 h-4 text-amber-500" />
+                  <Sun className="w-4 h-4 text-[#D4A84F]" />
                 )}
                 <span>Theme: {isDark ? 'Dark Mode' : 'Light Mode'}</span>
               </div>
@@ -369,12 +315,12 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className="pt-3 border-t border-gray-100 dark:border-white/10 space-y-2">
+          <div className="pt-3 border-t border-gray-200 dark:border-white/10 space-y-2">
             {isAuthenticated ? (
               <>
                 <Link
                   to="/dashboard"
-                  className="flex items-center gap-2 px-4 py-3 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-accent hover:bg-accent/5 dark:hover:bg-white/5 rounded-xl"
+                  className="flex items-center gap-2 px-4 py-3 text-sm font-medium text-[#14213D] dark:text-white/85 hover:text-[#D4A84F] hover:bg-[#D4A84F]/10 dark:hover:bg-white/5 rounded-xl"
                   onClick={() => setIsOpen(false)}
                 >
                   <LayoutDashboard className="w-4 h-4" /> Dashboard
@@ -393,14 +339,14 @@ const Navbar = () => {
               <>
                 <Link
                   to="/login"
-                  className="block w-full text-center px-4 py-3 text-sm font-medium text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-white/20 rounded-xl hover:border-accent hover:text-accent transition-all"
+                  className="block w-full text-center px-4 py-3 text-sm font-medium text-[#14213D] dark:text-white border border-[#14213D]/20 dark:border-white/20 rounded-xl hover:border-[#D4A84F] hover:text-[#D4A84F] transition-all"
                   onClick={() => setIsOpen(false)}
                 >
                   Sign In
                 </Link>
                 <Link
                   to="/register"
-                  className="btn-primary w-full justify-center"
+                  className="btn-secondary w-full justify-center"
                   onClick={() => setIsOpen(false)}
                 >
                   Join RCN

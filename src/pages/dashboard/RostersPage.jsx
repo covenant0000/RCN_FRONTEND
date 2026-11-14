@@ -22,7 +22,7 @@ const isFuture = (iso) => new Date(iso) >= new Date();
 
 /* ── summary metric card ─────────────────────────────────────────────────── */
 const MetricCard = ({ icon: Icon, label, value, color }) => (
-  <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-5 flex items-center gap-4">
+  <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-5 flex items-center gap-4">
     <div className={`w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 ${color}`}>
       <Icon className="w-5 h-5 text-white" />
     </div>
@@ -128,7 +128,7 @@ const RostersPage = () => {
           {rosters.map((roster) => {
             const future = isFuture(roster.serviceDate);
             return (
-              <div key={roster.id} className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-6 hover:shadow-md transition-shadow">
+              <div key={roster.id} className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-6 hover:shadow-md transition-shadow">
                 <div className="flex items-start justify-between mb-4 gap-3">
                   <div className="min-w-0">
                     <div className="flex items-center gap-2 mb-1 flex-wrap">
@@ -189,12 +189,12 @@ const RostersPage = () => {
         <div className="space-y-5">
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Service Date <span className="text-red-500">*</span></label>
-            <input type="date" value={form.serviceDate} onChange={(e) => setForm((f) => ({ ...f, serviceDate: e.target.value }))} className="input-base dark:bg-[#1a1830] dark:border-white/10 dark:text-white" />
+            <input type="date" value={form.serviceDate} onChange={(e) => setForm((f) => ({ ...f, serviceDate: e.target.value }))} className="input-base dark:bg-[#141F36] dark:border-white/10 dark:text-white" />
           </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Department <span className="text-red-500">*</span></label>
-            <select value={form.departmentId} onChange={(e) => setForm((f) => ({ ...f, departmentId: e.target.value }))} className="input-base dark:bg-[#1a1830] dark:border-white/10 dark:text-white">
+            <select value={form.departmentId} onChange={(e) => setForm((f) => ({ ...f, departmentId: e.target.value }))} className="input-base dark:bg-[#141F36] dark:border-white/10 dark:text-white">
               <option value="">Select department</option>
               {mockDepartments.map((d) => (<option key={d.id} value={d.id}>{d.name}</option>))}
             </select>
@@ -227,7 +227,7 @@ const RostersPage = () => {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Notes <span className="text-gray-400 text-xs">(optional)</span></label>
-            <textarea rows={3} value={form.notes} onChange={(e) => setForm((f) => ({ ...f, notes: e.target.value }))} placeholder="Special instructions, service theme..." className="input-base resize-none dark:bg-[#1a1830] dark:border-white/10 dark:text-white" />
+            <textarea rows={3} value={form.notes} onChange={(e) => setForm((f) => ({ ...f, notes: e.target.value }))} placeholder="Special instructions, service theme..." className="input-base resize-none dark:bg-[#141F36] dark:border-white/10 dark:text-white" />
           </div>
 
           <div className="flex gap-3 justify-end pt-2">

@@ -1,3 +1,5 @@
+import { sermons } from '../../data/sermons';
+
 // Mock data for development use before backend integration
 // All mock data follows the API response structure: { success, message, data, pagination }
 
@@ -206,98 +208,18 @@ export const mockAnnouncements = [
 
 // ─── Mock Sermons ─────────────────────────────────────────────────────────
 
-export const mockSermons = [
-  {
-    id: 'ser-001',
-    title: 'The Mystery of the Kingdom',
-    speaker: 'Dr. Arome Osaghae',
-    series: 'Kingdom Mysteries',
-    preachedAt: '2025-01-05T10:00:00Z',
-    duration: 5400,
-    audioUrl: '#',
-    videoUrl: 'https://www.youtube.com/embed/placeholder',
-    thumbnailUrl: '/sermon-bg.jpg',
-    description: 'A deep exploration into the hidden treasures of the Kingdom of God.',
-    tags: ['Kingdom', 'Apostolic', 'Prayer'],
-    status: 'PUBLISHED',
-    hasTranscript: true,
-  },
-  {
-    id: 'ser-002',
-    title: 'Apostolic Order in the Church',
-    speaker: 'Dr. Arome Osaghae',
-    series: 'Apostolic Christianity',
-    preachedAt: '2024-12-29T10:00:00Z',
-    duration: 6300,
-    audioUrl: '#',
-    videoUrl: 'https://www.youtube.com/embed/placeholder',
-    thumbnailUrl: '/hero-bg.jpg',
-    description: 'Understanding the importance of apostolic order in the modern church.',
-    tags: ['Apostolic', 'Church', 'Order'],
-    status: 'PUBLISHED',
-    hasTranscript: false,
-  },
-  {
-    id: 'ser-003',
-    title: 'Prayer — The Heartbeat of Revival',
-    speaker: 'Dr. Arome Osaghae',
-    series: 'Prayer and Revival',
-    preachedAt: '2024-12-22T10:00:00Z',
-    duration: 4800,
-    audioUrl: '#',
-    videoUrl: 'https://www.youtube.com/embed/placeholder',
-    thumbnailUrl: '/prayer-bg.jpg',
-    description: 'How fervent prayer births true revival in the earth.',
-    tags: ['Prayer', 'Revival', 'Kingdom'],
-    status: 'PUBLISHED',
-    hasTranscript: true,
-  },
-  {
-    id: 'ser-004',
-    title: 'The Coming of the King',
-    speaker: 'Dr. Arome Osaghae',
-    series: 'End Times',
-    preachedAt: '2024-12-15T10:00:00Z',
-    duration: 7200,
-    audioUrl: '#',
-    videoUrl: 'https://www.youtube.com/embed/placeholder',
-    thumbnailUrl: '/community-bg.jpg',
-    description: 'Preparing the church for the glorious return of Jesus Christ.',
-    tags: ['Eschatology', 'Return of Christ', 'Preparation'],
-    status: 'PUBLISHED',
-    hasTranscript: false,
-  },
-  {
-    id: 'ser-005',
-    title: 'Breaking of Bread — The Power of Communion',
-    speaker: 'Dr. Arome Osaghae',
-    series: 'Sacraments',
-    preachedAt: '2024-12-08T10:00:00Z',
-    duration: 5100,
-    audioUrl: '#',
-    videoUrl: 'https://www.youtube.com/embed/placeholder',
-    thumbnailUrl: '/sermon-bg.jpg',
-    description: 'Rediscovering the profound significance of Holy Communion.',
-    tags: ['Communion', 'Sacrament', 'Presence'],
-    status: 'PUBLISHED',
-    hasTranscript: true,
-  },
-  {
-    id: 'ser-006',
-    title: 'The Remnant in the Last Days',
-    speaker: 'Dr. Arome Osaghae',
-    series: 'End Times',
-    preachedAt: '2024-12-01T10:00:00Z',
-    duration: 6600,
-    audioUrl: '#',
-    videoUrl: 'https://www.youtube.com/embed/placeholder',
-    thumbnailUrl: '/conference-bg.jpg',
-    description: 'God\'s strategy for preserving a holy people in the end times.',
-    tags: ['Remnant', 'Holiness', 'End Times'],
-    status: 'PUBLISHED',
-    hasTranscript: false,
-  },
-];
+export const mockSermons = sermons.map((s, idx) => ({
+  ...s,
+  id: s.id || `ser-00${idx + 1}`,
+  preachedAt: s.date === '4 Nov 2024' ? '2024-11-04T10:00:00Z' : s.date === '6 Nov 2024' ? '2024-11-06T10:00:00Z' : '2023-11-29T10:00:00Z',
+  duration: 5400,
+  audioUrl: '#',
+  videoUrl: s.youtubeUrl,
+  description: s.title,
+  tags: ['Sermon', 'Apostolic'],
+  status: 'PUBLISHED',
+  hasTranscript: false,
+}));
 
 // ─── Mock Departments ─────────────────────────────────────────────────────
 

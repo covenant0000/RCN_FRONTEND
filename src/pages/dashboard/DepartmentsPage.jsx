@@ -99,15 +99,15 @@ const DepartmentsPage = () => {
 
       {/* metrics strip */}
       <div className="grid grid-cols-3 gap-4">
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 p-4 shadow-sm text-center">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 p-4 shadow-sm text-center">
           <p className="text-2xl font-bold text-primary dark:text-white">{departments.length}</p>
           <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Total Departments</p>
         </div>
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 p-4 shadow-sm text-center">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 p-4 shadow-sm text-center">
           <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">{departments.filter((d) => d.isActive).length}</p>
           <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Active</p>
         </div>
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 p-4 shadow-sm text-center">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 p-4 shadow-sm text-center">
           <p className="text-2xl font-bold text-accent">{departments.reduce((a, d) => a + (d.memberCount || 0), 0)}</p>
           <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Total Workers</p>
         </div>
@@ -117,7 +117,7 @@ const DepartmentsPage = () => {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {departments.map((dept) => (
           <div key={dept.id}
-            className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-6 hover:border-accent/40 dark:hover:border-accent/40 transition-all duration-300 group flex flex-col justify-between">
+            className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-6 hover:border-accent/40 dark:hover:border-accent/40 transition-all duration-300 group flex flex-col justify-between">
             <div>
               <div className="flex items-start justify-between mb-4">
                 <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center group-hover:scale-105 transition-transform">
@@ -148,7 +148,7 @@ const DepartmentsPage = () => {
                   <>
                     <span className="text-gray-200 dark:text-white/10">|</span>
                     <button type="button" onClick={() => openEdit(dept)}
-                      className="text-gray-400 hover:text-blue-500 transition-colors" title="Edit department">
+                      className="text-gray-400 hover:text-[#D4A84F] transition-colors" title="Edit department">
                       <Edit className="w-3.5 h-3.5" />
                     </button>
                     <button type="button" onClick={() => setDeleteConfirm(dept.id)}

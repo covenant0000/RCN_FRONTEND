@@ -107,7 +107,7 @@ export const SuperAdminDashboardView = ({
             change="Verified"
             isPositive={true}
             subtext="No unauthorized attempts"
-            color="bg-purple-500/10 text-purple-600 dark:text-purple-400"
+            color="bg-[#D4A84F]/15 text-[#D4A84F] dark:text-[#E0BA68]"
           />
         </div>
       </div>
@@ -139,7 +139,7 @@ export const SuperAdminDashboardView = ({
       </div>
 
       {/* ── 3. System Infrastructure Health & Operational Status ──────────── */}
-      <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 p-6 shadow-sm">
+      <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 p-6 shadow-sm">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-gray-100 dark:border-white/10">
           <div>
             <h3 className="font-semibold text-gray-900 dark:text-white text-base md:text-lg flex items-center gap-2">
@@ -180,7 +180,7 @@ export const SuperAdminDashboardView = ({
           <div className="p-4 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/5">
             <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mb-2">
               <span>Sermon Media Storage</span>
-              <span className="text-blue-500 font-bold">42.8%</span>
+              <span className="text-[#14213D] dark:text-[#FAF8F2] font-bold">42.8%</span>
             </div>
             <p className="font-bold text-gray-900 dark:text-white text-lg">{mockSystemHealth.storageUsed}</p>
             <p className="text-[11px] text-gray-400 mt-1">Encrypted S3 Media Store</p>
@@ -189,7 +189,7 @@ export const SuperAdminDashboardView = ({
           <div className="p-4 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/5">
             <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mb-2">
               <span>Concurrent Sockets</span>
-              <span className="text-purple-500 font-bold">{mockSystemHealth.activeConnections}</span>
+              <span className="text-[#D4A84F] font-bold">{mockSystemHealth.activeConnections}</span>
             </div>
             <p className="font-bold text-gray-900 dark:text-white text-lg">{mockSystemHealth.version}</p>
             <p className="text-[11px] text-gray-400 mt-1">Node v23 Core Engine</p>
@@ -198,7 +198,7 @@ export const SuperAdminDashboardView = ({
       </div>
 
       {/* ── 4. System Security Audit Trail ────────────────────────────────── */}
-      <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden">
+      <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden">
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-white/10">
           <div className="flex items-center gap-2">
             <Terminal className="w-5 h-5 text-accent" />

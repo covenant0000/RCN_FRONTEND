@@ -10,6 +10,13 @@ import { SectionHeader, Card, Badge } from '../components/ui';
 import {
   mockSermons, mockEvents, mockAnnouncements
 } from '../services/mock/mockData';
+import { sermons as allSermons } from '../data/sermons';
+import heroWelcome2 from '../assets/images/hero-welcome2.jpeg';
+import heroApostolic from '../assets/images/hero-apostolic.jpeg';
+import heroConference from '../assets/images/hero-conference.jpeg';
+import pastor1 from '../assets/images/pastor1.jpeg';
+import pastor2 from '../assets/images/pastor2.jpeg';
+import pastor3 from '../assets/images/pastor3.jpeg';
 
 // ─── Hero Section ─────────────────────────────────────────────────────────
 
@@ -19,7 +26,8 @@ const Hero = () => {
       title: 'Welcome to',
       boldTitle: 'Remnant Christian Network',
       subtitle: 'Striving toward the rebirth of Apostolic Christianity',
-      image: '/hero-bg.jpg',
+      image: heroWelcome2,
+      objectPosition: 'center 22%',
       cta: { label: 'Join Our Community', path: '/register' },
       ctaSecondary: { label: 'Watch Sermons', path: '/sermons' },
     },
@@ -27,7 +35,8 @@ const Hero = () => {
       title: 'Apostolic',
       boldTitle: 'Christianity Restored',
       subtitle: 'Prayers · Study of the Word · Breaking of Bread',
-      image: '/sermon-bg.jpg',
+      image: heroApostolic,
+      objectPosition: 'center 12%',
       cta: { label: 'Explore Sermons', path: '/sermons' },
       ctaSecondary: { label: 'Prayer Request', path: '/prayer' },
     },
@@ -35,7 +44,7 @@ const Hero = () => {
       title: 'Upcoming',
       boldTitle: 'Kingdom Come Conference',
       subtitle: 'Experience a gathering of the saints like never before',
-      image: '/conference-bg.jpg',
+      image: heroConference,
       cta: { label: 'View Events', path: '/events' },
       ctaSecondary: { label: 'Give', path: '/give' },
     },
@@ -53,44 +62,55 @@ const Hero = () => {
   const slide = slides[current];
 
   return (
-    <section className="relative h-screen min-h-[600px] overflow-hidden">
+    <section className="relative h-screen min-h-[700px] md:min-h-[800px] overflow-hidden">
       {/* Background Images */}
       {slides.map((s, i) => (
         <div
           key={i}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
+          className={`absolute inset-0 transition-opacity duration-700 pointer-events-none ${
             i === current ? 'opacity-100' : 'opacity-0'
           }`}
-          style={{
-            backgroundImage: `url(${s.image})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
+        >
+          {/* Main image */}
+          <img
+            src={s.image}
+            alt={s.boldTitle}
+            style={s.objectPosition ? { objectPosition: s.objectPosition } : undefined}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </div>
       ))}
 
-      {/* Gradient Overlay */}
-      <div className="hero-overlay absolute inset-0" />
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/65" />
 
       {/* Content */}
-      <div className="relative h-full container-custom flex flex-col justify-center items-center text-center pt-20">
+      <div className="relative z-10 h-full container-custom flex flex-col justify-end items-center text-center pb-24">
         <div key={current} className="animate-fade-in-up max-w-4xl">
           <p className="text-accent text-sm font-semibold uppercase tracking-[0.25em] mb-4">
             Remnant Christian Network
           </p>
-          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl text-white leading-tight mb-6">
+          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl text-white leading-tight mb-6 drop-shadow-lg [text-shadow:0_2px_12px_rgba(0,0,0,0.5)]">
             {slide.title}{' '}
-            <span className="text-gradient block">{slide.boldTitle}</span>
+            <span className="block text-white">{slide.boldTitle}</span>
           </h1>
-          <p className="text-white/75 text-lg md:text-xl max-w-xl mx-auto mb-10">
+          <p className="text-white/75 text-lg md:text-xl max-w-xl mx-auto mb-10 drop-shadow-lg">
             {slide.subtitle}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <Link to={slide.cta.path} className="btn-primary text-base px-8 py-4">
+            {/* Primary hero button: solid #D4A84F at 100% opacity, solid #14213D text */}
+            <Link
+              to={slide.cta.path}
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#D4A84F] hover:bg-[#E0BA68] text-[#14213D] hover:text-[#14213D] font-semibold text-base transition-colors shadow-sm"
+            >
               {slide.cta.label}
               <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link to={slide.ctaSecondary.path} className="btn-ghost border border-white/30 text-base px-8 py-4">
+            {/* Secondary hero button: solid dark navy at 75% with blur and solid white border/text */}
+            <Link
+              to={slide.ctaSecondary.path}
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#14213D]/75 hover:bg-[#14213D]/95 backdrop-blur-[4px] text-white border-[1.5px] border-white font-semibold text-base transition-all"
+            >
               <PlayCircle className="w-4 h-4" />
               {slide.ctaSecondary.label}
             </Link>
@@ -144,37 +164,46 @@ const StatsBar = () => {
 // ─── About Section ────────────────────────────────────────────────────────
 
 const AboutSection = () => (
-  <section className="section-padding bg-white">
+  <section className="section-padding bg-white dark:bg-[#141F36]">
     <div className="container-custom grid lg:grid-cols-2 gap-16 items-center">
       {/* Images Grid */}
       <div className="grid grid-cols-2 gap-4 h-[500px]">
-        <div
-          className="rounded-2xl overflow-hidden row-span-2 bg-cover bg-center shadow-2xl"
-          style={{ backgroundImage: 'url(/hero-bg.jpg)' }}
-        />
-        <div
-          className="rounded-2xl overflow-hidden bg-cover bg-center shadow-xl"
-          style={{ backgroundImage: 'url(/sermon-bg.jpg)' }}
-        />
-        <div
-          className="rounded-2xl overflow-hidden bg-cover bg-center shadow-xl"
-          style={{ backgroundImage: 'url(/community-bg.jpg)' }}
-        />
+        <div className="rounded-2xl overflow-hidden row-span-2 shadow-2xl">
+          <img
+            src={pastor1}
+            alt="Pastor ministering at Remnant Christian Network"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="rounded-2xl overflow-hidden shadow-xl">
+          <img
+            src={pastor2}
+            alt="Apostle Arome Osayi in prayer and fellowship"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="rounded-2xl overflow-hidden shadow-xl">
+          <img
+            src={pastor3}
+            alt="Remnant Christian Network leadership and ministry"
+            className="w-full h-full object-cover"
+          />
+        </div>
       </div>
 
       {/* Content */}
       <div>
-        <p className="text-accent text-xs font-semibold uppercase tracking-[0.2em] mb-4">
-          About RCN
-        </p>
-        <h2 className="font-display text-4xl font-bold text-primary mb-6 leading-tight">
-          Remnant Christian Network
+        <div className="inline-flex items-center px-3 py-1 rounded-full border border-[#D4A84F] bg-[#D4A84F]/15 text-[#14213D] dark:text-[#D4A84F] text-xs font-semibold uppercase tracking-wider mb-4">
+          Point man
+        </div>
+        <h2 className="font-display text-3xl md:text-4xl font-bold text-primary dark:text-white uppercase tracking-tight mb-2 leading-tight">
+          MEET OUR PASTOR
         </h2>
-        <p className="text-gray-600 text-base leading-relaxed mb-5">
-          RCN is an interdenominational and non-denominational international Ministry to the body of Christ with the mandate of restoring the apostolic order and Christianity as was seen in the days of the first generation of apostles of Jesus Christ.
+        <p className="text-xl md:text-2xl font-bold text-[#14213D] dark:text-[#D4A84F] font-display mb-4">
+          Rev. Paschal Chukwudi
         </p>
-        <p className="text-gray-600 text-base leading-relaxed mb-8">
-          We seek only to see the coming of the King and His Kingdom until His reality is furnished in the hearts of the sons of men. Our major instruments of realizing this vision are <strong className="text-primary">Prayers</strong>, the <strong className="text-primary">Study of the Word</strong>, and <strong className="text-primary">Breaking of Bread</strong> with one another.
+        <p className="text-[#6B7280] dark:text-gray-300 text-base leading-relaxed mb-8">
+          Paschal Chukwudi is the Point man of Remnant Christian Network, Anambra chapter. He is a man committed to the work of the kingdom, and God has been using him mightily to bring restoration to people's lives.
         </p>
 
         <div className="grid grid-cols-2 gap-4 mb-8">
@@ -184,7 +213,7 @@ const AboutSection = () => (
             { icon: BookOpen, label: 'Word-Centred Teaching' },
             { icon: Users, label: 'Kingdom Community' },
           ].map(({ icon: Icon, label }) => (
-            <div key={label} className="flex items-center gap-3 text-sm text-gray-700">
+            <div key={label} className="flex items-center gap-3 text-sm text-[#252525] dark:text-gray-300">
               <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
                 <Icon className="w-4 h-4 text-accent" />
               </div>
@@ -193,8 +222,11 @@ const AboutSection = () => (
           ))}
         </div>
 
-        <Link to="/about" className="btn-primary">
-          Learn More <ArrowRight className="w-4 h-4" />
+        <Link
+          to="/about"
+          className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#D4A84F] hover:bg-[#E0BA68] text-[#14213D] hover:text-[#14213D] font-semibold text-base transition-colors shadow-sm"
+        >
+          Read Full Profile →
         </Link>
       </div>
     </div>
@@ -204,48 +236,62 @@ const AboutSection = () => (
 // ─── Latest Sermons Section ───────────────────────────────────────────────
 
 const SermonsSection = () => {
-  const sermons = mockSermons.slice(0, 3);
+  const sermons = allSermons.slice(0, 3);
 
   return (
-    <section className="section-padding bg-gray-50">
+    <section className="section-padding bg-[#FAF8F2] dark:bg-[#0D1527]">
       <div className="container-custom">
         <SectionHeader
           eyebrow="Audio & Video"
           title="Latest Sermons"
-          description="Dive deep into the Word of God through messages from Dr. Arome Osaghae and ministers of the RCN network."
+          description="Dive deep into the Word of God through messages from Rev Paschal Chukwudi and ministers of the RCN network."
           className="mb-12"
         />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {sermons.map((sermon) => (
-            <Link key={sermon.id} to={`/sermons/${sermon.id}`}>
-              <Card hover className="group h-full">
-                <div
-                  className="relative h-48 bg-cover bg-center overflow-hidden"
-                  style={{ backgroundImage: `url(${sermon.thumbnailUrl})` }}
-                >
-                  <div className="absolute inset-0 bg-primary/50 group-hover:bg-primary/30 transition-all duration-300" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-14 h-14 rounded-full bg-accent/80 flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform">
-                      <PlayCircle className="w-7 h-7 text-white" />
+            <a
+              key={sermon.id}
+              href={sermon.youtubeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block group h-full focus:outline-none"
+            >
+              <Card hover className="h-full flex flex-col overflow-hidden">
+                {/* Sermon Thumbnail with teal play button in bottom-right corner */}
+                <div className="relative h-48 w-full bg-[#F0EDE5] dark:bg-[#141F36] overflow-hidden">
+                  <img
+                    src={sermon.thumbnailUrl}
+                    alt={sermon.title}
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                    }}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-primary/20 group-hover:bg-primary/10 transition-colors duration-300" />
+                  <div className="absolute bottom-3 right-3">
+                    <div className="w-10 h-10 rounded-full bg-accent/90 flex items-center justify-center backdrop-blur-sm shadow-md group-hover:scale-110 transition-transform">
+                      <PlayCircle className="w-5 h-5 text-white" />
                     </div>
                   </div>
-                  <div className="absolute top-3 left-3">
-                    <Badge variant="accent">{sermon.series}</Badge>
-                  </div>
                 </div>
-                <div className="p-5">
-                  <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-accent transition-colors line-clamp-2">
-                    {sermon.title}
-                  </h3>
-                  <p className="text-sm text-gray-500 mb-3">{sermon.speaker}</p>
-                  <div className="flex items-center justify-between text-xs text-gray-400">
-                    <span>{new Date(sermon.preachedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
-                    <span>{Math.floor(sermon.duration / 60)} min</span>
+
+                {/* Sermon Info */}
+                <div className="p-5 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="font-semibold text-[#252525] dark:text-white text-base mb-1.5 group-hover:text-accent transition-colors line-clamp-2">
+                      {sermon.title}
+                    </h3>
+                    <p className="text-sm font-medium text-[#6B7280] dark:text-gray-300 mb-2">
+                      {sermon.preacher || sermon.speaker}
+                    </p>
+                  </div>
+                  <div className="text-xs font-medium text-[#6B7280] dark:text-gray-400">
+                    {sermon.date}
                   </div>
                 </div>
               </Card>
-            </Link>
+            </a>
           ))}
         </div>
 
@@ -278,24 +324,24 @@ const EventsSection = () => {
         <div className="grid md:grid-cols-3 gap-6">
           {events.map((event) => (
             <Link key={event.id} to={`/events/${event.id}`}>
-              <div className="glass rounded-2xl overflow-hidden group card-hover h-full">
+              <div className="bg-[#141F36] border border-white/10 hover:border-[#D4A84F]/50 rounded-2xl overflow-hidden group card-hover h-full shadow-lg transition-all">
                 <div
                   className="h-44 bg-cover bg-center relative overflow-hidden"
                   style={{ backgroundImage: `url(${event.imageUrl})` }}
                 >
-                  <div className="absolute inset-0 bg-primary/40 group-hover:bg-primary/20 transition-all" />
+                  <div className="absolute inset-0 bg-[#14213D]/40 group-hover:bg-[#14213D]/20 transition-all" />
                   <div className="absolute top-3 left-3">
-                    <span className="px-2.5 py-1 rounded-full bg-accent text-white text-xs font-semibold">
+                    <span className="px-3 py-1 rounded-full bg-[#D4A84F] text-[#14213D] text-xs font-bold tracking-wide shadow-sm">
                       {event.category}
                     </span>
                   </div>
                 </div>
                 <div className="p-5">
-                  <h3 className="font-semibold text-white mb-2 line-clamp-2 group-hover:text-accent transition-colors">
+                  <h3 className="font-semibold text-white mb-2 line-clamp-2 group-hover:text-[#D4A84F] transition-colors">
                     {event.title}
                   </h3>
-                  <div className="flex items-center gap-2 text-white/60 text-xs">
-                    <Calendar className="w-3.5 h-3.5" />
+                  <div className="flex items-center gap-2 text-white/70 text-xs">
+                    <Calendar className="w-3.5 h-3.5 text-[#D4A84F]" />
                     <span>
                       {new Date(event.startDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
                     </span>
@@ -308,7 +354,7 @@ const EventsSection = () => {
         </div>
 
         <div className="text-center mt-10">
-          <Link to="/events" className="btn-ghost border border-white/30 hover:border-white">
+          <Link to="/events" className="btn-secondary">
             View All Events <ChevronRight className="w-4 h-4" />
           </Link>
         </div>
@@ -327,7 +373,7 @@ const MediaSection = () => {
       description: "Don't miss a service. Subscribe to our YouTube channel to get notifications of our programs.",
       link: 'https://youtube.com',
       cta: 'Subscribe Now',
-      color: 'bg-red-50 text-red-500',
+      color: 'bg-[#FAF8F2] dark:bg-[#1F2D4A] text-[#D4A84F]',
     },
     {
       icon: Globe,
@@ -335,7 +381,7 @@ const MediaSection = () => {
       description: 'Join our Facebook community. Get updates and watch Facebook streams with any device.',
       link: 'https://facebook.com',
       cta: 'Follow Us',
-      color: 'bg-blue-50 text-blue-500',
+      color: 'bg-[#EEF0F4] text-[#14213D]',
     },
     {
       icon: Tv,
@@ -343,7 +389,7 @@ const MediaSection = () => {
       description: 'We are closer than you think. Watch us on satellite or download the Voice of One TV mobile app.',
       link: '#',
       cta: 'Watch Now',
-      color: 'bg-purple-50 text-purple-500',
+      color: 'bg-[#F5F0E8] text-[#14213D]',
     },
     {
       icon: Send,
@@ -351,7 +397,7 @@ const MediaSection = () => {
       description: 'Join our Telegram community to download our audio sermons and get daily updates.',
       link: 'https://t.me',
       cta: 'Join Channel',
-      color: 'bg-sky-50 text-sky-500',
+      color: 'bg-[#EEF0F4] text-[#14213D]',
     },
     {
       icon: Radio,
@@ -359,7 +405,7 @@ const MediaSection = () => {
       description: 'Listen to our 24/7 Internet radio station from anywhere in the world.',
       link: '#',
       cta: 'Listen Live',
-      color: 'bg-green-50 text-green-500',
+      color: 'bg-[#F5F0E8] text-[#D4A84F]',
     },
     {
       icon: Smartphone,
@@ -367,12 +413,12 @@ const MediaSection = () => {
       description: 'Access RCN resources, sermons, and events on the go with our mobile application.',
       link: '#',
       cta: 'Download App',
-      color: 'bg-amber-50 text-amber-500',
+      color: 'bg-[#F5F0E8] text-[#D4A84F]',
     },
   ];
 
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-white dark:bg-[#141F36]">
       <div className="container-custom">
         <SectionHeader
           eyebrow="We Are Closer Than You Think"
@@ -388,10 +434,10 @@ const MediaSection = () => {
                 <div className={`w-12 h-12 rounded-xl ${color} flex items-center justify-center mb-4`}>
                   <Icon className="w-6 h-6" />
                 </div>
-                <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-accent transition-colors">
+                <h3 className="font-semibold text-[#252525] dark:text-white mb-2 group-hover:text-accent transition-colors">
                   {title}
                 </h3>
-                <p className="text-sm text-gray-500 mb-4 leading-relaxed line-clamp-3">
+                <p className="text-sm text-[#6B7280] dark:text-[#9CA3AF] mb-4 leading-relaxed line-clamp-3">
                   {description}
                 </p>
                 <span className="text-xs font-semibold text-accent flex items-center gap-1 group-hover:gap-2 transition-all">
@@ -413,16 +459,16 @@ const AnnouncementsSection = () => {
   const priorityColors = { HIGH: 'danger', MEDIUM: 'warning', LOW: 'accent' };
 
   return (
-    <section className="section-padding bg-gray-50">
+    <section className="section-padding bg-[#FAF8F2] dark:bg-[#0D1527]">
       <div className="container-custom grid lg:grid-cols-3 gap-10 items-start">
         <div className="lg:col-span-1">
           <p className="text-accent text-xs font-semibold uppercase tracking-[0.2em] mb-3">
             Latest Updates
           </p>
-          <h2 className="font-display text-3xl font-bold text-primary mb-4">
+          <h2 className="font-display text-3xl font-bold text-primary dark:text-white mb-4">
             Church Announcements
           </h2>
-          <p className="text-gray-500 text-sm leading-relaxed mb-6">
+          <p className="text-[#6B7280] dark:text-[#9CA3AF] text-sm leading-relaxed mb-6">
             Stay up to date with the latest news, schedules, and important information from RCN.
           </p>
           <Link to="/announcements" className="btn-primary inline-flex">
@@ -437,12 +483,12 @@ const AnnouncementsSection = () => {
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
                     <Badge variant={priorityColors[ann.priority] || 'accent'}>{ann.priority}</Badge>
-                    <span className="text-xs text-gray-400">{ann.category}</span>
+                    <span className="text-xs text-[#6B7280]">{ann.category}</span>
                   </div>
-                  <h3 className="font-semibold text-gray-900 mb-1">{ann.title}</h3>
-                  <p className="text-sm text-gray-500 line-clamp-2">{ann.content}</p>
+                  <h3 className="font-semibold text-[#252525] dark:text-white mb-1">{ann.title}</h3>
+                  <p className="text-sm text-[#6B7280] dark:text-[#9CA3AF] line-clamp-2">{ann.content}</p>
                 </div>
-                <span className="text-xs text-gray-400 whitespace-nowrap flex-shrink-0">
+                <span className="text-xs text-[#6B7280] dark:text-[#9CA3AF] whitespace-nowrap flex-shrink-0">
                   {new Date(ann.publishedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}
                 </span>
               </div>
@@ -526,7 +572,7 @@ const TestimonialsSection = () => {
   ];
 
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-white dark:bg-[#141F36]">
       <div className="container-custom">
         <SectionHeader
           eyebrow="Testimonies"
@@ -541,7 +587,7 @@ const TestimonialsSection = () => {
                   <Star key={i} className="w-4 h-4 text-amber-400 fill-amber-400" />
                 ))}
               </div>
-              <blockquote className="text-gray-600 text-sm leading-relaxed mb-5 italic">
+              <blockquote className="text-[#6B7280] dark:text-[#9CA3AF] text-sm leading-relaxed mb-5 italic">
                 "{t.text}"
               </blockquote>
               <div className="flex items-center gap-3">
@@ -549,8 +595,8 @@ const TestimonialsSection = () => {
                   {t.name[0]}
                 </div>
                 <div>
-                  <div className="font-semibold text-gray-900 text-sm">{t.name}</div>
-                  <div className="text-xs text-gray-500">{t.role}</div>
+                  <div className="font-semibold text-[#252525] dark:text-white text-sm">{t.name}</div>
+                  <div className="text-xs text-[#6B7280] dark:text-[#9CA3AF]">{t.role}</div>
                 </div>
               </div>
             </Card>

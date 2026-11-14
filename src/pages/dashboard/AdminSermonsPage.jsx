@@ -120,25 +120,25 @@ const AdminSermonsPage = () => {
       </div>
 
       {/* AI banner */}
-      <div className="bg-blue-50/80 dark:bg-blue-950/30 border border-blue-200/80 dark:border-blue-900/40 rounded-2xl p-4 flex items-start gap-3.5">
+      <div className="bg-[#FAF8F2] dark:bg-[#0D1527] border border-[#14213D]/10 dark:border-white/10 rounded-2xl p-4 flex items-start gap-3.5">
         <Sparkles className="w-5 h-5 text-accent shrink-0 mt-0.5" />
         <div className="text-xs">
-          <p className="font-semibold text-blue-900 dark:text-blue-200">AI Speech-to-Text Transcription Integration</p>
-          <p className="text-blue-700 dark:text-blue-300 mt-0.5">Click the transcription icon to queue audio extraction and generate study notes automatically.</p>
+          <p className="font-semibold text-[#14213D] dark:text-[#FAF8F2]">AI Speech-to-Text Transcription Integration</p>
+          <p className="text-[#6B7280] dark:text-[#D1D5DB] mt-0.5">Click the transcription icon to queue audio extraction and generate study notes automatically.</p>
         </div>
       </div>
 
       {/* metrics */}
       <div className="grid grid-cols-3 gap-4">
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 p-4 shadow-sm text-center">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 p-4 shadow-sm text-center">
           <p className="text-2xl font-bold text-primary dark:text-white">{sermons.length}</p>
           <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Total Teachings</p>
         </div>
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 p-4 shadow-sm text-center">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 p-4 shadow-sm text-center">
           <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">{sermons.filter((s) => s.status === 'PUBLISHED').length}</p>
           <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Published</p>
         </div>
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 p-4 shadow-sm text-center">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 p-4 shadow-sm text-center">
           <p className="text-2xl font-bold text-accent">{sermons.filter((s) => s.hasTranscript).length}</p>
           <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Transcribed</p>
         </div>
@@ -155,7 +155,7 @@ const AdminSermonsPage = () => {
       {filteredSermons.length === 0 ? (
         <EmptyState icon={BookOpen} title="No sermons found" message="Upload your first apostolic teaching or reset your search." />
       ) : (
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-xs md:text-sm text-left">
               <thead className="border-b border-gray-100 dark:border-white/10 bg-gray-50/70 dark:bg-white/5 text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider text-[11px]">
@@ -210,7 +210,7 @@ const AdminSermonsPage = () => {
                               {sermon.status === 'PUBLISHED' ? <EyeOff className="w-4 h-4" /> : <Globe className="w-4 h-4" />}
                             </button>
                             <button type="button" onClick={() => openEdit(sermon)}
-                              className="p-1.5 rounded-lg text-gray-400 hover:text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors" title="Edit sermon">
+                              className="p-1.5 rounded-lg text-gray-400 hover:text-[#D4A84F] hover:bg-[#D4A84F]/10 transition-colors" title="Edit sermon">
                               <Edit className="w-4 h-4" />
                             </button>
                             <button type="button" onClick={() => setDeleteConfirm(sermon.id)}

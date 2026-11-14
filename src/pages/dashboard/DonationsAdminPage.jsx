@@ -36,7 +36,7 @@ const DonationsAdminPage = () => {
 
       {/* ── KPI Summary Cards ────────────────────────────────────────────── */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-5">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-5">
           <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-3">
             <DollarSign className="w-5 h-5" />
           </div>
@@ -46,7 +46,7 @@ const DonationsAdminPage = () => {
           <div className="text-xs text-gray-400 mt-1">Total Partnership Giving</div>
         </div>
 
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-5">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-5">
           <div className="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-3">
             <CreditCard className="w-5 h-5" />
           </div>
@@ -56,8 +56,8 @@ const DonationsAdminPage = () => {
           <div className="text-xs text-gray-400 mt-1">Confirmed Gifts</div>
         </div>
 
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-5">
-          <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-5">
+          <div className="w-10 h-10 rounded-xl bg-[#14213D]/10 dark:bg-[#14213D] text-[#14213D] dark:text-[#FAF8F2] flex items-center justify-center mb-3">
             <TrendingUp className="w-5 h-5" />
           </div>
           <div className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
@@ -66,8 +66,8 @@ const DonationsAdminPage = () => {
           <div className="text-xs text-gray-400 mt-1">Average Seed Gift</div>
         </div>
 
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-5">
-          <div className="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/40 text-purple-600 dark:text-purple-400 flex items-center justify-center mb-3">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-5">
+          <div className="w-10 h-10 rounded-xl bg-[#D4A84F]/15 text-[#D4A84F] dark:text-[#E0BA68] flex items-center justify-center mb-3">
             <Heart className="w-5 h-5" />
           </div>
           <div className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
@@ -80,7 +80,7 @@ const DonationsAdminPage = () => {
       {/* ── Table & Purpose Breakdown ────────────────────────────────────── */}
       <div className="grid lg:grid-cols-3 gap-6">
         {/* Transactions Table */}
-        <div className="lg:col-span-2 bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden flex flex-col justify-between">
+        <div className="lg:col-span-2 bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden flex flex-col justify-between">
           <div>
             <div className="px-6 py-4 border-b border-gray-100 dark:border-white/10 flex flex-wrap items-center justify-between gap-3">
               <h2 className="font-semibold text-gray-900 dark:text-white text-base">Recent Transactions</h2>
@@ -163,7 +163,7 @@ const DonationsAdminPage = () => {
         </div>
 
         {/* By Purpose Breakdown Card */}
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-6 flex flex-col justify-between">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-6 flex flex-col justify-between">
           <div>
             <h2 className="font-semibold text-gray-900 dark:text-white text-base mb-4">Allocation By Fund</h2>
             <div className="space-y-4">

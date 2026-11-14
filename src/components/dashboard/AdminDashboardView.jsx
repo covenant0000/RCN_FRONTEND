@@ -91,7 +91,7 @@ export const AdminDashboardView = ({
           <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
             Church Operations & Management Overview
           </h2>
-          <span className="text-xs text-blue-600 dark:text-blue-400 font-medium bg-blue-50 dark:bg-blue-950/40 px-3 py-1 rounded-full">
+          <span className="text-xs text-[#14213D] dark:text-[#FAF8F2] font-medium bg-[#FAF8F2] dark:bg-[#14213D] px-3 py-1 rounded-full">
             Admin Console
           </span>
         </div>
@@ -137,7 +137,7 @@ export const AdminDashboardView = ({
             change="100%"
             isPositive={true}
             subtext="Fully staffed ministries"
-            color="bg-purple-500/10 text-purple-600 dark:text-purple-400"
+            color="bg-[#D4A84F]/15 text-[#D4A84F] dark:text-[#E0BA68]"
             linkTo="/dashboard/departments"
           />
         </div>
@@ -171,7 +171,7 @@ export const AdminDashboardView = ({
       {/* ── 3. Administrative Action Center: Tasks & Audit Feed ───────────── */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Pending Administrative Action Checklist */}
-        <div className="lg:col-span-2 bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden flex flex-col justify-between">
+        <div className="lg:col-span-2 bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-white/10">
               <div className="flex items-center gap-2">
@@ -220,7 +220,7 @@ export const AdminDashboardView = ({
         </div>
 
         {/* Recent Admin Audit Activity Feed */}
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 p-6 shadow-sm flex flex-col justify-between">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 p-6 shadow-sm flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">

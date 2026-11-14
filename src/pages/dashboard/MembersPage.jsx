@@ -179,7 +179,7 @@ const MembersPage = () => {
           { icon: Clock,     label: 'First-Timers & Visitors',  value: visitorCount,       color: 'text-amber-600 dark:text-amber-400' },
           { icon: UserX,     label: 'Inactive Records',         value: inactiveCount,      color: 'text-gray-600 dark:text-gray-300' },
         ].map(({ icon: Icon, label, value, color }) => (
-          <div key={label} className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 p-4 shadow-sm">
+          <div key={label} className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 p-4 shadow-sm">
             <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 mb-1">
               <Icon className={`w-4 h-4 ${color}`} /> <span>{label}</span>
             </div>
@@ -222,7 +222,7 @@ const MembersPage = () => {
         <EmptyState icon={Users} title="No member records match your query" message="Try resetting your search keyword or changing status filters." />
       ) : (
         <div className="space-y-4">
-          <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden">
+          <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-xs md:text-sm text-left">
                 <thead className="border-b border-gray-100 dark:border-white/10 bg-gray-50/70 dark:bg-white/5 text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider text-[11px]">
@@ -264,7 +264,7 @@ const MembersPage = () => {
                           {hasRole('ADMIN') && (
                             <>
                               <button type="button" onClick={() => openEdit(member)}
-                                className="p-2 rounded-lg text-gray-400 hover:text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors" title="Edit member">
+                                className="p-2 rounded-lg text-gray-400 hover:text-[#D4A84F] hover:bg-[#D4A84F]/10 transition-colors" title="Edit member">
                                 <Edit className="w-4 h-4" />
                               </button>
                               <button type="button" onClick={() => setDeleteConfirm(member.id)}

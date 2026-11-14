@@ -66,11 +66,11 @@ const AttendancePage = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
           {[
             { label: 'Avg. Weekly Worshippers', value: summary.avgAttendance, icon: TrendingUp, color: 'text-emerald-500 bg-emerald-50 dark:bg-emerald-950/40' },
-            { label: 'Total Service Sessions', value: summary.totalSessions, icon: Calendar, color: 'text-blue-500 bg-blue-50 dark:bg-blue-950/40' },
+            { label: 'Total Service Sessions', value: summary.totalSessions, icon: Calendar, color: 'text-[#14213D] dark:text-[#FAF8F2] bg-[#14213D]/10 dark:bg-[#14213D]' },
             { label: 'Latest Service Count', value: summary.weeklyBreakdown.at(-1)?.count || 462, icon: Users, color: 'text-accent bg-accent/10' },
-            { label: 'Enrolled Members Base', value: mockMembers.length, icon: Users, color: 'text-purple-500 bg-purple-50 dark:bg-purple-950/40' },
+            { label: 'Enrolled Members Base', value: mockMembers.length, icon: Users, color: 'text-[#D4A84F] dark:text-[#E0BA68] bg-[#D4A84F]/15' },
           ].map((s) => (
-            <div key={s.label} className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 p-5 shadow-sm">
+            <div key={s.label} className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 p-5 shadow-sm">
               <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${s.color} mb-3`}>
                 <s.icon className="w-5 h-5" />
               </div>
@@ -84,7 +84,7 @@ const AttendancePage = () => {
       {/* ── Record Form and Breakdown ────────────────────────────────────── */}
       <div className="grid lg:grid-cols-3 gap-6">
         {/* Record Form */}
-        <div className="lg:col-span-2 bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-6">
+        <div className="lg:col-span-2 bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-6">
           <h2 className="font-semibold text-gray-900 dark:text-white mb-4 text-base md:text-lg">
             Record New Service Attendance
           </h2>
@@ -195,7 +195,7 @@ const AttendancePage = () => {
 
         {/* Weekly Breakdown Panel */}
         {hasRole('PASTOR') && (
-          <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-6 flex flex-col justify-between">
+          <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-6 flex flex-col justify-between">
             <div>
               <h3 className="font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2 text-base">
                 <TrendingUp className="w-4 h-4 text-accent" /> Weekly Attendance Distribution

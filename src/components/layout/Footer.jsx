@@ -1,30 +1,42 @@
 import { Link } from 'react-router-dom';
-import {
-  Flame, MonitorPlay, ThumbsUp, Camera, Send,
-  MapPin, Phone, Mail, Heart, ChevronRight
-} from 'lucide-react';
-import { SOCIAL_LINKS } from '../../constants';
+import { MapPin, Phone, Mail, Heart, ChevronRight } from 'lucide-react';
+import { FaFacebookF, FaInstagram, FaYoutube, FaXTwitter } from 'react-icons/fa6';
+import rcnLogo from '../../assets/images/rcn-logo.png';
+
+// Social media URLs — edit your real links here:
+const socialLinks = {
+  facebook: '#',
+  instagram: '#',
+  youtube: '#',
+  x: '#',
+};
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-primary text-white">
-      {/* CTA Strip */}
-      <div className="bg-accent-gradient py-12">
+    <footer className="bg-[#FAF8F2] dark:bg-[#14213D] text-[#252525] dark:text-white border-t border-[#D4A84F]/30 dark:border-white/10">
+      {/* CTA Strip - Flat Solid Deep Navy with Warm Gold button */}
+      <div className="footer-cta-banner bg-[#14213D] border-b border-white/10 py-12">
         <div className="container-custom text-center">
           <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-3">
             Be Part of the Remnant
           </h2>
-          <p className="text-white/80 mb-6 max-w-xl mx-auto">
+          <p className="text-white/80 mb-6 max-w-xl mx-auto text-sm md:text-base leading-relaxed">
             Join thousands of believers striving toward the rebirth of Apostolic Christianity worldwide.
           </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link to="/register" className="btn-ghost border border-white/30 hover:border-white">
+          <div className="flex flex-wrap gap-4 justify-center items-center">
+            <Link
+              to="/register"
+              className="btn-ghost border border-white/30 text-white hover:border-[#D4A84F] hover:text-[#D4A84F]"
+            >
               Join Our Community
             </Link>
-            <Link to="/give" className="keep-white bg-white text-accent px-6 py-3 rounded-full font-semibold text-sm hover:bg-white/90 transition-all inline-flex items-center gap-2 shadow-sm">
-              <Heart className="w-4 h-4" /> Give Today
+            <Link
+              to="/give"
+              className="bg-[#D4A84F] text-[#14213D] hover:bg-[#E0BA68] px-6 py-3 rounded-full font-semibold text-sm inline-flex items-center gap-2 shadow-sm transition-colors"
+            >
+              <Heart className="w-4 h-4 fill-current" /> Give Today
             </Link>
           </div>
         </div>
@@ -35,41 +47,64 @@ const Footer = () => {
         <div className="container-custom grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 rounded-full bg-accent-gradient flex items-center justify-center">
-                <Flame className="w-5 h-5 text-white" />
-              </div>
-              <div>
-                <div className="font-display font-bold text-lg leading-tight">RCN</div>
-                <div className="text-xs text-white/50 leading-tight">Remnant Christian Network</div>
-              </div>
+            <div className="mb-5">
+              <Link to="/" className="inline-flex items-center">
+                <img
+                  src={rcnLogo}
+                  alt="Remnant Christian Network Anambra"
+                  className="h-14 w-auto logo-glow"
+                />
+              </Link>
             </div>
-            <p className="text-white/60 text-sm leading-relaxed mb-5">
+            <p className="text-[#252525] dark:text-white/80 text-[15px] leading-relaxed mb-5">
               An interdenominational international ministry with the mandate of restoring apostolic order and Christianity as seen in the days of the first apostles.
             </p>
             <div className="flex items-center gap-3">
-              <a href={SOCIAL_LINKS.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube"
-                className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition-colors">
-                <MonitorPlay className="w-4 h-4" />
+              <a
+                href={socialLinks.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="w-9 h-9 rounded-full bg-[#14213D]/10 dark:bg-white/10 text-[#14213D] dark:text-white flex items-center justify-center hover:bg-[#D4A84F] hover:text-[#14213D] dark:hover:bg-[#D4A84F] dark:hover:text-[#14213D] transition-colors"
+              >
+                <FaFacebookF className="w-4 h-4" />
               </a>
-              <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook"
-                className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition-colors">
-                <ThumbsUp className="w-4 h-4" />
+              <a
+                href={socialLinks.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="w-9 h-9 rounded-full bg-[#14213D]/10 dark:bg-white/10 text-[#14213D] dark:text-white flex items-center justify-center hover:bg-[#D4A84F] hover:text-[#14213D] dark:hover:bg-[#D4A84F] dark:hover:text-[#14213D] transition-colors"
+              >
+                <FaInstagram className="w-4 h-4" />
               </a>
-              <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram"
-                className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition-colors">
-                <Camera className="w-4 h-4" />
+              <a
+                href={socialLinks.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube"
+                className="w-9 h-9 rounded-full bg-[#14213D]/10 dark:bg-white/10 text-[#14213D] dark:text-white flex items-center justify-center hover:bg-[#D4A84F] hover:text-[#14213D] dark:hover:bg-[#D4A84F] dark:hover:text-[#14213D] transition-colors"
+              >
+                <FaYoutube className="w-4 h-4" />
               </a>
-              <a href={SOCIAL_LINKS.telegram} target="_blank" rel="noopener noreferrer" aria-label="Telegram"
-                className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition-colors">
-                <Send className="w-4 h-4" />
+              <a
+                href={socialLinks.x}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="X (Twitter)"
+                className="w-9 h-9 rounded-full bg-[#14213D]/10 dark:bg-white/10 text-[#14213D] dark:text-white flex items-center justify-center hover:bg-[#D4A84F] hover:text-[#14213D] dark:hover:bg-[#D4A84F] dark:hover:text-[#14213D] transition-colors"
+              >
+                <FaXTwitter className="w-4 h-4" />
               </a>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-semibold text-sm uppercase tracking-widest text-accent mb-5">Quick Links</h3>
+            <h3 className="font-semibold text-sm uppercase tracking-widest text-[#14213D] dark:text-[#D4A84F] mb-5 flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#D4A84F]" />
+              Quick Links
+            </h3>
             <ul className="space-y-2.5">
               {[
                 { label: 'About RCN', path: '/about' },
@@ -80,8 +115,11 @@ const Footer = () => {
                 { label: 'RCN Centers', path: '/resources/centers' },
               ].map((link) => (
                 <li key={link.label}>
-                  <Link to={link.path} className="flex items-center gap-2 text-sm text-white/60 hover:text-accent transition-colors group">
-                    <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  <Link
+                    to={link.path}
+                    className="flex items-center gap-2 text-[15px] text-[#252525] dark:text-white/80 hover:text-[#D4A84F] dark:hover:text-[#D4A84F] transition-colors group"
+                  >
+                    <ChevronRight className="w-3.5 h-3.5 text-[#D4A84F] group-hover:translate-x-1 transition-transform" />
                     {link.label}
                   </Link>
                 </li>
@@ -91,7 +129,10 @@ const Footer = () => {
 
           {/* E-Church */}
           <div>
-            <h3 className="font-semibold text-sm uppercase tracking-widest text-accent mb-5">E-Church</h3>
+            <h3 className="font-semibold text-sm uppercase tracking-widest text-[#14213D] dark:text-[#D4A84F] mb-5 flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#D4A84F]" />
+              E-Church
+            </h3>
             <ul className="space-y-2.5">
               {[
                 { label: 'Prayer Request', path: '/prayer' },
@@ -101,8 +142,11 @@ const Footer = () => {
                 { label: 'Member Login', path: '/login' },
               ].map((link) => (
                 <li key={link.label}>
-                  <Link to={link.path} className="flex items-center gap-2 text-sm text-white/60 hover:text-accent transition-colors group">
-                    <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  <Link
+                    to={link.path}
+                    className="flex items-center gap-2 text-[15px] text-[#252525] dark:text-white/80 hover:text-[#D4A84F] dark:hover:text-[#D4A84F] transition-colors group"
+                  >
+                    <ChevronRight className="w-3.5 h-3.5 text-[#D4A84F] group-hover:translate-x-1 transition-transform" />
                     {link.label}
                   </Link>
                 </li>
@@ -112,23 +156,32 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h3 className="font-semibold text-sm uppercase tracking-widest text-accent mb-5">Contact Us</h3>
+            <h3 className="font-semibold text-sm uppercase tracking-widest text-[#14213D] dark:text-[#D4A84F] mb-5 flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#D4A84F]" />
+              Contact Us
+            </h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
-                <span className="text-sm text-white/60">
+                <MapPin className="w-4 h-4 text-[#D4A84F] mt-0.5 flex-shrink-0" />
+                <span className="text-[15px] text-[#252525] dark:text-white/80">
                   RCN International Centre, Makurdi, Benue State, Nigeria
                 </span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-accent flex-shrink-0" />
-                <a href="tel:+2348000000000" className="text-sm text-white/60 hover:text-accent transition-colors">
+                <Phone className="w-4 h-4 text-[#D4A84F] flex-shrink-0" />
+                <a
+                  href="tel:+2348000000000"
+                  className="text-[15px] text-[#252525] dark:text-white/80 hover:text-[#D4A84F] dark:hover:text-[#D4A84F] transition-colors"
+                >
                   +234 800 000 0000
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-accent flex-shrink-0" />
-                <a href="mailto:info@rcnglobal.org" className="text-sm text-white/60 hover:text-accent transition-colors">
+                <Mail className="w-4 h-4 text-[#D4A84F] flex-shrink-0" />
+                <a
+                  href="mailto:info@rcnglobal.org"
+                  className="text-[15px] text-[#252525] dark:text-white/80 hover:text-[#D4A84F] dark:hover:text-[#D4A84F] transition-colors"
+                >
                   info@rcnglobal.org
                 </a>
               </li>
@@ -138,12 +191,24 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-white/10 py-5">
-        <div className="container-custom flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-white/40">
-          <p>© {currentYear} Remnant Christian Network. All rights reserved.</p>
+      <div className="border-t border-[#14213D]/10 dark:border-white/10 py-5">
+        <div className="container-custom flex flex-col sm:flex-row items-center justify-between gap-3 text-sm">
+          <p className="text-[15px] text-[#6B7280] dark:text-white/60">
+            © {currentYear} Remnant Christian Network. All rights reserved.
+          </p>
           <div className="flex items-center gap-4">
-            <Link to="/privacy" className="hover:text-accent transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-accent transition-colors">Terms of Use</Link>
+            <Link
+              to="/privacy"
+              className="text-[15px] text-[#6B7280] dark:text-white/60 hover:text-[#D4A84F] dark:hover:text-[#D4A84F] transition-colors"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              to="/terms"
+              className="text-[15px] text-[#6B7280] dark:text-white/60 hover:text-[#D4A84F] dark:hover:text-[#D4A84F] transition-colors"
+            >
+              Terms of Use
+            </Link>
           </div>
         </div>
       </div>

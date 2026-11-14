@@ -4,6 +4,8 @@ import { Mail, AlertCircle, CheckCircle2, ArrowLeft, Send } from 'lucide-react';
 import { authAPI } from '../../services/api';
 import { Alert, Spinner } from '../../components/ui';
 import { useForm } from '../../hooks';
+import rcnLogo from '../../assets/images/rcn-logo.png';
+import loginBg from '../../assets/images/login-bg.jpeg';
 
 const ForgotPasswordPage = () => {
   const [loading, setLoading]   = useState(false);
@@ -36,18 +38,54 @@ const ForgotPasswordPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-[#09080e] px-6 py-12">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen grid lg:grid-cols-2 bg-gray-50 dark:bg-[#0D1527]">
+      {/* ── Left panel ── */}
+      <div className="hidden lg:flex flex-col justify-between p-12 relative overflow-hidden">
+        {/* Background photo */}
+        <img
+          src={loginBg}
+          alt="Forgot Password Background"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        {/* Navy overlay, slightly darker at bottom */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#14213D]/70 via-[#14213D]/70 to-[#14213D]/90" />
 
-        {/* back link */}
-        <Link
-          to="/login"
-          className="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 hover:text-accent dark:hover:text-accent mb-8 transition-colors"
-        >
-          <ArrowLeft className="w-4 h-4" /> Back to Login
-        </Link>
+        {/* logo */}
+        <div className="relative z-10">
+          <Link to="/" className="flex items-center gap-3">
+            <div className="w-14 h-14 rounded-full bg-[#FAF8F2] p-2 shadow-lg flex items-center justify-center flex-shrink-0">
+              <img
+                src={rcnLogo}
+                alt="Remnant Christian Network Logo"
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <span className="text-white font-semibold text-lg">Remnant Christian Network</span>
+          </Link>
+        </div>
 
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl shadow-sm border border-gray-100 dark:border-white/10 p-8">
+        {/* quote */}
+        <div className="relative z-10 max-w-md">
+          <blockquote className="text-white text-2xl font-display italic leading-relaxed mb-3">
+            "Come to me, all who labour and are heavy laden, and I will give you rest."
+          </blockquote>
+          <p className="text-[#D4A84F] text-sm font-medium">— Matthew 11:28</p>
+        </div>
+      </div>
+
+      {/* ── Right panel ── */}
+      <div className="flex flex-col items-center justify-center px-6 py-12 md:px-12">
+        <div className="w-full max-w-md">
+
+          {/* back link */}
+          <Link
+            to="/login"
+            className="inline-flex items-center gap-2 text-sm text-[#6B7280] dark:text-[#D1D5DB] hover:text-[#14213D] dark:hover:text-[#D4A84F] mb-8 transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" /> Back to Login
+          </Link>
+
+          <div className="bg-white dark:bg-[#141F36] rounded-2xl shadow-sm border border-gray-100 dark:border-white/10 p-8">
 
           {/* icon */}
           <div className="w-14 h-14 rounded-2xl bg-accent/10 dark:bg-accent/20 flex items-center justify-center mb-6">
@@ -67,12 +105,15 @@ const ForgotPasswordPage = () => {
                 we've sent password reset instructions to that address.
               </p>
               <div className="space-y-3">
-                <Link to="/login" className="btn-primary w-full py-3.5 justify-center text-base">
+                <Link
+                  to="/login"
+                  className="w-full py-3.5 text-base font-semibold rounded-full flex items-center justify-center gap-2 transition-all bg-[#14213D] text-white hover:bg-[#1d2f55] dark:bg-[#D4A84F] dark:text-[#14213D] dark:hover:bg-[#E0BA68] shadow-sm"
+                >
                   Return to Login
                 </Link>
                 <button
                   onClick={() => setSuccess(false)}
-                  className="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors"
+                  className="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-sm text-[#6B7280] dark:text-[#D1D5DB] hover:bg-gray-50 dark:hover:bg-white/5 transition-colors"
                 >
                   Try a different email
                 </button>
@@ -82,7 +123,7 @@ const ForgotPasswordPage = () => {
             /* ── form state ── */
             <>
               <h1 className="font-display text-2xl font-bold text-primary dark:text-white mb-2">Forgot Password?</h1>
-              <p className="text-gray-500 dark:text-gray-400 text-sm mb-6 leading-relaxed">
+              <p className="text-[#6B7280] dark:text-[#D1D5DB] text-sm mb-6 leading-relaxed">
                 Enter your email address and we'll send you a link to reset your password.
               </p>
 
@@ -105,7 +146,7 @@ const ForgotPasswordPage = () => {
                     value={values.email}
                     onChange={handleChange}
                     placeholder="you@example.com"
-                    className={`input-base dark:bg-[#1a1830] dark:border-white/10 dark:text-white dark:placeholder:text-gray-600 ${errors.email ? 'border-red-300 dark:border-red-500/50' : ''}`}
+                    className={`input-base dark:bg-[#141F36] dark:border-white/10 dark:text-white placeholder:text-[#6B7280] dark:placeholder:text-[#6B7280] ${errors.email ? 'border-red-300 dark:border-red-500/50' : ''}`}
                   />
                   {errors.email && <p className="mt-1.5 text-xs text-red-500">{errors.email}</p>}
                 </div>
@@ -113,7 +154,7 @@ const ForgotPasswordPage = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="btn-primary w-full py-3.5 text-base justify-center"
+                  className="w-full py-3.5 text-base font-semibold rounded-full flex items-center justify-center gap-2 transition-all bg-[#14213D] text-white hover:bg-[#1d2f55] dark:bg-[#D4A84F] dark:text-[#14213D] dark:hover:bg-[#E0BA68] disabled:opacity-60 disabled:cursor-not-allowed shadow-sm"
                 >
                   {loading
                     ? <><Spinner size="sm" /> Sending...</>
@@ -121,13 +162,14 @@ const ForgotPasswordPage = () => {
                 </button>
               </form>
 
-              <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-6">
+              <p className="text-center text-sm text-[#6B7280] dark:text-[#D1D5DB] mt-6">
                 Remember your password?{' '}
-                <Link to="/login" className="text-accent font-medium hover:underline">Sign in</Link>
+                <Link to="/login" className="text-[#14213D] dark:text-[#D4A84F] font-semibold hover:underline">Sign in</Link>
               </p>
             </>
           )}
         </div>
+      </div>
       </div>
     </div>
   );

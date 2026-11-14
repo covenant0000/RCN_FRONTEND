@@ -4,6 +4,8 @@ import { Eye, EyeOff, LogIn, AlertCircle } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { Alert, Spinner } from '../../components/ui';
 import { useForm } from '../../hooks';
+import rcnLogo from '../../assets/images/rcn-logo.png';
+import loginBg from '../../assets/images/login-bg.jpeg';
 
 const LoginPage = () => {
   const { login } = useAuth();
@@ -54,19 +56,27 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen grid lg:grid-cols-2 bg-gray-50 dark:bg-[#09080e]">
+    <div className="min-h-screen grid lg:grid-cols-2 bg-gray-50 dark:bg-[#0D1527]">
       {/* ── Left panel ── */}
-      <div
-        className="hidden lg:flex flex-col justify-between p-12 relative overflow-hidden"
-        style={{ backgroundImage: 'url(/hero-bg.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}
-      >
-        <div className="hero-overlay absolute inset-0" />
+      <div className="hidden lg:flex flex-col justify-between p-12 relative overflow-hidden">
+        {/* Background photo */}
+        <img
+          src={loginBg}
+          alt="Login Background"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        {/* Navy overlay, slightly darker at bottom */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#14213D]/70 via-[#14213D]/70 to-[#14213D]/90" />
 
         {/* logo */}
         <div className="relative z-10">
           <Link to="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-accent-gradient flex items-center justify-center shadow-lg">
-              <span className="text-white font-bold text-sm">RCN</span>
+            <div className="w-14 h-14 rounded-full bg-[#FAF8F2] p-2 shadow-lg flex items-center justify-center flex-shrink-0">
+              <img
+                src={rcnLogo}
+                alt="Remnant Christian Network Logo"
+                className="w-full h-full object-contain"
+              />
             </div>
             <span className="text-white font-semibold text-lg">Remnant Christian Network</span>
           </Link>
@@ -74,10 +84,10 @@ const LoginPage = () => {
 
         {/* quote */}
         <div className="relative z-10 max-w-md">
-          <blockquote className="text-white text-2xl font-display italic leading-relaxed mb-3">
-            "Come to me, all who labour and are heavy laden, and I will give you rest."
+          <blockquote className="text-white text-xl font-display italic leading-relaxed mb-3">
+            "Every man according as he purposeth in his heart, so let him give; not grudgingly, or of necessity: for God loveth a cheerful giver."
           </blockquote>
-          <p className="text-white/60 text-sm">— Matthew 11:28</p>
+          <p className="text-[#D4A84F] text-sm font-medium">— 2 Corinthians 9:7 (KJV)</p>
         </div>
       </div>
 
@@ -99,14 +109,14 @@ const LoginPage = () => {
           <p className="text-gray-500 dark:text-gray-400 text-sm mb-8">Sign in to access your member portal</p>
 
           {/* demo credentials */}
-          <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800/30 rounded-2xl p-4 mb-6">
-            <p className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-2.5">🔐 Demo Credentials (Development)</p>
+          <div className="bg-[#FAF8F2] dark:bg-[#0D1527] border border-[#14213D]/10 dark:border-white/10 rounded-2xl p-4 mb-6">
+            <p className="text-xs font-semibold text-[#14213D] dark:text-[#FAF8F2] mb-2.5">🔐 Demo Credentials (Development)</p>
             <div className="flex gap-2 flex-wrap">
               {['admin', 'pastor', 'member'].map((role) => (
                 <button
                   key={role}
                   onClick={() => fillDemo(role)}
-                  className="text-xs px-3 py-1.5 rounded-lg bg-blue-100 dark:bg-blue-800/40 text-blue-700 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-800/60 transition-colors capitalize font-medium"
+                  className="text-xs px-3 py-1.5 rounded-lg bg-[#D4A84F]/20 text-[#14213D] dark:text-[#FAF8F2] hover:bg-[#D4A84F]/30 transition-colors capitalize font-medium"
                 >
                   {role}
                 </button>
@@ -134,7 +144,7 @@ const LoginPage = () => {
                 value={values.email}
                 onChange={handleChange}
                 placeholder="you@example.com"
-                className={`input-base dark:bg-[#1a1830] dark:border-white/10 dark:text-white dark:placeholder:text-gray-600 ${errors.email ? 'border-red-300 dark:border-red-500/50' : ''}`}
+                className={`input-base dark:bg-[#141F36] dark:border-white/10 dark:text-white placeholder:text-[#6B7280] dark:placeholder:text-[#6B7280] ${errors.email ? 'border-red-300 dark:border-red-500/50' : ''}`}
               />
               {errors.email && <p className="mt-1.5 text-xs text-red-500">{errors.email}</p>}
             </div>
@@ -152,7 +162,7 @@ const LoginPage = () => {
                   value={values.password}
                   onChange={handleChange}
                   placeholder="Enter your password"
-                  className={`input-base pr-11 dark:bg-[#1a1830] dark:border-white/10 dark:text-white dark:placeholder:text-gray-600 ${errors.password ? 'border-red-300 dark:border-red-500/50' : ''}`}
+                  className={`input-base pr-11 dark:bg-[#141F36] dark:border-white/10 dark:text-white placeholder:text-[#6B7280] dark:placeholder:text-[#6B7280] ${errors.password ? 'border-red-300 dark:border-red-500/50' : ''}`}
                 />
                 <button
                   type="button"
@@ -169,10 +179,10 @@ const LoginPage = () => {
             {/* remember + forgot */}
             <div className="flex items-center justify-between text-sm">
               <label className="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" className="rounded text-accent focus:ring-accent" />
-                <span className="text-gray-600 dark:text-gray-400">Remember me</span>
+                <input type="checkbox" className="rounded text-[#14213D] dark:text-[#D4A84F] focus:ring-[#D4A84F]" />
+                <span className="text-[#6B7280] dark:text-[#D1D5DB]">Remember me</span>
               </label>
-              <Link to="/forgot-password" className="text-accent hover:underline font-medium">
+              <Link to="/forgot-password" className="text-[#14213D] dark:text-[#D4A84F] font-semibold hover:underline">
                 Forgot password?
               </Link>
             </div>
@@ -181,7 +191,7 @@ const LoginPage = () => {
             <button
               type="submit"
               disabled={loading}
-              className="btn-primary w-full py-3.5 text-base justify-center"
+              className="w-full py-3.5 text-base font-semibold rounded-full flex items-center justify-center gap-2 transition-all bg-[#14213D] text-white hover:bg-[#1d2f55] dark:bg-[#D4A84F] dark:text-[#14213D] dark:hover:bg-[#E0BA68] disabled:opacity-60 disabled:cursor-not-allowed shadow-sm"
               id="login-submit"
             >
               {loading
@@ -190,9 +200,9 @@ const LoginPage = () => {
             </button>
           </form>
 
-          <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-8">
+          <p className="text-center text-sm text-[#6B7280] dark:text-[#D1D5DB] mt-8">
             Don't have an account?{' '}
-            <Link to="/register" className="text-accent font-medium hover:underline">
+            <Link to="/register" className="text-[#14213D] dark:text-[#D4A84F] font-semibold hover:underline">
               Create an account
             </Link>
           </p>

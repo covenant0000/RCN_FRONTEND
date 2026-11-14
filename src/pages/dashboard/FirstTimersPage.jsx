@@ -79,7 +79,7 @@ const FirstTimersPage = () => {
 
       {/* ── Summary Counters ────────────────────────────────────────────── */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 p-4 shadow-sm">
           <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 mb-1">
             <Bell className="w-4 h-4 text-primary dark:text-accent" />
             <span>Total Visitors</span>
@@ -87,7 +87,7 @@ const FirstTimersPage = () => {
           <p className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">{data.length}</p>
         </div>
 
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 p-4 shadow-sm">
           <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 mb-1">
             <Clock className="w-4 h-4 text-amber-500" />
             <span>Awaiting Call</span>
@@ -95,15 +95,15 @@ const FirstTimersPage = () => {
           <p className="text-xl md:text-2xl font-bold text-amber-600 dark:text-amber-400">{pendingCount}</p>
         </div>
 
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 p-4 shadow-sm">
           <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 mb-1">
-            <PhoneCall className="w-4 h-4 text-blue-500" />
+            <PhoneCall className="w-4 h-4 text-[#D4A84F]" />
             <span>In Conversation</span>
           </div>
-          <p className="text-xl md:text-2xl font-bold text-blue-600 dark:text-blue-400">{contactedCount}</p>
+          <p className="text-xl md:text-2xl font-bold text-[#D4A84F] dark:text-[#E0BA68]">{contactedCount}</p>
         </div>
 
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 p-4 shadow-sm">
           <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 mb-1">
             <CheckCheck className="w-4 h-4 text-emerald-500" />
             <span>Fully Integrated</span>
@@ -120,7 +120,7 @@ const FirstTimersPage = () => {
           message="Register a new visitor using the button above."
         />
       ) : (
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-xs md:text-sm text-left">
               <thead className="border-b border-gray-100 dark:border-white/10 bg-gray-50/70 dark:bg-white/5 text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider text-[11px]">
@@ -137,7 +137,7 @@ const FirstTimersPage = () => {
                   <tr key={ft.id} className="hover:bg-gray-50/70 dark:hover:bg-white/5 transition-colors">
                     <td className="px-5 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-xl bg-purple-100 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400 flex items-center justify-center text-xs font-bold shrink-0">
+                        <div className="w-9 h-9 rounded-xl bg-[#D4A84F]/20 text-[#D4A84F] dark:text-[#E0BA68] flex items-center justify-center text-xs font-bold shrink-0">
                           {ft.firstName[0]}
                         </div>
                         <div>

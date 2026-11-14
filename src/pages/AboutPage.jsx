@@ -40,13 +40,13 @@ const AboutPage = () => (
           <h2 className="font-display text-3xl md:text-4xl font-bold text-primary mb-5">
             Remnant Christian Network
           </h2>
-          <p className="text-gray-600 leading-relaxed mb-5">
+          <p className="text-[#6B7280] leading-relaxed mb-5">
             Remnant Christian Network (RCN) is an interdenominational and non-denominational international
             Ministry to the body of Christ with the mandate of restoring the apostolic order and Christianity
             as was seen in the days of the first generation of apostles of Jesus Christ, and thereby heralding
             the coming of the Lord Jesus Christ in this end of the age.
           </p>
-          <p className="text-gray-600 leading-relaxed mb-8">
+          <p className="text-[#6B7280] leading-relaxed mb-8">
             We seek only to see the coming of the King and His Kingdom until His reality is furnished in the
             hearts of the sons of men. We are not a denomination — we are a movement of believers committed
             to the apostolic heritage of the Christian faith.
@@ -58,7 +58,7 @@ const AboutPage = () => (
               { icon: BookOpen, label: 'Word-Centred' },
               { icon: Users, label: 'Kingdom-Focused' },
             ].map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-3 text-sm text-gray-700">
+              <div key={label} className="flex items-center gap-3 text-sm text-[#252525]">
                 <Icon className="w-4 h-4 text-accent" /> {label}
               </div>
             ))}
@@ -95,11 +95,11 @@ const AboutPage = () => (
     </section>
 
     {/* Leadership */}
-    <section className="section-padding bg-gray-50">
+    <section className="section-padding bg-[#FAF8F2]">
       <div className="container-custom max-w-4xl mx-auto text-center">
         <p className="text-accent text-xs font-semibold uppercase tracking-[0.2em] mb-3">Leadership</p>
         <h2 className="font-display text-3xl font-bold text-primary mb-12">Apostolic Leadership</h2>
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-10 flex flex-col md:flex-row items-center gap-8">
+        <div className="bg-white rounded-2xl shadow-sm border border-[rgba(20,33,61,0.08)] p-10 flex flex-col md:flex-row items-center gap-8">
           <div
             className="w-36 h-36 rounded-full bg-cover bg-center flex-shrink-0 shadow-xl border-4 border-accent/30"
             style={{ backgroundImage: 'url(/sermon-bg.jpg)', backgroundPosition: 'top' }}
@@ -107,7 +107,7 @@ const AboutPage = () => (
           <div className="text-left">
             <h3 className="font-display text-2xl font-bold text-primary mb-1">Dr. Arome Osaghae</h3>
             <p className="text-accent font-medium text-sm mb-3">Presiding Apostle, RCN</p>
-            <p className="text-gray-600 leading-relaxed text-sm">
+            <p className="text-[#6B7280] leading-relaxed text-sm">
               Dr. Arome Osaghae is a teacher, preacher, and apostle of the gospel with a burning passion for
               restoring the apostolic heritage of the Christian faith. Through decades of ministry, he has
               raised up thousands of believers and ministers across Nigeria and the nations.
@@ -128,10 +128,10 @@ const AboutPage = () => (
         />
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {ministries.map((m) => (
-            <div key={m.name} className="p-6 border border-gray-100 rounded-2xl hover:border-accent/30 hover:shadow-md transition-all group">
+            <div key={m.name} className="p-6 border border-[rgba(20,33,61,0.08)] rounded-2xl hover:border-accent/30 hover:shadow-md transition-all group">
               <div className="text-3xl mb-3">{m.icon}</div>
               <h3 className="font-semibold text-primary mb-2 group-hover:text-accent transition-colors">{m.name}</h3>
-              <p className="text-sm text-gray-500 leading-relaxed">{m.desc}</p>
+              <p className="text-sm text-[#6B7280] leading-relaxed">{m.desc}</p>
             </div>
           ))}
         </div>
@@ -139,10 +139,10 @@ const AboutPage = () => (
     </section>
 
     {/* CTA */}
-    <section className="section-padding bg-gray-50">
+    <section className="section-padding bg-[#FAF8F2]">
       <div className="container-custom text-center max-w-xl mx-auto">
         <h2 className="font-display text-3xl font-bold text-primary mb-4">Ready to Connect?</h2>
-        <p className="text-gray-600 mb-8">Join the RCN community and grow in your walk with God.</p>
+        <p className="text-[#6B7280] mb-8">Join the RCN community and grow in your walk with God.</p>
         <div className="flex flex-wrap justify-center gap-4">
           <Link to="/register" className="btn-primary">Join RCN <ArrowRight className="w-4 h-4" /></Link>
           <Link to="/prayer" className="btn-secondary">Prayer Request</Link>

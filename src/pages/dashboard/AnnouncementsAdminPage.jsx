@@ -125,15 +125,15 @@ const AnnouncementsAdminPage = () => {
 
       {/* summary */}
       <div className="grid grid-cols-3 gap-4">
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 p-4 shadow-sm text-center">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 p-4 shadow-sm text-center">
           <p className="text-2xl font-bold text-primary dark:text-white">{items.length}</p>
           <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Total</p>
         </div>
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 p-4 shadow-sm text-center">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 p-4 shadow-sm text-center">
           <p className="text-2xl font-bold text-red-600 dark:text-red-400">{items.filter((a) => a.priority === 'HIGH').length}</p>
           <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">High Priority</p>
         </div>
-        <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 p-4 shadow-sm text-center">
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 p-4 shadow-sm text-center">
           <p className="text-2xl font-bold text-accent">{items.filter((a) => !a.audience || a.audience === 'ALL').length}</p>
           <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Church-Wide</p>
         </div>
@@ -146,7 +146,7 @@ const AnnouncementsAdminPage = () => {
         <div className="space-y-4">
           {items.map((ann) => (
             <div key={ann.id}
-              className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-6 hover:border-accent/40 dark:hover:border-accent/40 transition-all duration-200">
+              className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-6 hover:border-accent/40 dark:hover:border-accent/40 transition-all duration-200">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-2 flex-wrap">
@@ -169,7 +169,7 @@ const AnnouncementsAdminPage = () => {
                 {hasRole('ADMIN') && (
                   <div className="flex items-center gap-1 shrink-0">
                     <button type="button" onClick={() => openEdit(ann)}
-                      className="p-2 text-gray-400 hover:text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-xl transition-colors" title="Edit announcement">
+                      className="p-2 text-gray-400 hover:text-[#D4A84F] hover:bg-[#D4A84F]/10 rounded-xl transition-colors" title="Edit announcement">
                       <Edit className="w-4 h-4" />
                     </button>
                     <button type="button" onClick={() => setDeleteConfirm(ann.id)}

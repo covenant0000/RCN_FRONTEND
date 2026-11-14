@@ -99,11 +99,11 @@ const SermonDetailPage = () => {
           <div className="lg:col-span-2 space-y-8">
             <div>
               <h2 className="font-display text-xl font-bold text-primary mb-3">About This Message</h2>
-              <p className="text-gray-600 leading-relaxed">{sermon.description}</p>
+              <p className="text-[#6B7280] leading-relaxed">{sermon.description}</p>
             </div>
 
             {/* Transcript Section */}
-            <div className="border border-gray-100 rounded-2xl p-6 bg-gray-50">
+            <div className="border border-[rgba(20,33,61,0.08)] rounded-2xl p-6 bg-[#FAF8F2]">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-primary flex items-center gap-2">
                   <FileText className="w-5 h-5 text-accent" /> Sermon Transcript
@@ -113,7 +113,7 @@ const SermonDetailPage = () => {
               {sermon.hasTranscript ? (
                 isAuthenticated ? (
                   <div>
-                    <p className="text-gray-500 text-sm mb-4">
+                    <p className="text-[#6B7280] text-sm mb-4">
                       Full transcript is available for members. Click below to read.
                     </p>
                     <button className="btn-primary text-sm">
@@ -122,7 +122,7 @@ const SermonDetailPage = () => {
                   </div>
                 ) : (
                   <div className="text-center py-4">
-                    <p className="text-gray-500 text-sm mb-4">
+                    <p className="text-[#6B7280] text-sm mb-4">
                       Transcripts are available to registered members only.
                     </p>
                     <Link to="/login" className="btn-primary text-sm">
@@ -131,7 +131,7 @@ const SermonDetailPage = () => {
                   </div>
                 )
               ) : (
-                <p className="text-gray-400 text-sm">
+                <p className="text-[#6B7280] text-sm">
                   Transcript not yet available for this sermon. Check back later.
                 </p>
               )}
@@ -145,16 +145,16 @@ const SermonDetailPage = () => {
                 <h3 className="font-semibold text-primary mb-4">More from {sermon.series}</h3>
                 <div className="space-y-3">
                   {related.map((s) => (
-                    <Link key={s.id} to={`/sermons/${s.id}`} className="flex gap-3 group p-3 rounded-xl hover:bg-gray-50 transition-colors">
+                    <Link key={s.id} to={`/sermons/${s.id}`} className="flex gap-3 group p-3 rounded-xl hover:bg-[#FAF8F2] transition-colors">
                       <div
                         className="w-16 h-16 rounded-lg bg-cover bg-center flex-shrink-0"
                         style={{ backgroundImage: `url(${s.thumbnailUrl})` }}
                       />
                       <div>
-                        <p className="text-sm font-medium text-gray-900 group-hover:text-accent transition-colors line-clamp-2">
+                        <p className="text-sm font-medium text-[#252525] group-hover:text-accent transition-colors line-clamp-2">
                           {s.title}
                         </p>
-                        <p className="text-xs text-gray-400 mt-1">{formatDuration(s.duration)}</p>
+                        <p className="text-xs text-[#6B7280] mt-1">{formatDuration(s.duration)}</p>
                       </div>
                     </Link>
                   ))}

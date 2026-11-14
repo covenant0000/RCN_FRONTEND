@@ -106,6 +106,10 @@ const GivePage = () => {
             <h2 className="font-display text-3xl font-bold text-primary mb-5">
               Your Giving Matters
             </h2>
+            <blockquote className="text-gray-700 dark:text-gray-300 italic mb-6 leading-relaxed border-l-2 border-accent pl-4">
+              "Every man according as he purposeth in his heart, so let him give; not grudgingly, or of necessity: for God loveth a cheerful giver."
+              <span className="block text-accent font-semibold not-italic text-sm mt-2">— 2 Corinthians 9:7 (KJV)</span>
+            </blockquote>
             <p className="text-gray-600 mb-6 leading-relaxed">
               Every gift you sow into the vision of RCN goes towards reaching nations, training workers
               for harvest, and establishing the Kingdom of God across the earth.

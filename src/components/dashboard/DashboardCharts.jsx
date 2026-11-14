@@ -16,7 +16,7 @@ export const MetricCard = ({
   period,
 }) => {
   const CardContent = (
-    <div className="group relative bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 p-5 md:p-6 shadow-sm hover:shadow-md hover:border-accent/40 dark:hover:border-accent/40 transition-all duration-300">
+    <div className="group relative bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 p-5 md:p-6 shadow-sm hover:shadow-md hover:border-accent/40 dark:hover:border-accent/40 transition-all duration-300">
       <div className="flex items-start justify-between mb-4">
         <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${color} transition-transform duration-300 group-hover:scale-105`}>
           <Icon className="w-6 h-6 shrink-0" />
@@ -73,7 +73,7 @@ export const TrendAreaChart = ({
 
   if (!data || data.length === 0) {
     return (
-      <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 p-6 flex flex-col items-center justify-center min-h-[260px] text-center">
+      <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 p-6 flex flex-col items-center justify-center min-h-[260px] text-center">
         <p className="text-gray-500 dark:text-gray-400 text-sm">No data available for the selected period</p>
       </div>
     );
@@ -111,7 +111,7 @@ export const TrendAreaChart = ({
   const hoveredPoint = hoveredIdx !== null ? points[hoveredIdx] : null;
 
   return (
-    <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 p-6 shadow-sm">
+    <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 p-6 shadow-sm">
       {/* Header with Title and Period Filter */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
         <div>
@@ -266,7 +266,7 @@ export const ComparisonBarChart = ({
 
   if (!data || data.length === 0) {
     return (
-      <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 p-6 flex items-center justify-center min-h-[220px]">
+      <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 p-6 flex items-center justify-center min-h-[220px]">
         <p className="text-gray-500 dark:text-gray-400 text-sm">No data available</p>
       </div>
     );
@@ -275,7 +275,7 @@ export const ComparisonBarChart = ({
   const maxValue = Math.max(...data.map((d) => d.value), 1);
 
   return (
-    <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 p-6 shadow-sm">
+    <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 p-6 shadow-sm">
       <div className="mb-6">
         <h3 className="font-semibold text-gray-900 dark:text-white text-base md:text-lg">{title}</h3>
         {subtitle && <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{subtitle}</p>}
@@ -336,7 +336,7 @@ export const DonutChart = ({
   let accumulatedPercent = 0;
 
   return (
-    <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 p-6 shadow-sm flex flex-col justify-between">
+    <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 p-6 shadow-sm flex flex-col justify-between">
       <div className="mb-4">
         <h3 className="font-semibold text-gray-900 dark:text-white text-base md:text-lg">{title}</h3>
         {subtitle && <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{subtitle}</p>}

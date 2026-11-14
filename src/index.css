@@ -2,18 +2,69 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* ─── Stage 1: Official Brand Design Tokens ───────────────────────────────── */
+
+:root {
+  /* Brand Colours */
+  --color-primary: #14213D;         /* Deep Navy */
+  --color-primary-hover: #1F3158;
+  --color-accent: #D4A84F;          /* Warm Gold */
+  --color-accent-hover: #E0BA68;
+  --color-accent-muted: rgba(212, 168, 79, 0.15);
+
+  --color-bg-main: #FAF8F2;         /* Ivory (main page background) */
+  --color-bg-card: #FFFFFF;         /* White (cards and clean sections) */
+  --color-bg-surface: #FFFFFF;
+
+  --color-text-body: #252525;       /* Charcoal (body text) */
+  --color-text-heading: #14213D;    /* Deep Navy */
+  --color-text-muted: #6B7280;      /* Muted Grey (secondary text) */
+
+  --color-border: rgba(20, 33, 61, 0.12);
+  --color-border-subtle: rgba(20, 33, 61, 0.06);
+
+  /* Shared Tokens */
+  --shadow-card: 0 4px 20px -2px rgba(20, 33, 61, 0.06), 0 2px 6px -1px rgba(20, 33, 61, 0.04);
+  --shadow-card-hover: 0 12px 30px -4px rgba(20, 33, 61, 0.12), 0 4px 10px -2px rgba(20, 33, 61, 0.06);
+  --radius-card: 1rem;
+  --radius-btn: 9999px;
+  --radius-input: 0.75rem;
+}
+
+html.dark {
+  /* Dark Mode: Deep Charcoal and Dark Navy backgrounds, Ivory/White text, Warm Gold accents */
+  --color-primary: #14213D;
+  --color-primary-hover: #1F3158;
+  --color-accent: #D4A84F;
+  --color-accent-hover: #E0BA68;
+  --color-accent-muted: rgba(212, 168, 79, 0.22);
+
+  --color-bg-main: #0D1527;         /* Deep Navy / Charcoal canvas */
+  --color-bg-card: #141F36;         /* Dark Navy surface card */
+  --color-bg-surface: #182540;
+
+  --color-text-body: #FAF8F2;       /* Ivory text */
+  --color-text-heading: #FFFFFF;    /* White heading */
+  --color-text-muted: #9CA3AF;      /* Muted Grey light */
+
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-border-subtle: rgba(255, 255, 255, 0.06);
+
+  --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(255, 255, 255, 0.05);
+  --shadow-card-hover: 0 20px 40px -5px rgba(0, 0, 0, 0.7), 0 0 1px 1px rgba(212, 168, 79, 0.3);
+}
+
 @theme {
-  --color-primary: #1D1747;
-  --color-primary-light: #2a2266;
-  --color-primary-dark: #120e30;
-  --color-accent: #02ad88;
-  --color-accent-light: #03c99e;
-  --color-accent-dark: #018c6e;
-  --color-gold: #d4a84b;
-  --color-gold-light: #f0c86a;
-  --color-surface: #0f0d2a;
-  --color-surface-light: #1a1740;
-  --color-text-muted: #94a3b8;
+  --color-primary: #14213D;
+  --color-primary-light: #1F3158;
+  --color-primary-dark: #0A101D;
+  --color-accent: #D4A84F;
+  --color-accent-light: #E0BA68;
+  --color-accent-dark: #B88D37;
+  --color-gold: #D4A84F;
+  --color-ivory: #FAF8F2;
+  --color-charcoal: #252525;
+  --color-muted-grey: #6B7280;
 
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-serif: 'Playfair Display', Georgia, serif;
@@ -31,18 +82,20 @@
   }
 
   body {
-    @apply bg-white text-gray-900 font-sans antialiased;
+    background-color: var(--color-bg-main);
+    color: var(--color-text-body);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
-  /* Dark mode root & body */
   html.dark {
     color-scheme: dark;
   }
 
   html.dark body {
-    background-color: #09080e;
-    color: #f8fafc;
+    background-color: var(--color-bg-main);
+    color: var(--color-text-body);
   }
 }
 
@@ -59,106 +112,211 @@ html.theme-transition *::after {
 /* ─── Dark Theme Surfaces, Backgrounds, Text & Borders ─────────────────── */
 
 html.dark .bg-white {
-  background-color: #12101e;
+  background-color: var(--color-bg-card);
 }
 
-/* Specific elements that need to remain white */
-html.dark .keep-white,
-html.dark a.keep-white {
-  background-color: #ffffff !important;
-  color: #02ad88 !important;
-}
-
-html.dark .bg-gray-50 {
-  background-color: #09080e;
+html.dark .bg-gray-50,
+html.dark .bg-ivory {
+  background-color: var(--color-bg-main);
 }
 
 html.dark .bg-gray-100 {
-  background-color: #1a172a;
+  background-color: var(--color-bg-surface);
 }
 
 html.dark .bg-gray-200 {
-  background-color: #27233d;
+  background-color: rgba(255, 255, 255, 0.12);
 }
+
+/* Specific elements that need to remain ivory */
+html.dark .keep-white,
+html.dark a.keep-white {
+  background-color: #FAF8F2 !important;
+  color: #14213D !important;
+}
+
+/* ─── Light-Mode Palette Mappings (gray- → brand palette) ───────────────── */
+
+/* Headings and strong text: Charcoal #252525 */
+.text-gray-900 { color: #252525; }
+.text-gray-800 { color: #252525; }
+
+/* Body text: Charcoal */
+.text-gray-700 { color: #252525; }
+
+/* Secondary / muted text: Muted Grey #6B7280 */
+.text-gray-600 { color: #6B7280; }
+.text-gray-500 { color: #6B7280; }
+.text-gray-400 { color: #6B7280; }
+
+/* Backgrounds: gray-50 → Ivory, gray-100 → warm near-ivory */
+.bg-gray-50 { background-color: #FAF8F2; }
+.bg-gray-100 { background-color: #F0EDE5; }
+
+/* Borders */
+.border-gray-100 { border-color: rgba(20, 33, 61, 0.08); }
+.border-gray-200 { border-color: rgba(20, 33, 61, 0.14); }
 
 /* Text adaptations in dark mode */
 html.dark .text-primary {
-  color: #ffffff;
+  color: var(--color-text-heading);
+}
+
+html.dark .text-charcoal {
+  color: var(--color-text-body);
 }
 
 html.dark .text-gray-900 {
-  color: #f8fafc;
+  color: var(--color-text-heading);
 }
 
 html.dark .text-gray-800 {
-  color: #f1f5f9;
+  color: #F1F5F9;
 }
 
 html.dark .text-gray-700 {
-  color: #e2e8f0;
+  color: #E2E8F0;
 }
 
 html.dark .text-gray-600 {
-  color: #cbd5e1;
+  color: var(--color-text-muted);
 }
 
 html.dark .text-gray-500 {
-  color: #94a3b8;
+  color: var(--color-text-muted);
+}
+
+html.dark .text-gray-400 {
+  color: var(--color-text-muted);
+}
+
+/* Background in dark mode */
+html.dark .bg-gray-50 {
+  background-color: var(--color-bg-main);
+}
+
+html.dark .bg-gray-100 {
+  background-color: var(--color-bg-surface);
 }
 
 /* Borders in dark mode */
 html.dark .border-gray-100 {
-  border-color: rgba(255, 255, 255, 0.08);
+  border-color: var(--color-border-subtle);
 }
 
 html.dark .border-gray-200 {
-  border-color: rgba(255, 255, 255, 0.12);
+  border-color: var(--color-border);
 }
 
 html.dark .border-gray-300 {
-  border-color: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Inputs in dark mode */
 html.dark .input-base {
-  background-color: #18152b;
-  border-color: rgba(255, 255, 255, 0.15);
-  color: #f8fafc;
+  background-color: var(--color-bg-card);
+  border-color: var(--color-border);
+  color: var(--color-text-body);
 }
 
 html.dark .input-base::placeholder {
-  color: #64748b;
+  color: var(--color-text-muted);
 }
 
 html.dark .input-base:focus {
-  border-color: #02ad88;
-  box-shadow: 0 0 0 3px rgba(2, 173, 136, 0.25);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-muted);
 }
 
-/* Shadows in dark mode */
-html.dark .shadow-sm,
-html.dark .shadow-md,
-html.dark .shadow-lg,
-html.dark .shadow-xl,
-html.dark .shadow-2xl {
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6), 0 0 1px 1px rgba(255, 255, 255, 0.05);
+/* Shadows */
+.shadow-card {
+  box-shadow: var(--shadow-card);
 }
 
-/* ─── Custom Utilities ──────────────────────────────────────────────────── */
+.shadow-card-hover:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* ─── Dark Mode Solid Surfaces & Logo Glow ───────────────────────────────── */
+
+/* Flat solid #0D1527 for root canvas and page background in dark mode */
+html.dark,
+html.dark body,
+html.dark #root,
+html.dark [data-theme="dark"],
+html.dark .public-layout {
+  background-color: #0D1527 !important;
+  background-image: none !important;
+}
+
+/* Flat solid Deep Navy #14213D for navbar in dark mode */
+html.dark nav,
+html.dark header,
+html.dark .navbar {
+  background-color: #14213D !important;
+  background-image: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  opacity: 1 !important;
+}
+
+/* Dark mode logo soft white glow on both navbar and footer */
+html.dark .logo-glow,
+html.dark nav img[alt*="Logo"],
+html.dark nav img[alt*="logo"],
+html.dark footer img[alt*="Remnant"],
+html.dark footer img[alt*="logo"] {
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 10px rgba(255, 255, 255, 0.5)) !important;
+}
+
+/* Flat solid Deep Navy #14213D for footer and "Be Part of the Remnant" banner in dark mode */
+html.dark footer,
+html.dark footer *,
+html.dark .footer-cta-banner {
+  background-image: none !important;
+}
+
+html.dark footer,
+html.dark footer > div,
+html.dark .footer-cta-banner {
+  background-color: #14213D !important;
+  background-image: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  opacity: 1 !important;
+}
+
+/* Flatten section gradients in dark mode so no vertical gradients bleed */
+html.dark .hero-overlay {
+  background: #14213D !important;
+}
+
+html.dark .bg-primary-gradient {
+  background: #14213D !important;
+}
+
+/* ─── Custom Utilities & Brand Gradients ─────────────────────────────────── */
 
 .text-gradient {
-  background: linear-gradient(135deg, #02ad88, #d4a84b);
+  background: linear-gradient(135deg, var(--color-accent) 0%, #FFFFFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, var(--color-accent) 0%, #B88D37 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .bg-primary-gradient {
-  background: linear-gradient(135deg, #1D1747 0%, #120e30 100%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, #0A101D 100%);
 }
 
 .bg-accent-gradient {
-  background: linear-gradient(135deg, #02ad88 0%, #018c6e 100%);
+  background: linear-gradient(135deg, var(--color-accent) 0%, #B88D37 100%);
 }
 
 .glass {
@@ -169,7 +327,7 @@ html.dark .shadow-2xl {
 }
 
 .glass-dark {
-  background: rgba(29, 23, 71, 0.7);
+  background: rgba(20, 33, 61, 0.75);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -181,7 +339,7 @@ html.dark .shadow-2xl {
 
 .card-hover:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .section-padding {
@@ -212,53 +370,62 @@ html.dark .shadow-2xl {
   .container-custom { padding-left: 2rem; padding-right: 2rem; }
 }
 
+/* ─── Forms & Inputs ─────────────────────────────────────────────────────── */
+
 .input-base {
   width: 100%;
   padding: 0.75rem 1rem;
-  border-radius: 0.75rem;
-  border: 1px solid #e5e7eb;
-  background: white;
-  color: #111827;
+  border-radius: var(--radius-input);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+  color: var(--color-text-body);
   font-size: 0.875rem;
   line-height: 1.5;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
   outline: none;
 }
 
 .input-base::placeholder {
-  color: #9ca3af;
+  color: var(--color-text-muted);
 }
 
 .input-base:focus {
-  border-color: #02ad88;
-  box-shadow: 0 0 0 3px rgba(2, 173, 136, 0.15);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-muted);
 }
 
+/* ─── Buttons: Primary, Secondary, Outlined, Ghost ───────────────────────── */
+
+/* Primary: Deep Navy with white text */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  color: white;
+  border-radius: var(--radius-btn);
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  border: 1.5px solid var(--color-primary);
   font-weight: 600;
   font-size: 0.875rem;
   letter-spacing: 0.025em;
   cursor: pointer;
-  border: none;
-  background: linear-gradient(135deg, #02ad88 0%, #018c6e 100%);
-  transition: opacity 0.3s, box-shadow 0.3s, transform 0.15s;
+  transition: all 0.25s ease;
   text-decoration: none;
+  box-shadow: 0 2px 8px rgba(20, 33, 61, 0.15);
 }
 
 .btn-primary:hover {
-  opacity: 0.92;
-  box-shadow: 0 8px 24px rgba(2, 173, 136, 0.4);
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-accent);
+  color: #FFFFFF;
+  box-shadow: 0 6px 20px rgba(20, 33, 61, 0.25);
+  transform: translateY(-1px);
 }
 
 .btn-primary:active {
-  transform: scale(0.97);
+  transform: scale(0.98);
 }
 
 .btn-primary:disabled {
@@ -266,77 +433,159 @@ html.dark .shadow-2xl {
   cursor: not-allowed;
 }
 
+html.dark .btn-primary {
+  background-color: var(--color-primary);
+  border-color: rgba(212, 168, 79, 0.5);
+  color: #FFFFFF;
+}
+
+html.dark .btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-accent);
+  color: #FFFFFF;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Secondary: Warm Gold with dark text */
 .btn-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
+  border-radius: var(--radius-btn);
   font-weight: 600;
   font-size: 0.875rem;
   letter-spacing: 0.025em;
-  transition: all 0.3s;
+  transition: all 0.25s ease;
   cursor: pointer;
-  border: 2px solid #02ad88;
-  color: #02ad88;
-  background: transparent;
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-accent);
   text-decoration: none;
+  box-shadow: 0 2px 8px rgba(212, 168, 79, 0.2);
 }
 
 .btn-secondary:hover {
-  background: #02ad88;
-  color: white;
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  color: var(--color-primary);
+  box-shadow: 0 6px 20px rgba(212, 168, 79, 0.35);
+  transform: translateY(-1px);
 }
 
 .btn-secondary:active {
-  transform: scale(0.97);
+  transform: scale(0.98);
 }
 
+/* Outlined: Navy or Gold border */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-btn);
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.025em;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-primary);
+  text-decoration: none;
+}
+
+.btn-outline:hover {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(20, 33, 61, 0.15);
+  transform: translateY(-1px);
+}
+
+html.dark .btn-outline {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+html.dark .btn-outline:hover {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+}
+
+.btn-outline-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-btn);
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.025em;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--color-accent);
+  border: 1.5px solid var(--color-accent);
+  text-decoration: none;
+}
+
+.btn-outline-gold:hover {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  box-shadow: 0 4px 14px rgba(212, 168, 79, 0.25);
+  transform: translateY(-1px);
+}
+
+/* Ghost Button */
 .btn-ghost {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  color: white;
+  border-radius: var(--radius-btn);
+  color: #FFFFFF;
   font-weight: 600;
   font-size: 0.875rem;
   letter-spacing: 0.025em;
-  transition: all 0.3s;
+  transition: all 0.25s ease;
   cursor: pointer;
-  background: transparent;
-  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
   text-decoration: none;
+  backdrop-filter: blur(8px);
 }
 
 .btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.6);
+  color: #FFFFFF;
+  transform: translateY(-1px);
 }
 
 .btn-ghost:active {
-  transform: scale(0.97);
+  transform: scale(0.98);
 }
 
 /* Hero gradient overlay */
 .hero-overlay {
   background: linear-gradient(
     to bottom,
-    rgba(18, 14, 48, 0.7) 0%,
-    rgba(18, 14, 48, 0.4) 50%,
-    rgba(18, 14, 48, 0.8) 100%
+    rgba(20, 33, 61, 0.75) 0%,
+    rgba(20, 33, 61, 0.45) 50%,
+    rgba(20, 33, 61, 0.85) 100%
   );
 }
 
 /* ─── Custom Scrollbar ───────────────────────────────────────────────────── */
 
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #f1f5f9; }
-::-webkit-scrollbar-thumb { background: #02ad88; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #018c6e; }
-
-html.dark ::-webkit-scrollbar-track { background: #09080e; }
+::-webkit-scrollbar-track { background: var(--color-bg-main); }
+::-webkit-scrollbar-thumb { background: var(--color-accent); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-accent-hover); }
 
 /* ─── Animations ─────────────────────────────────────────────────────────── */
 
@@ -356,8 +605,8 @@ html.dark ::-webkit-scrollbar-track { background: #09080e; }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(2, 173, 136, 0.4); }
-  50% { box-shadow: 0 0 0 10px rgba(2, 173, 136, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 168, 79, 0.4); }
+  50% { box-shadow: 0 0 0 10px rgba(212, 168, 79, 0); }
 }
 
 .animate-fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }

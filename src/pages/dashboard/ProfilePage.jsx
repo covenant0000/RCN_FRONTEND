@@ -11,10 +11,10 @@ import { GENDER_OPTIONS } from '../../constants';
 
 /* ─── role config ─────────────────────────────────────────────────────────── */
 const ROLE_META = {
-  SUPER_ADMIN:     { label: 'Super Admin',     color: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300' },
-  ADMIN:           { label: 'Admin',           color: 'bg-blue-100   text-blue-700   dark:bg-blue-900/30   dark:text-blue-300'   },
+  SUPER_ADMIN:     { label: 'Super Admin',     color: 'bg-[#D4A84F]/20 text-[#D4A84F] dark:bg-[#D4A84F]/20 dark:text-[#E0BA68]' },
+  ADMIN:           { label: 'Admin',           color: 'bg-[#14213D]/10 text-[#14213D] dark:bg-[#14213D] dark:text-[#FAF8F2]'   },
   PASTOR:          { label: 'Pastor',          color: 'bg-amber-100  text-amber-700  dark:bg-amber-900/30  dark:text-amber-300'  },
-  DEPARTMENT_HEAD: { label: 'Department Head', color: 'bg-teal-100   text-teal-700   dark:bg-teal-900/30   dark:text-teal-300'   },
+  DEPARTMENT_HEAD: { label: 'Department Head', color: 'bg-[#14213D]/10 text-[#14213D] dark:bg-[#14213D] dark:text-[#FAF8F2]'   },
   WORKER:          { label: 'Worker',          color: 'bg-green-100  text-green-700  dark:bg-green-900/30  dark:text-green-300'  },
   MEMBER:          { label: 'Member',          color: 'bg-gray-100   text-gray-700   dark:bg-gray-700/40   dark:text-gray-300'   },
 };
@@ -197,7 +197,7 @@ const ProfilePage = () => {
         {/* ── left column ── */}
         <div className="space-y-5">
           {/* Avatar Card */}
-          <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-6 text-center">
+          <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-6 text-center">
             {/* avatar + upload */}
             <div className="relative inline-block mb-4">
               {avatarPreview ? (
@@ -225,7 +225,7 @@ const ProfilePage = () => {
                 onClick={() => fileInputRef.current?.click()}
                 disabled={avatarUploading}
                 title="Upload profile photo"
-                className="absolute bottom-0 right-0 w-8 h-8 bg-white dark:bg-[#1a1830] rounded-full border border-gray-200 dark:border-white/20 flex items-center justify-center shadow-sm hover:bg-gray-50 dark:hover:bg-white/10 transition-colors disabled:opacity-50"
+                className="absolute bottom-0 right-0 w-8 h-8 bg-white dark:bg-[#141F36] rounded-full border border-gray-200 dark:border-white/20 flex items-center justify-center shadow-sm hover:bg-gray-50 dark:hover:bg-white/10 transition-colors disabled:opacity-50"
               >
                 {avatarUploading ? <Spinner size="sm" /> : <Camera className="w-4 h-4 text-gray-500 dark:text-gray-400" />}
               </button>
@@ -286,7 +286,7 @@ const ProfilePage = () => {
           </div>
 
           {/* account info */}
-          <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-5">
+          <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-5">
             <p className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wide mb-3">Account Info</p>
             <div className="divide-y divide-gray-100 dark:divide-white/10">
               <InfoRow icon={User}     label="User ID"  value={`#${user?.id?.slice(-6) || 'N/A'}`} />
@@ -307,7 +307,7 @@ const ProfilePage = () => {
               <button key={id} onClick={() => setActiveTab(id)}
                 className={`flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${
                   activeTab === id
-                    ? 'bg-white dark:bg-[#1a1830] text-primary dark:text-white shadow-sm'
+                    ? 'bg-white dark:bg-[#141F36] text-primary dark:text-white shadow-sm'
                     : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'
                 }`}>
                 <Icon className="w-4 h-4" /> {label}
@@ -317,7 +317,7 @@ const ProfilePage = () => {
 
           {/* Personal Info Tab */}
           {activeTab === 'profile' && (
-            <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-6">
+            <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-6">
               <h3 className="font-semibold text-primary dark:text-white mb-5 flex items-center gap-2">
                 <User className="w-4 h-4 text-accent" /> Personal Information
               </h3>
@@ -347,7 +347,7 @@ const ProfilePage = () => {
 
           {/* Security Tab */}
           {activeTab === 'security' && (
-            <div className="bg-white dark:bg-[#12101e] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-6">
+            <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm p-6">
               <h3 className="font-semibold text-primary dark:text-white mb-5 flex items-center gap-2">
                 <Lock className="w-4 h-4 text-accent" /> Change Password
               </h3>
@@ -358,7 +358,7 @@ const ProfilePage = () => {
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Current Password <span className="text-red-500">*</span></label>
                   <div className="relative">
                     <input name="currentPassword" type={showCurrent ? 'text' : 'password'} value={pwValues.currentPassword} onChange={handlePwChange}
-                      placeholder="Enter current password" className="input-base pr-11 dark:bg-[#1a1830] dark:border-white/10 dark:text-white" />
+                      placeholder="Enter current password" className="input-base pr-11 dark:bg-[#141F36] dark:border-white/10 dark:text-white" />
                     <button type="button" onClick={() => setShowCurrent(!showCurrent)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
                       {showCurrent ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                     </button>
@@ -368,7 +368,7 @@ const ProfilePage = () => {
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">New Password <span className="text-red-500">*</span></label>
                   <div className="relative">
                     <input name="newPassword" type={showNew ? 'text' : 'password'} value={pwValues.newPassword} onChange={handlePwChange}
-                      placeholder="Min 8 characters" className="input-base pr-11 dark:bg-[#1a1830] dark:border-white/10 dark:text-white" />
+                      placeholder="Min 8 characters" className="input-base pr-11 dark:bg-[#141F36] dark:border-white/10 dark:text-white" />
                     <button type="button" onClick={() => setShowNew(!showNew)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
                       {showNew ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                     </button>
@@ -376,10 +376,10 @@ const ProfilePage = () => {
                 </div>
                 <FormField label="Confirm New Password" name="confirmPassword" type="password"
                   value={pwValues.confirmPassword} onChange={handlePwChange} placeholder="Re-enter new password" />
-                <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800/30 rounded-xl p-4 text-xs text-blue-700 dark:text-blue-300 space-y-1">
+                <div className="bg-[#FAF8F2] dark:bg-[#0D1527] border border-[#14213D]/10 dark:border-white/10 rounded-xl p-4 text-xs text-[#14213D] dark:text-[#FAF8F2] space-y-1">
                   <p className="font-semibold mb-1.5">Password requirements:</p>
                   {['At least 8 characters', 'One uppercase letter', 'One number'].map((r) => (
-                    <div key={r} className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-blue-400 flex-shrink-0" />{r}</div>
+                    <div key={r} className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#D4A84F] flex-shrink-0" />{r}</div>
                   ))}
                 </div>
                 <div className="flex justify-end pt-2">

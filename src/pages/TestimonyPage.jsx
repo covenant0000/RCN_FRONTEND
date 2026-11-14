@@ -57,10 +57,10 @@ const TestimonyPage = () => {
         bgImage="/community-bg.jpg"
       />
 
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-[#FAF8F2] dark:bg-[#0D1527]">
         <div className="container-custom grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
           {/* Form */}
-          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
+          <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 shadow-sm p-8">
             <h3 className="font-display text-xl font-bold text-primary mb-6 flex items-center gap-2">
               <MessageSquare className="w-5 h-5 text-accent" /> Your Testimony
             </h3>
@@ -70,8 +70,8 @@ const TestimonyPage = () => {
                 <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
                   <CheckCircle2 className="w-8 h-8 text-green-500" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Testimony Submitted!</h4>
-                <p className="text-gray-500 text-sm mb-6">
+                <h4 className="font-semibold text-[#252525] dark:text-white mb-2">Testimony Submitted!</h4>
+                <p className="text-[#6B7280] dark:text-[#9CA3AF] text-sm mb-6">
                   Thank you for sharing how God has worked in your life. Your testimony will encourage many.
                 </p>
                 <button onClick={() => setSuccess(false)} className="btn-primary">Share Another</button>
@@ -126,7 +126,7 @@ const TestimonyPage = () => {
                       {t.name[0]}
                     </div>
                     <div>
-                      <div className="font-semibold text-gray-900 text-sm">{t.name}</div>
+                      <div className="font-semibold text-[#252525] dark:text-white text-sm">{t.name}</div>
                       <div className="text-xs text-accent">{t.category}</div>
                     </div>
                     <div className="ml-auto flex gap-0.5">
@@ -135,7 +135,7 @@ const TestimonyPage = () => {
                       ))}
                     </div>
                   </div>
-                  <blockquote className="text-sm text-gray-600 italic leading-relaxed">"{t.text}"</blockquote>
+                  <blockquote className="text-sm text-[#6B7280] dark:text-[#9CA3AF] italic leading-relaxed">"{t.text}"</blockquote>
                 </div>
               ))}
             </div>
