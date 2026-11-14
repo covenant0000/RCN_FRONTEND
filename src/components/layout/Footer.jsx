@@ -65,7 +65,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="w-9 h-9 rounded-full bg-[#14213D]/10 dark:bg-white/10 text-[#14213D] dark:text-white flex items-center justify-center hover:bg-[#D4A84F] hover:text-[#14213D] dark:hover:bg-[#D4A84F] dark:hover:text-[#14213D] transition-colors"
+                className="w-9 h-9 rounded-full bg-white dark:bg-[#141F36] border border-[#14213D]/10 dark:border-white/10 shadow-sm text-[#1877F2] hover:bg-[#1877F2] hover:border-[#1877F2] hover:text-white flex items-center justify-center transition-colors duration-200"
               >
                 <FaFacebookF className="w-4 h-4" />
               </a>
@@ -74,7 +74,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="w-9 h-9 rounded-full bg-[#14213D]/10 dark:bg-white/10 text-[#14213D] dark:text-white flex items-center justify-center hover:bg-[#D4A84F] hover:text-[#14213D] dark:hover:bg-[#D4A84F] dark:hover:text-[#14213D] transition-colors"
+                className="w-9 h-9 rounded-full bg-white dark:bg-[#141F36] border border-[#14213D]/10 dark:border-white/10 shadow-sm text-[#E4405F] hover:bg-[#E4405F] hover:border-[#E4405F] hover:text-white flex items-center justify-center transition-colors duration-200"
               >
                 <FaInstagram className="w-4 h-4" />
               </a>
@@ -83,7 +83,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="YouTube"
-                className="w-9 h-9 rounded-full bg-[#14213D]/10 dark:bg-white/10 text-[#14213D] dark:text-white flex items-center justify-center hover:bg-[#D4A84F] hover:text-[#14213D] dark:hover:bg-[#D4A84F] dark:hover:text-[#14213D] transition-colors"
+                className="w-9 h-9 rounded-full bg-white dark:bg-[#141F36] border border-[#14213D]/10 dark:border-white/10 shadow-sm text-[#FF0000] hover:bg-[#FF0000] hover:border-[#FF0000] hover:text-white flex items-center justify-center transition-colors duration-200"
               >
                 <FaYoutube className="w-4 h-4" />
               </a>
@@ -92,7 +92,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="X (Twitter)"
-                className="w-9 h-9 rounded-full bg-[#14213D]/10 dark:bg-white/10 text-[#14213D] dark:text-white flex items-center justify-center hover:bg-[#D4A84F] hover:text-[#14213D] dark:hover:bg-[#D4A84F] dark:hover:text-[#14213D] transition-colors"
+                className="w-9 h-9 rounded-full bg-white dark:bg-[#141F36] border border-[#14213D]/10 dark:border-white/10 shadow-sm text-[#000000] dark:text-white hover:bg-[#000000] dark:hover:bg-white hover:border-[#000000] dark:hover:border-white hover:text-white dark:hover:text-[#000000] flex items-center justify-center transition-colors duration-200"
               >
                 <FaXTwitter className="w-4 h-4" />
               </a>
