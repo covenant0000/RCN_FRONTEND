@@ -1,8 +1,11 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   User, CalendarDays, BookOpen, Heart, ClipboardList,
-  Flame, Bell, ArrowRight, ShieldCheck, CheckCircle2, Clock
+  Flame, Bell, ArrowRight, ShieldCheck, CheckCircle2, Clock, Building2
 } from 'lucide-react';
+import { mockDepartments } from '../../services/mock/mockData';
+import { getDepartmentStorageKey, DEPARTMENT_ICONS } from '../../pages/DepartmentsPage';
 
 export const MemberWorkerDashboardView = ({
   user,
@@ -20,6 +23,29 @@ export const MemberWorkerDashboardView = ({
   const myRosters = rosters.filter((r) =>
     r.workers?.some((w) => w.profile?.firstName === firstName || w.id === user?.id)
   );
+
+  // Read joined departments using the shared storage key logic
+  const [joinedDeptIds, setJoinedDeptIds] = useState(() => {
+    try {
+      const storageKey = getDepartmentStorageKey(user?.id);
+      const saved = localStorage.getItem(storageKey);
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    try {
+      const storageKey = getDepartmentStorageKey(user?.id);
+      const saved = localStorage.getItem(storageKey);
+      setJoinedDeptIds(saved ? JSON.parse(saved) : []);
+    } catch {
+      setJoinedDeptIds([]);
+    }
+  }, [user?.id]);
+
+  const myDepartments = mockDepartments.filter((d) => joinedDeptIds.includes(d.id));
 
   return (
     <div className="space-y-8 animate-fade-in">
@@ -97,7 +123,67 @@ export const MemberWorkerDashboardView = ({
       )}
 
       {/* ── 3. Upcoming Events & Sermons Feed ─────────────────────────────── */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* My Departments */}
+        <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden flex flex-col">
+          <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-white/10">
+            <h3 className="font-semibold text-gray-900 dark:text-white text-base flex items-center gap-2">
+              <Building2 className="w-4 h-4 text-accent" /> My Departments
+            </h3>
+            <Link to="/departments" className="text-xs text-accent font-semibold hover:underline">
+              Browse All
+            </Link>
+          </div>
+
+          {myDepartments.length > 0 ? (
+            <div className="divide-y divide-gray-100 dark:divide-white/5 flex-1">
+              {myDepartments.map((dept) => {
+                const IconComp = DEPARTMENT_ICONS[dept.id] || Building2;
+                return (
+                  <Link
+                    key={dept.id}
+                    to="/departments"
+                    className="p-4 md:px-6 flex items-center justify-between gap-4 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors group"
+                  >
+                    <div className="flex items-center gap-3.5 min-w-0">
+                      <div className="w-11 h-11 rounded-xl bg-accent/15 text-accent flex items-center justify-center shrink-0 shadow-sm">
+                        <IconComp className="w-5 h-5" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="font-semibold text-gray-900 dark:text-white text-sm group-hover:text-accent transition-colors truncate">
+                          {dept.name}
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
+                          {dept.description || 'Active Sanctuary Unit'}
+                        </p>
+                      </div>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-accent group-hover:translate-x-1 transition-all shrink-0" />
+                  </Link>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="p-8 text-center flex-1 flex flex-col items-center justify-center">
+              <div className="w-12 h-12 rounded-2xl bg-accent/10 text-accent flex items-center justify-center mb-3">
+                <Building2 className="w-6 h-6" />
+              </div>
+              <p className="text-sm text-gray-600 dark:text-gray-300 font-medium mb-1">
+                You haven't joined any department yet
+              </p>
+              <p className="text-xs text-gray-400 dark:text-gray-500 max-w-xs mb-4">
+                Serve with your spiritual gifts in worship, media, ushering or prayer.
+              </p>
+              <Link
+                to="/departments"
+                className="btn-primary text-xs px-5 py-2.5 rounded-full inline-flex items-center gap-1.5"
+              >
+                Browse Departments <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          )}
+        </div>
+
         {/* Upcoming Conferences */}
         <div className="bg-white dark:bg-[#141F36] rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden">
           <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-white/10">

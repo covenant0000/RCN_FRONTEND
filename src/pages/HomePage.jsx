@@ -14,6 +14,7 @@ import { sermons as allSermons } from '../data/sermons';
 import heroWelcome2 from '../assets/images/hero-welcome2.jpeg';
 import heroApostolic from '../assets/images/hero-apostolic.jpeg';
 import heroConference from '../assets/images/hero-conference.jpeg';
+import giveHero from '../assets/images/give-hero.jpeg';
 import pastor1 from '../assets/images/pastor1.jpeg';
 import pastor2 from '../assets/images/pastor2.jpeg';
 import pastor3 from '../assets/images/pastor3.jpeg';
@@ -506,12 +507,12 @@ const GiveSection = () => (
   <section
     className="relative section-padding overflow-hidden"
     style={{
-      backgroundImage: 'url(/community-bg.jpg)',
+      backgroundImage: `url(${giveHero})`,
       backgroundSize: 'cover',
-      backgroundPosition: 'center',
+      backgroundPosition: '70% center',
     }}
   >
-    <div className="hero-overlay absolute inset-0" />
+    <div className="absolute inset-0 bg-gradient-to-r from-[#14213D]/85 via-[#14213D]/85 to-[#14213D]/60" />
     <div className="relative container-custom text-center max-w-2xl mx-auto">
       <div className="w-16 h-16 rounded-full bg-accent-gradient mx-auto flex items-center justify-center mb-6">
         <Heart className="w-8 h-8 text-white" />
@@ -519,14 +520,14 @@ const GiveSection = () => (
       <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-5">
         Partner with the Vision
       </h2>
-      <p className="text-white/75 text-lg mb-8 leading-relaxed">
+      <p className="text-white text-lg mb-8 leading-relaxed">
         Your giving fuels the mission of RCN — reaching nations, training workers, and establishing the Kingdom of God in the earth.
       </p>
       <div className="flex flex-wrap justify-center gap-4">
         <Link to="/give" className="btn-primary text-base px-8 py-4">
           <Heart className="w-5 h-5" /> Give Today
         </Link>
-        <Link to="/about" className="btn-ghost border border-white/30 text-base px-8 py-4">
+        <Link to="/about" className="btn-ghost border border-white/60 text-base px-8 py-4">
           Learn More
         </Link>
       </div>

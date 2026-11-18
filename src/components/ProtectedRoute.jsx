@@ -6,7 +6,7 @@ import { LoadingScreen } from './ui';
  * ProtectedRoute — wraps routes that require authentication.
  * Optionally requires a minimum role (minRole).
  */
-const ProtectedRoute = ({ children, minRole }) => {
+const ProtectedRoute = ({ children, minRole, redirectTo = '/login' }) => {
   const { isAuthenticated, loading, hasRole } = useAuth();
   const location = useLocation();
 
@@ -15,7 +15,7 @@ const ProtectedRoute = ({ children, minRole }) => {
   }
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" state={{ from: location }} replace />;
+    return <Navigate to={redirectTo} state={{ from: location }} replace />;
   }
 
   if (minRole && !hasRole(minRole)) {

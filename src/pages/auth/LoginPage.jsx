@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Eye, EyeOff, LogIn, AlertCircle } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { Alert, Spinner } from '../../components/ui';
@@ -10,6 +10,7 @@ import loginBg from '../../assets/images/login-bg.jpeg';
 const LoginPage = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [apiError, setApiError] = useState('');
@@ -35,8 +36,13 @@ const LoginPage = () => {
     setLoading(true);
     try {
       const user = await login(values.email, values.password);
-      const adminRoles = ['ADMIN', 'SUPER_ADMIN', 'PASTOR', 'DEPARTMENT_HEAD', 'WORKER'];
-      navigate(adminRoles.includes(user.role) ? '/dashboard' : '/dashboard/profile');
+      const returnPath = location.state?.from?.pathname || location.state?.from;
+      if (returnPath) {
+        navigate(returnPath, { replace: true });
+      } else {
+        const adminRoles = ['ADMIN', 'SUPER_ADMIN', 'PASTOR', 'DEPARTMENT_HEAD', 'WORKER'];
+        navigate(adminRoles.includes(user.role) ? '/dashboard' : '/dashboard/profile', { replace: true });
+      }
     } catch (err) {
       setApiError(err.response?.data?.message || 'Invalid email or password. Please try again.');
     } finally {
@@ -85,9 +91,9 @@ const LoginPage = () => {
         {/* quote */}
         <div className="relative z-10 max-w-md">
           <blockquote className="text-white text-xl font-display italic leading-relaxed mb-3">
-            "Every man according as he purposeth in his heart, so let him give; not grudgingly, or of necessity: for God loveth a cheerful giver."
+            "Praising God, and having favour with all the people. And the Lord added to the church daily such as should be saved."
           </blockquote>
-          <p className="text-[#D4A84F] text-sm font-medium">— 2 Corinthians 9:7 (KJV)</p>
+          <p className="text-[#D4A84F] text-sm font-medium">— Acts 2:47 (KJV)</p>
         </div>
       </div>
 
@@ -202,7 +208,7 @@ const LoginPage = () => {
 
           <p className="text-center text-sm text-[#6B7280] dark:text-[#D1D5DB] mt-8">
             Don't have an account?{' '}
-            <Link to="/register" className="text-[#14213D] dark:text-[#D4A84F] font-semibold hover:underline">
+            <Link to="/register" state={location.state} className="text-[#14213D] dark:text-[#D4A84F] font-semibold hover:underline">
               Create an account
             </Link>
           </p>

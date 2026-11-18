@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Eye, EyeOff, UserPlus, AlertCircle, CheckCircle2 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { Alert, Spinner } from '../../components/ui';
@@ -9,7 +9,9 @@ import rcnLogo from '../../assets/images/rcn-logo.png';
 import loginBg from '../../assets/images/login-bg.jpeg';
 
 const RegisterPage = () => {
-  const { register } = useAuth();
+  const { register, login } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [apiError, setApiError] = useState('');
@@ -51,6 +53,19 @@ const RegisterPage = () => {
           gender:    values.gender || undefined,
         },
       });
+
+      const returnPath = location.state?.from?.pathname || location.state?.from;
+
+      if (login) {
+        try {
+          await login(values.email, values.password);
+          navigate(returnPath || '/departments', { replace: true });
+          return;
+        } catch {
+          // If auto-login fails (e.g. backend requires email verification first), show success screen
+        }
+      }
+
       setSuccess(true);
     } catch (err) {
       setApiError(err.response?.data?.message || 'Registration failed. Please try again.');
@@ -73,6 +88,7 @@ const RegisterPage = () => {
           </p>
           <Link
             to="/login"
+            state={location.state}
             className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base font-semibold rounded-full transition-all bg-[#14213D] text-white hover:bg-[#1d2f55] dark:bg-[#D4A84F] dark:text-[#14213D] dark:hover:bg-[#E0BA68] shadow-sm"
           >
             Proceed to Login
@@ -112,9 +128,9 @@ const RegisterPage = () => {
         {/* quote */}
         <div className="relative z-10 max-w-md">
           <blockquote className="text-white text-xl font-display italic leading-relaxed mb-3">
-            "Every man according as he purposeth in his heart, so let him give; not grudgingly, or of necessity: for God loveth a cheerful giver."
+            "Praising God, and having favour with all the people. And the Lord added to the church daily such as should be saved."
           </blockquote>
-          <p className="text-[#D4A84F] text-sm font-medium">— 2 Corinthians 9:7 (KJV)</p>
+          <p className="text-[#D4A84F] text-sm font-medium">— Acts 2:47 (KJV)</p>
         </div>
       </div>
 
@@ -234,7 +250,7 @@ const RegisterPage = () => {
 
           <p className="text-center text-sm text-[#6B7280] dark:text-[#D1D5DB] mt-8">
             Already have an account?{' '}
-            <Link to="/login" className="text-[#14213D] dark:text-[#D4A84F] font-semibold hover:underline">Sign in</Link>
+            <Link to="/login" state={location.state} className="text-[#14213D] dark:text-[#D4A84F] font-semibold hover:underline">Sign in</Link>
           </p>
         </div>
       </div>

@@ -17,6 +17,7 @@ import PrayerPage from './pages/PrayerPage';
 import TestimonyPage from './pages/TestimonyPage';
 import CentersPage from './pages/CentersPage';
 import OtherCentersPage from './pages/OtherCentersPage';
+import PublicDepartmentsPage from './pages/DepartmentsPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 // Auth Pages
@@ -67,6 +68,14 @@ function App() {
             <Route path="/prayer" element={<PrayerPage />} />
             <Route path="/testimony" element={<TestimonyPage />} />
             <Route path="/our-centre" element={<CentersPage />} />
+            <Route
+              path="/departments"
+              element={
+                <ProtectedRoute redirectTo="/register">
+                  <PublicDepartmentsPage />
+                </ProtectedRoute>
+              }
+            />
 
             {/* Conference sub-pages (reuse Events) */}
             <Route path="/conferences/iec" element={<EventsPage />} />
